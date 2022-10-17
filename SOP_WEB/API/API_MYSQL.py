@@ -4,10 +4,10 @@ from sqlite3 import Cursor
 import chardet
 import pymysql.cursors
 
-host='10.224.69.62'
-user='chien'
-password='Foxconn88@'
-database='foxconn'
+host=''
+user=''
+password=''
+database=''
 
 # Connect to the database
 def GET_TAINI(userid):

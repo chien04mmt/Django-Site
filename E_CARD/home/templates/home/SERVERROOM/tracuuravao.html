@@ -1,0 +1,277 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+THÔNG TIN VÀO RA PHÒNG MÁY CHỦ
+{% endblock %}
+
+
+{% block mainbody %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'data_table/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="/static/datepicker/jquery.datetimepicker.css">
+
+<style>
+  table.dataTable tbody th,
+  table.dataTable tbody td {
+   padding:3px 3px !important
+  }
+</style>
+
+<!--Main body start -->
+<div class="main-body" onload="">
+  <div class="page-wrapper">
+    <!-- Page body start -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card form-card">
+            <div class="card-header" style="height: 100%;">
+              <h5><i class="fas  fa-search  f-20"></i> <a data-i18n="tracuuthongtinvaoraphongmaychu">TRA CỨU THÔNG TIN VÀO RA PHÒNG MÁY CHỦ</a></h5>                                                   
+            </div>           
+
+            <div class="card-block table-border-style mt-0 ">
+
+                <!--Person List-->
+                <div class="row title-fist mt-0">
+                  <h5  ><i class="fa fa-id-card-alt" aria-hidden="true"></i> <a data-i18n='thongtintracuu'>Thông tin tra cứu</a></h5> 
+                </div>
+
+
+                <div class="row d-flex text-justify-center  card-application" id="Div_area">
+
+                  <!--CARD_NO-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" hidden>
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="CARD_NO">CARD_NO</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm " type="text" id="CARD_NO" name="CARD_NO" required="Please not entry.." value="">
+                      <i class="fad fa-sim-card text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                           
+                  </div>
+                      
+                  
+                  <!--EMP_NO-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="EMP_NO">EMP_NO</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm  " type="text" id="EMP_NO" name="EMP_NO" required="Please not entry.." value="">
+                      <i class="fad fa-id-card text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>
+                  </div>
+
+                  <!--EMP_NAME-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" hidden>
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="EMP_NAME">EMP_NAME</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm  " type="text" id="EMP_NAME" name="EMP_NAME" required="Please not entry.." value="">
+                      <i class="fad fa-user-tie text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--GRP-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" hidden>
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="GRP">GRP</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm " type="text" id="GRP" name="GRP" required="Please not entry.." value="">
+                      <i class="fad fa-building text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--TYPES-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" hidden>
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="TYPES">TYPES</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm  " type="text" id="TYPES" name="TYPES" required="Please not entry.." value="">
+                      <i class="fad fa-building text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--DEPT-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" hidden>
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="DEPT">DEPT</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm  " type="text" id="DEPT" name="DEPT" required="Please not entry.." value="">
+                      <i class="fad fa-sitemap text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--MAC-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="MAC">MAC</label><span class="text-danger">:</span>
+                      <select class="form-control form-control-sm" name="MAC" id="MAC" value="MAC">
+                        <option  value=""></option>
+                        {% if select %}
+                          {% for item in select %}
+                            <option value="{{item.FBMAC}}">{{item.FBMAC}}</option>
+                          {% endfor %}
+                        {% endif %}                        
+                      </select>
+                      <i class="fad fa-computer-classic text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--POS-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="POS">POS</label><span class="text-danger">:</span>
+                      <select class="form-control form-control-sm" name="MAC" id="MAC" value="MAC">
+                        <option  value=""></option>
+                        {% if select %}
+                          {% for item in select %}
+                            <option value="{{item.FGATE}}">{{item.FGATE}}</option>
+                          {% endfor %}
+                        {% endif %}                        
+                      </select>
+                      <i class="fad fa-building text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--IP-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="IP">IP</label><span class="text-danger">:</span>
+                      <select class="form-control form-control-sm" name="IP" id="IP" value="">
+                        <option  value=""></option>
+                        {% if select %}
+                          {% for item in select %}
+                            <option value="{{item.FBIP}}">{{item.FBIP}}</option>
+                          {% endfor %}
+                        {% endif %}                        
+                      </select>
+                      <i class="fad fa-router text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+                  
+                  <!--STATUS-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="STATUS">STATUS</label><span class="text-danger">:</span>
+                      <select class="form-control form-control-sm" name="STATUS" id="STATUS" value="">
+                        <option  value=""></option>
+                        {% if status %}
+                          {% for item in status %}
+                              {% if 'RED' in item.STATUS %}
+                                <option  class="fad fa-credit-card text-danger" value="{{item.STATUS}}" ><i class="fad fa-credit-card"></i>{{item.STATUS}}</option>
+                              {% else %}
+                                <option class="fad fa-credit-card text-success" value="{{item.STATUS}}"><i class="fad fa-credit-card"></i>{{item.STATUS}}</option>
+                              {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </select>
+                      <i class="fad fa-lightbulb-on text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--Từ ngày-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="FROM_INTIME">FROM_INTIME</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm  " type="text" id="INTIME1" name="INTIME1" required="Please not entry.." value="">
+                      <i class="fad fa-calendar-edit text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>
+                  </div>
+
+                  <!--Đến ngày-->
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mb-4 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="TO_INTIME">TO_INTIME</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm form-coltrol-sm  " type="text" id="INTIME2" name="INTIME2" required="Please not entry.." value="">
+                      <i class="fad fa-calendar-check text-c-blue f-16"></i><span class="focus-input100"></span>
+                    </div>
+                  </div>
+
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mt-3 d-flex justify-content-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <!--Buton add-->
+                      <span type="button" onclick="GET_LOG_SERVERROOM();" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Search"><i class="fa fa-search" aria-hidden="true"></i></span>
+                      <!--Buton reset field-->
+                      <span type="button" onclick="RESET_AREA('Div_area')" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset all field"><i class="fad fa-sync" aria-hidden="true"></i></span>
+                      <!--Buton tải file exel-->
+                      <span type="button" onclick="PRINT_EXEL_LOG_INOUT_SERVER()" class="btn btn-outline-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save to exel"><i class="fad fa-file-excel f-18" aria-hidden="true"></i></span>
+                    </div>
+                  </div>
+              
+                  <div class="col-12 mb-0">
+                        <hr>           
+                  </div>
+                
+
+                  
+               
+                  <!--Bảng danh sách người đi xe Passenger list-->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-0 mt-0">
+                    <div class=" table-responsive text-center" style="width:100%;overflow:auto; " >
+                      <table id="table_data" class="table-sm text-center table-hover  table-bordered " style="width:100%;font-size:12px;">                   
+                        <thead>
+                          <tr class="bg-light text-dark" >
+                            <th style="width:5px !important;">0</th>                        
+                            <th data-i18n="CARD_NO" >CARD_NO</th>       
+                            <th data-i18n="EMP_NO" >EMP_NO</th>  
+                            <th data-i18n="EMP_NAME" >EMP_NAME</th>
+                            <th data-i18n="GRP">GRP</th>
+                            <th data-i18n="TYPES">TYPES</th>
+                            <th data-i18n="DEPT">DEPT</th>
+                            <th data-i18n="INTIME">INTIME</th>
+                            <th data-i18n="MAC">MAC</th>
+                            <th data-i18n="POS">POS</th>
+                            <th data-i18n="IP">IP</th>
+                            <th data-i18n="STATUS">STATUS</th>                           
+                          </tr>
+                        </thead>
+                       
+                        <tbody id="tbody_data">                        
+                         
+                        </tbody>
+                      </table>  
+                    </div>                      
+                    </div>
+                  
+                  </div>
+                   
+                </div>
+                <!-- END-->              
+              
+             <hr>
+              <!-- Bảng hiển thị thông tin đơn End-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body end -->
+  </div>
+  <div id="styleSelector"></div>
+</div>
+<!--Main body end -->
+
+
+<!-- Danh sách MODAL START-->
+  
+
+
+<!-- Danh sách MODAL END-->
+
+<script type="text/javascript" src="{% static 'assets/js/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'myjs/ecard.js' %}"></script>  
+
+<script src="{% static 'exportXLSX/xlsx.full.min.js' %}"></script>
+<script src="{% static 'exportXLSX/ToExel.js' %}"></script>
+
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+<script src="/static/datepicker/datetimepicker.js"></script> 
+<script>
+    ACTIVE_MENUY('LOG_IN_OUT_SVR') ;
+    jQuery(document).ready(function () {
+      'use strict';
+      jQuery('#INTIME1, #INTIME2').datetimepicker();
+  });
+    $(document).ready(function() {
+      $('#table_data').DataTable();
+    } );
+</script>
+
+
+{% endblock %}

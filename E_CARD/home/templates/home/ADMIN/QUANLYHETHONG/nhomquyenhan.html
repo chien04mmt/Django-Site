@@ -1,0 +1,368 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Cài đặt quyền hạn
+{% endblock %}
+
+{% block mainbody %}
+<!--Main body start -->
+<div class="main-body" onload="">
+  <div class="page-wrapper">
+    <!-- Page body start -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header" style="height: 100%;">
+              <h5><i class="fas fa-users-cog f-20"></i> <a data-i18n="dsnhomphanquyen">DANH SÁCH NHÓM PHÂN QUYỀN</a></h5>                                                   
+            </div>
+
+            <div class="card-block " >
+              <div class="row">
+                <div class="col-12">
+                  <!--Danh sách nút-->
+                  <div class="d-flex flex-row text-dark " style="width:100%;background-colors:#c1dbf4;font-weight:bold;cursor:pointer;">
+                    <div onclick="Set_Effect_Menu(this)" style="border-bottom:2px solid #012258;background-color:whitesmoke;" class=" show p-2  text-dark menu-permiss" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      <div class="text-left collapsed" href="#" type="button" style="color:dodgerblue" data-i18n="dsnhomquyenhan">
+                        Danh sách nhóm quyền hạn
+                      </div>
+                    </div>
+                  
+                    <div onclick="Set_Effect_Menu(this)" class="p-2  menu-permiss text-dark"  data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                      <div href="#" class="text-left" type="button" data-i18n="phanquyenhan">
+                      Phân quyền hạn
+                      </div>
+                    </div>
+                    <div onclick="Set_Effect_Menu(this)" class="p-2  menu-permiss text-dark" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      <div href="#" class="text-left collapsed" type="button" data-i18n="hdphanquyen">
+                      Hướng dẫn phân quyền
+                      </div>
+                    </div>
+                  </div>
+                  <!--END-->
+
+                  <!--Danh sách module-->
+                  <div class="accordion" id="accordionExample" style="width: 100%;">              
+                    <div class="card"> 
+
+                      <!--Module Danh sách nhóm quyền hạn-->
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+                        <div class="card-body">
+                            <h5><i class="far fa-user-lock text-primary f-22"></i> <span data-i18n="nhomquyenhan">Nhóm quyền hạn</span><hr></h5>
+                            <!--Menu nhóm quyền hạn--> 
+                            <div class="row">
+
+                              <!-- <div class="card-block "> -->
+                              <div class="col-xl-1 col-lg-2 col-md-2 col-sm-3 mb-2 mt-0">                       
+                                  <button id="but_add_row" type="button" class="form-control form-control-sm btn-outline-info" onclick="Show_Modal_Group_Permiss()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Approver"><i class="fad fa-layer-plus f-16"></i> <a data-i18n="btn-Add">Thêm mới</a></button>
+                              </div>
+
+                              <div class="col-md-12 col-sm-12 mb-2 mt-0">
+                                <!-- Bảng Hiển thị thông tin các quyền hạn-->
+                                <div class="table-responsive" style="overflow:auto;">
+                                    <table id="table_permiss" class="table-sm table-hover  table-bordered  nowrap no-footer mt-0" cellspacing="0" style="width:100%;">               
+                                    <thead class="fw-bold fs-6 text-dark text-left bg-light font-weight-bold">
+                                        <tr class="bg-light text-dark">
+                                        <th style="width:50px;" data-i18n="stt">STT</th>
+                                        <th data-i18n="macode">Mã CODE</th>
+                                        <th data-i18n="tenquyenhan">Tên quyền hạn</th>
+                                        <th class="text-left" data-i18n="ghichu">Ghi chú</th>
+                                        <th style="width:80px;" data-i18n="thaotac">Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody_permiss">                                      
+                                                
+                                    </tbody>    
+                                    </table><hr>
+
+                                </div>
+                                <!-- Bảng hiển thị thông tin đơn End-->
+                              </div>
+
+                            </div>
+                            <!--/menu nhóm quyền hạn END-->  
+
+                        </div>
+                      </div>
+                    
+
+                      <!--Module quyền hạn tài khoản-->
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample" style="">
+                        <div class="card-body">
+                        <h5><i class="fad fas fa-fingerprint f-20 text-primary f-22"></i> <span  data-i18n="phanquyenhan">Phân quyền hạn<span><hr></h5>                          
+                          <!--Menu thực đơn--> 
+                          <div class="row">                              
+                                <!--Chọn Loại quyền hạn--> 
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12 col-12 mt-0 mb-2">
+                                  <div class="form-group mb-0 mt-0"> 
+                                    <select class="form-control " id="CodeRole" onchange="Action_Modules('SELECT', this)">
+                                      <option selected="selected" value="" data-i18n="chonnhom">---Chọn nhóm---</option>
+                                                       
+                                    </select>
+                                    <i class="fad fa-shield-check text-danger f-16"></i><span class="focus-input100"></span>
+                                  </div>
+                                </div>
+
+                                <!--Lưu thông tin cấu hình-->                               
+                                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-2 mt-0">                       
+                                    <button id="but_add_row" type="button" class="form-control btn-outline-info" onclick="Action_Modules('INSERT','#CodeRole')" data-toggle="tooltip" data-placement="top" title="Save config" data-original-title="Save config"><i class="fad fa-save f-16"></i> <a data-i18n="btn-save">Lưu</a></button>
+                                </div>
+
+                                 <!--Thêm mới menu-->                               
+                                 <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-2 mt-0">                       
+                                  <button id="but_add_row" type="button" class="form-control btn-outline-info" onclick="Show_modal_AddMenu()" data-toggle="tooltip" data-placement="top" title="Add menu" data-original-title="Save config"><i class="fad fa-plus f-16"></i> <a data-i18n="btn-themmenu">Thêm Menu</a></button>
+                                </div>
+
+                                <!-- Bảng Hiển thị thông tin menu permiss-->   
+                                <div class="col-md-12 col-sm-12 mb-2 mt-4">                       
+                                
+                                  <div class="table-responsive" style="overflow:auto;">      
+                                      <table id="table_menus" class="table-sm table-hover  table-bordered  nowrap no-footer mt-0" cellspacing="0" style="width:100%;">               
+                                      <thead class="fw-bold fs-6 text-dark bg-light font-weight-bold">
+                                          <tr class="bg-light text-dark"> 
+                                            <th class="text-center" data-i18n="stt" style="max-width:20px">STT</th>
+                                            <th class="text-center" data-i18n="macode">Mã CODE</th>
+                                            <th class="text-center"  data-i18n="tenmenu">Tên MENU</th>
+                                            <th class="text-center" data-i18n="nhommenu">Nhóm MENU</th>                                            
+                                            <th class="text-center" data-i18n="" style="width:80px;"><input id="Select_All" type="checkbox" class="form-control" onclick="CHECKBOX_CHANGE_ALL(this.id, 'tbody_menus') " style="height:20px;"></th>
+                                            <th class="text-center" data-i18n="thaotac" style="width:80px;">Thao tác</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="tbody_menus">
+                                         {% if listMenu %}
+                                          {% for item in listMenu %}
+                                            <tr class="clickable-row" for="check_{{item.Code_Menu}}" onclick="Row_Click_Checkbox(this)">
+                                              <td class="text-center">{{item.Code_Menu}}</td>
+                                              <td class="text-center">{{item.Name_Menu}}</td>
+                                              <td class="text-center">{{item.Groups_Menu}}</td>
+                                              <td class="text-center"><input id="check_{{item.Code_Menu}}" type="checkbox" code_menu="{{item.Code_Menu}}" value="0" class="form-control" onclick="" style="height:20px;"></td>
+                                              <td class="text-center">
+                                                <i id="btnEditMenu_{{item.Code_Menu}}" code_menu="{{item.Code_Menu}}" name_menu="{{item.Name_Menu}}" groups_menu="{{item.Groups_Menu}}" class="fas fa-edit text-info" style="cursor: pointer;" onclick="EditMenu_(this);"></i><i class="fas ">&nbsp;||&nbsp;</i>
+                                                <i id="btnDelMenu_{{item.Code_Menu}}" code_menu="{{item.Code_Menu}}" class="fas fa-trash-alt text-danger" style="cursor: pointer;" onclick="Action_Menus('DELETE',this);"></i>
+                                              </td>  
+                                            </tr>
+                                          {% endfor listMenu %}
+                                         {% endif  %}
+                                      </tbody>    
+                                      </table><hr>
+
+                                  </div>
+                                  <!-- Bảng hiển thị thông tin đơn End-->
+                                </div>
+
+                          </div>
+                          <!--/menu thực đơn END-->  
+                        
+                        </div>
+                      </div>
+
+                      <!--Module khác -->
+                      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample" style="">
+                        <div class="card-body">
+                          <h5><i class="fad fa-info-circle text-primary f-22"></i> <span data-i18n="hdphanquyen">Hướng dẫn phân quyền<span><hr></h5> 
+                          <div class="row">                          
+                            <div class="col-lg-6 col-md-6 col-sm-12 mb-12 mt-2">                           
+                              <span style="font-size:16px" data-i18n="doctailieu">
+                                Đọc tài liệu hướng dẫn theo link hệ thống hướng dẫn
+                              </span><span>:</span>
+                              <a href='/manual/' class="text-primary ml-4">Link manual</a>
+                            </div>                      
+                          </div>
+                          
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!--END-->
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body end -->
+  </div>
+  <div id="styleSelector"></div>
+</div>
+<!--Main body end -->
+
+
+
+
+<!--Modal Thêm nhóm quyền hạn -->
+<div class="modal right fade " id="modal_groupPermiss" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fad fa-folder-open f-20"></i> <a data-i18n="ttnhomquyenhan">THÔNG TIN NHÓM QUYỀN HẠN</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_AreaRole">  
+
+             <!-- Mã code -->
+            <div class="col-xl-12 col-lg-126 col-sm-12 col-12 mt-0 mb-4">  
+              <div class="form-group mb-0 mt-0">              
+                <label data-error="wrong" data-success="right" for="Code_Permission" data-i18n="ma">Mã / 編號</label><span>:(*)</span>
+                <input type="text" class="form-control" id="Code_Permission" readonly>
+                <i class="fad fa-comment f-18 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+             <!-- Tên nhóm phân quyền chính-->
+             <div class="col-xl-6 col-lg-6 col-sm-12 col-12 mt-0 mb-4">  
+              <div class="form-group mb-0 mt-0">               
+                <label data-error="wrong" data-success="right" for="Name_Permission" data-i18n="ten">Tên / 名稱</label><span>:(*)</span>
+                <input type="text" class="form-control" id="Name_Permission" >
+                <i class="fad fa-font f-18 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <!--Ghi chú quyền hạn-->
+            <div class="col-xl-6 col-lg-6 col-sm-12 col-12 mt-0 mb-4">  
+              <div class="form-group mb-0 mt-0">               
+                <label data-error="wrong" data-success="right" for="Detail_Permission" data-i18n="ghichu">Ghi chú</label><span>:(*)</span>
+                <input type="text" class="form-control" id="Detail_Permission" >
+                <i class="fad fa-comment-edit f-18 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+          </div><hr> 
+
+          <!--button -->
+          <div class="row d-flex justify-content-center">            
+            <div class="col-6 mb-2 mt-0" id="Div_btnCreate_GroupPermiss">
+              <button id="" class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="ACTION_GROUP_PERMISS('INSERT',this)"><i class="fa fa-plus" ></i> <span data-i18n="btn-create">Tạo mới</span></button>
+            </div>
+            <div class=" col-6 mb-2 mt-0" id="Div_btnUpdate_GroupPermiss">
+              <button id="" class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="ACTION_GROUP_PERMISS('UPDATE',this)"><i class="fa fa-upload" ></i> <span data-i18n="btn-update">Cập nhật</span></button>
+            </div>
+            <div class="col-6 mb-2 mt-0">                
+                <button id="" class="btn form-control btn-outline-info waves-effect waves-light" type="button" data-dismiss="modal"><i class="fa fa-sign-out"></i> <span data-i18n="btn-exit">Thoát</span></button>
+            </div>
+
+          </div>
+
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--Modal Thêm menus -->
+<div class="modal right fade" id="modal_Menus" style="">
+  <div class="modal-dialog " id="">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-pen f-20"></i> <a data-i18n="chinhsuamenu">THÊM MỚI HOẶC CẬP NHẬT MENU</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_areadMenu">  
+
+            <!-- Nhóm menu-->
+            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 mt-0 mb-4">
+              <div class="form-group ">   
+                <label data-error="wrong" data-success="right" for="Groups_Menu" data-i18n="mainmenu">Main Menu</label><span>(*):</span>
+                <!-- <input id="Groups" type="text" class="form-control " readonly> -->
+                <select onchange="Load_SubMenu(this)" id="Groups_Menu" value="" class="form-control" required="Please select..." title="Please fill this fiel.">
+                  <option value="" data-i18n=""></option>
+                  <option value="MNC-010" data-i18n="MNC-010">Phòng Server</option>
+                  <option value="MNC-020" data-i18n="MNC-020">FII</option>
+                  <option value="MNC-030" data-i18n="MNC-030">FIT</option>
+                  <option value="MNC-040" data-i18n="MNC-040">FUKANG</option>
+                  <option value="MNC-090" data-i18n="MNC-090">Tra cứu</option>
+                  <option value="MNC-100" data-i18n="MNC-100">Quản lý hệ thống</option>
+                </select>
+                <i class="fad fad fa-bookmark f-18 text-danger"></i><span class="focus-input100"></span>        
+              </div> 
+            </div>
+
+            <!--Mã menu-->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0 mb-4"> 
+              <div class="form-group ">             
+                <label data-error="wrong" data-success="right" for="Code_Menu" data-i18n="submenu">Sub Menu</label><span>:</span>
+                <!--input type="text" class="form-control" id="Code_Menu" readonly=""-->
+                <select  id="Code_Menu" class="form-control" value="" required="Please select..." title="Please fill this fiel.">
+                 
+                </select>
+                <i class="fad fad fa-comment f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+                 
+            <!-- Tên menu-->
+            <div class="form-group col-12 mt-0 mb-4">     
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="Name_Menu" data-i18n="tenmenu">Tên MENU</label><span>(*):</span>
+                <input type="text" class="form-control " id="Name_Menu">
+                <i class="fas fad fa-font f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+           
+
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer justify-content-center" id="Div_btn1">
+        <!--Button thêm mới tài khoản-->
+        <div class="col-6 mb-0 mt-0" id="div_btnCreate1">
+            <button class="btn form-control btn-outline-success waves-effect waves-light" type="button" onclick="Action_Menus('INSERT',this)"><i class="fa fa-plus"></i> <span data-i18n="btn-create">Tạo mới</span></button>  
+        </div>
+
+        <!--Button cập nhật thông tin -->
+        <div class="col-6 mb-0 mt-0" id="div_btnUpdate1">
+            <button class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="Action_Menus('UPDATE',this)"><i class="fa fa-save"></i> <span data-i18n="btn-save">Lưu</span></button>
+        </div>
+      
+        <!--Button Quay lại thoát  -->
+        <div class="col-6 mb-0 mt-0">        
+            <button type="button" class="btn form-control btn-outline-dark waves-effect waves-light" data-dismiss="modal"><i class="fa fa-reply"></i> <span data-i18n="btn-exit">Thoát</span></button>                    
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="{% static 'assets/js/jquery/jquery.min.js' %}"></script>
+<!-- Impport js -->  
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'myjs/nhomquyenhan.js' %}"></script>  
+<script type="text/javascript" src="{% static 'myjs/myjs.js' %}"></script> 
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+<script>
+    ACTIVE_MENUY('NHOM_QUYENHAN') ;
+
+    $( function() {
+      Move_modal('modal_Menus');
+      Move_modal('modal_groupPermiss');
+    } );
+
+    ACTION_GROUP_PERMISS("SELECT", "") ;
+    //Load_Menus();
+    Action_Menus("SELECT", '');
+</script>
+
+{% endblock %}

@@ -1,0 +1,235 @@
+{% extends "home/base.html" %}
+  {% load static %}
+
+  {% block title %}
+Quản lý nhóm ký Article 2.0
+  {% endblock %}
+
+
+  {% block mainbody %}
+  <link rel="stylesheet" type="text/css" href="{% static 'mycss/query.doc.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'data_table/jquery.dataTables.min.css' %}">
+              
+  <link rel="stylesheet" type="text/css" href="{% static 'mycss/dulieuhoatdong/yeucaukiemphieu.css' %}">
+
+<!--Main body start -->
+<div class="main-body" onload="">
+  <div class="page-wrapper">
+    <!-- Page body start -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card form-card">
+              <div class="card-header" style="height: 100%;">
+                <h5><i class="fal fas fa-envelope f-20"></i> <a data-i18n="title-nhomky">QUẢN LÝ TỔ CHỨC NHÓM KÝ </a></h5>                                                   
+              </div>
+
+              <!---->                       
+              <div class="card-block table-border-style mt-0 ">
+
+                <div class="row" id="frm_yeucau">
+                  
+                    <!--Tài khoản tổ chức -->
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mt-2">
+                      <div class="form-group mb-0 mt-0">
+                        <label class="mb-0 mt-0" data-i18n="taikhoan-modal">Tài khoản ID:</label>
+                        <input class="form-control form-control-sm" type="text" id="START" name="START" value="" data-toggle="dropdown" aria-expanded="false"  onkeyup="filterFunction('START', 'myDropdown_START')" autocomplete='off'>
+                        <i class="fad fa-address-book text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        <div id="myDropdown_START" class="dropdown-menu mt-1" aria-labelledby="dropdownMenuButton" style="overflow:auto;max-height:300px;width:88%">
+                          {% if sql %}
+                            {% for item in sql %}
+                              <a class="dropdown-item" href="#" onclick="GET_TEXT_MENU(this,'START')" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{item.Username}}">{{item.START}}</a>
+                            {% endfor %}
+                          {% endif %}
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <!--Cụm nút lệnh tìm kiếm-->
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt-4">
+                      <div class="btn-group" role="group" aria-label="Basic example" style="display:flex !important">
+                        <!--Buton tìm kiếm-->
+                        <button type="button" onclick="SEARCH_GROUP_APPROVER('START');" class="form-control form-control-sm  btn-outline-success mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <!--Buton thêm mới-->
+                        <button type="button" onclick="BTN_ADD_NEW();" class="form-control form-control-sm btn-outline-success  mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add new"><i class="fas fa-plus" aria-hidden="true"></i></button>
+                        <!--Buton xuất tệp exel-->
+                        <button type="button" onclick=";" class="form-control form-control-sm  btn-outline-info  mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="ExportToExcel"><i class="fa fa-download" aria-hidden="true"></i></button>
+                        <button type="button" data-toggle="modal" data-target="#modal_phieu"  class="form-control form-control-sm btn-outline-danger  mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Reset" hidden><i class="fas fa-trash-alt" aria-hidden="true"></i></button >
+                      </div>
+                    </div>
+
+                </div><hr>
+
+                <div class="row mt-2">
+                  <div class="col-md-12 col-sm-12 container-fluid">
+                    <div class="table-responsive ">                  
+                      <table  id="table_group_approver" class="table-sm table-hover  table-bordered  nowrap no-footer  table-inverse text-center" style="width:100%;">
+                          <thead>
+                            <tr class="fw-bold fs-6 text-gray-800 bg-light font-weight-bold text-dark text-center">
+                              <th data-i18n=""><i class="fa fa-address-book f-20 text-c-green" aria-hidden="true"></i></th>
+                              <th data-i18n="taikhoan">Tài khoản ID</th>
+                              <th data-i18n="hoten">Họ và tên</th>
+                              <th data-i18n="bophan">Bộ phận</th>
+                              <th data-i18n="CHUJI">Chủ quản phòng</th>
+                              <th data-i18n="hoten">Họ và tên</th>
+                              <th data-i18n="bophan">Bộ phận</th>
+                              <th data-i18n="PUJI">Chủ quản bộ phận</th>
+                              <th data-i18n="hoten">Họ và tên</th>
+                              <th data-i18n="bophan">Bộ phận</th>
+                              <th data-i18n="KEJI">Xưởng trưởng</th>
+                              <th data-i18n="hoten">Họ và tên</th>
+                              <th data-i18n="bophan">Bộ phận</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody_group_approver">
+                          
+                          </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Page body end -->
+    </div>
+  <div id="styleSelector"></div>
+  </div>
+</div>
+<!--Main body end -->
+
+
+
+<!-- Modal nhóm ký-->
+<div class="modal fade bd-example-modal-lg" id="modal_group_approver" tabindex="-5" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-lg" style="height: 100% !important;">
+    <div class="modal-content" >
+      <div class="modal-header ">
+        <div class="container-fluid ">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-edit f-20"></i><a data-i18n="title-modal-nhomky"> THÔNG TIN NHÓM KÝ </a></h5>
+        </div>       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="RESET_AREA('modal_group_approver');">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+          <div class="row">
+            <div class=" col-md-12 col-sm-12"> 
+
+              <!--Thông tin cá nhân--> 
+              <div class="col-md-12 col-sm-12">
+                <div class=" mb-0 card-table flex-fill">
+                  
+                  <div class="card-body" style="padding: 0px;">
+                    <!--Danh sách các trường thông tin --> 
+                    <div class="row title-fist mt-2">
+                    <h5 style="color:#1260d8"><i class="fa fa-bullhorn" aria-hidden="true"></i><a data-i18n="thongtinltk">Thông tin lưu trình ký</a><hr></h5>
+                    </div>
+                    <div class="row mb-4">
+                      
+                      <!--tài khoản người làm đơn-->
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">                         
+                          <label class="mb-0 mt-0" data-i18n="taikhoan-modal">ID người làm đơn :</label>
+                          <input class="form-control form-control-sm" type="text" id="START1" name="START1" value="" data-toggle="dropdown" aria-expanded="false"  onkeyup="filterFunction('START1', 'myDropdown_START1')" autocomplete='off'>
+                          <i class="fad fa-address-book text-c-blue f-16"></i><span class="focus-input100"></span>	
+                          <div id="myDropdown_START1" class="dropdown-menu mt-1" aria-labelledby="dropdownMenuButton" style="overflow:auto;max-height:12rem ;width:88%">
+                            {% if sql2 %}
+                              {% for item in sql2 %}
+                                <a class="dropdown-item" href="#" onclick="GET_TEXT_MENU(this,'START1')" data-toggle="tooltip" data-placement="right" title="" data-original-title="{{item.Username}}">{{item.UserID}}</a>
+                              {% endfor %}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                      
+                               
+                      
+                      <!--Chủ quản phòng-->
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="KEJI">Chủ quản phòng</label>
+                          <input class="form-control form-control-sm " type="text" id="KEJI1" name="KEJI1"   value="">
+                          <i class="fad fa-user text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>               
+    
+                      <!--Chủ quản bộ phận-->
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="PUJI">Chủ quản bộ phận</label>
+                          <input class="form-control form-control-sm " type="text" id="PUJI1" name="PUJI1"   value="">
+                          <i class="fad fa-user text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>
+                      
+                       <!--Xưởng trưởng-->
+                      <div class="col-lg-3 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="CHUJI">Xưởng trưởng</label>
+                          <input class="form-control form-control-sm " type="text" id="CHUJI1" name="CHUJI1"   value="">
+                          <i class="fad fa-user text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>   
+                      
+                                                          
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!--/Thông tin cá nhân END--> 
+            </div>
+          </div>
+      </div>
+
+
+      <div class="modal-footer d-flex  justify-content-center" style="padding:none ">
+        <div class="row col-12 d-flex justify-content-center">
+          <!--Button change Image  -->
+          <div class="col-lg-3 col-md-3 col-sm-6 mb-2 mt-0" id="ADD_START" hidden>
+            <button type="button" class="btn btn-outline-success form-control"  onclick="ADD_GROUP_APPROVER();" data-toggle="tooltip" data-placement="top" data-original-title="Add new"><i class="fas fa-plus"></i> <a id="text_img" data-i18n="btn-Add"> Thêm mới</a></button>                    
+          </div>
+          <!--Button Lưu thông tin tài khoản-->
+          <div class="col-lg-3 col-md-3 col-sm-6 mb-2 mt-0" id="UPDATE_START" hidden>
+            <button  class="btn btn-outline-info form-control" type="button" onclick="UPDATE_GROUP_APPROVER();" data-toggle="tooltip" data-placement="top" data-original-title="Update"><i class="fa fa-save"></i> <a data-i18n="btn-save"> Cập nhật</a></button>
+          </div>
+          <!--Button xóa thông tin  -->
+          <div class="col-lg-3 col-md-3 col-sm-6 mb-2 mt-0" id="DEL_START" hidden>
+            <button type="button" class="btn btn-outline-danger form-control"  onclick="DEL_GROUP_APPROVER()" data-toggle="tooltip" data-plaement="top" data-original-title="Delete"><i class="fas fa-book-dead"></i> <a data-i18n="btn-del"> Xóa</a></button>                    
+          </div>
+          <!--Button Quay lại thoát  -->
+          <div class="col-lg-3 col-md-3 col-sm-6 mb-2 mt-0" >           
+            <button type="button" class="btn btn-outline-dark form-control" data-dismiss="modal" aria-label="Close" onclick="RESET_AREA('modal_group_approver');" data-toggle="tooltip" data-placement="top" data-original-title="Exit"><i class="fa fa-sign-out" aria-hidden="true"></i> <a data-i18n="btn-exit"> Thoát</a></button>                    
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'myjs/J-query/3.6.0/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'myjs/query.doc.js' %}"></script>  
+<script  type="text/javascript" src="{% static 'myjs/myjs.js' %}"></script>
+<script  type="text/javascript" src="{% static 'myjs/quanlynguoiky.js' %}"></script>
+<script src="{% static 'exportXLSX/xlsx.full.min.js' %}"></script>
+<script src="{% static 'exportXLSX/ToExel.js' %}"></script>
+
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'data_table/jquery.dataTables.min.js' %}"></script>
+<script>
+    ACTIVE_MENUY('quanlynhomky') ;  
+    $(document).ready(function() {
+      $('#table_group_approver').DataTable();
+    } );
+</script>
+
+{% endblock %}

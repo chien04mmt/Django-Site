@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+{% if sql %}
+  {% for item in sql %}
+
+    <html>
+
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta content="IE=7.0000" http-equiv="X-UA-Compatible">
+        <title></title>
+
+        <meta name="GENERATOR" content="MSHTML 11.00.10570.1001">
+
+        <style type="text/css">#tables {
+          FONT-SIZE: 18px; BORDER-RIGHT: #000 1px solid; BORDER-BOTTOM: #000 1px solid
+        }
+        #tables TD {
+          BORDER-TOP: #000 1px solid; HEIGHT: 32px; BORDER-LEFT: #000 1px solid
+        }
+        .gridCss {
+          FONT-SIZE: 18px; TEXT-ALIGN: center; LINE-HEIGHT: 25px
+        }
+        </style>
+        <style type="text/css" media="print">@page  {size: portrait; }
+        </style>
+
+      </head>
+
+      <body>
+        <object id="WebBrowser3" classid="clsid:8856F961-340A-11D0-A96B-00C04FD705A2" width="0" height="0" viewastext=""></object>
+        <script language="javascript" type="text/javascript">
+          document.getElementById('form1').onload = print('');
+
+                function PrintBill()
+                {
+                    //$("#btnPrint")[0].style.display = "none";
+                    //pagesetup_null();
+                    window.print();
+                }
+                
+                function test()
+                {
+                    document.all.WebBrowser3.ExecWB(7,1);
+                }
+                
+                function pagesetup_null()
+                {
+                    try
+                    {
+                        var RegWsh = new ActiveXObject("WScript.Shell")
+                        hkey_key="header" 
+                        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"")
+                        hkey_key="footer"
+                        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"")
+                    }
+                    catch(e){}
+                }
+        </script>
+        
+        <!--Form thông tin đơn cần in-->
+        <form id="form1" method="post" name="form1" action="" >
+          <div>
+            <input id="__VIEWSTATE" type="hidden" value="" name="__VIEWSTATE"> </div>
+            <div>
+              <input id="__VIEWSTATEGENERATOR" type="hidden" value="8E2EAAB7" name="__VIEWSTATEGENERATOR">
+              <input id="__EVENTVALIDATION" type="hidden" value="/wEWAgKpi4nQDgL+6YyoCrHI+CTHDoZbEbxLTIE1k41unVcx" name="__EVENTVALIDATION"> 
+            </div>
+            <div align="center">
+              <div style="WIDTH: 1000px; TEXT-ALIGN: right">
+                <input onclick="print(&#39;&#39;)" id="btnPrint" style="HEIGHT: 25px; WIDTH: 80px" type="button" value="打印派車單" name="btnPrint"> 
+              </div>
+              <div style="WIDTH: 1000px">
+                <table style="BORDER-TOP: #fff 0px solid; BORDER-RIGHT: #fff 0px solid; WIDTH: 100%; BORDER-BOTTOM: #fff 0px solid; TEXT-ALIGN: center; BORDER-LEFT: #fff 0px solid" cellspacing="0" cellpadding="0">
+                  <tbody>
+                    <tr>
+                      <td style="HEIGHT: 50px; WIDTH: 25%; TEXT-ALIGN: left" colspan="2"><img id="imgLogo" style="BORDER-LEFT-WIDTH: 0px; HEIGHT: 28px; BORDER-RIGHT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-TOP-WIDTH: 0px" src="./Doc_print_files/honghai.png"> 
+                      </td>
+                      <td style="FONT-SIZE: 32px; WIDTH: 50%; FONT-WEIGHT: bold" colspan="2">派車申請單 
+                        ĐƠN ĐIỀU XE </td>
+                      <td style="FONT-SIZE: 22px; WIDTH: 25%; TEXT-ALIGN: right" colspan="2">越南總管理處 TVTWVN </td>
+                    </tr>
+                    <tr>
+                      <td style="FONT-SIZE: 18px; TEXT-ALIGN: left" colspan="3"><span id="lblBillNo" style="WIDTH: 120px; DISPLAY: inline-block">{{item.DOC_NO}}</span> </td>
+                      <td style="FONT-SIZE: 18px; TEXT-ALIGN: right" colspan="3"><label>申請時間 Ngày 
+                        viết đơn：</label> <span id="lblCreatTime" style="WIDTH: 130px; DISPLAY: inline-block">2022/06/18 14:07</span> 
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <table id="tables" style="WIDTH: 1000px; TEXT-ALIGN: center" cellspacing="1" cellpadding="1">
+                <tbody>
+                  <tr>
+                    <td style="WIDTH: 14%" rowspan="7"><label style="FONT-SIZE: 22px; FONT-WEIGHT: bold">用車申請<br>Đăng ký dùng xe</label> 
+                    </td>
+                    <td style="WIDTH: 18%"><label>預計用車開始時間<br>Thời gian dự tính dùng 
+                      xe</label> </td>
+                    <td style="WIDTH: 25%"><span id="lblStartTime">2022/06/18 14:30</span>&nbsp; 
+                    </td>
+                    <td style="WIDTH: 18%"><label>預計用車結束時間<br>Dự tính kết thúc dùng xe</label> 
+                    </td>
+                    <td style="WIDTH: 25%"><span id="lblEndTime">2022/06/18 15:05</span>&nbsp; 
+                    </td></tr>
+                  <tr>
+                    <td><label>用車人姓名<br>Tên NV dùng xe</label> </td>
+                    <td><span id="lblUserName">LUO SHOU MING</span>&nbsp; </td>
+                    <td><label>用車人聯繫方式<br>Phương thức LL người dùng xe</label> </td>
+                    <td><span id="lblUserTel">0974008616</span>&nbsp; </td></tr>
+                  <tr>
+                    <td><label>申請人工號<br>Mã nhân viên</label> </td>
+                    <td><span id="lblApplyUser">V0910848</span>&nbsp; </td>
+                    <td><label>申請人姓名<br>Tên NV ĐK dùng xe</label> </td>
+                    <td><span id="lblApplyName">裴氏酸</span>&nbsp; </td></tr>
+                  <tr>
+                    <td><label>申請人聯繫方式<br>Phương thức LL người xin ĐX</label> </td>
+                    <td><span id="lblApplyTel">0974008616</span>&nbsp; </td>
+                    <td><label>申請人郵箱<br>Mail người ĐK</label> </td>
+                    <td><span id="lblApplyMail">bui-toan@mail.foxconn.com</span>&nbsp; </td></tr>
+                  <tr>
+                    <td><label>行車目的地<br>Điểm đến</label> </td>
+                    <td colspan="3"><span id="lblAddress">DONG VANG</span>&nbsp; </td></tr>
+                  <tr>
+                    <td><label>用車目的<br>Mục đích dùng xe</label> </td>
+                    <td colspan="3"><span id="lblReason">DI HIEN TRUONG</span>&nbsp; </td></tr>
+                  <tr>
+                    <td style="FONT-SIZE: 13px; TEXT-ALIGN: center" colspan="4">
+                      <div>
+                      <table id="gvMember" class="gridCss" style="WIDTH: 100%; BORDER-COLLAPSE: collapse" cellspacing="0" rules="all" border="1">
+                        <tbody>
+                        <tr class="gridCss">
+                          <th style="WIDTH: 30%" scope="col">乘車人</th>
+                          <th style="WIDTH: 25%" scope="col">乘車人電話</th>
+                          <th style="WIDTH: 25%" scope="col">費用代碼</th>
+                          <th style="WIDTH: 20%" scope="col">乘車人數</th></tr>
+                        <tr>
+                          <td align="left">LUO SHOU MING</td>
+                          <td align="left">&nbsp;</td>
+                          <td align="left">BBVHA5</td>
+                          <td align="left">1</td></tr></tbody></table></div></td></tr>
+                  <tr>
+                    <td>
+                      <label style="FONT-SIZE: 22px; FONT-WEIGHT: bold">車輛信息<br>Thông tin 
+                      xe</label> 
+                    </td>
+                    <td><label>車牌號<br>Biển số xe</label> </td>
+                    <td><span id="lblCarNo">99F-00069</span>&nbsp; </td>
+                    <td><label>路線<br>Lộ trình</label> </td>
+                    <td><span id="lblRoute">QUE VO KHU B----DONG VANG</span>&nbsp; </td></tr>
+                  <tr>
+                    <td rowspan="4"><label style="FONT-SIZE: 22px; FONT-WEIGHT: bold">司機填寫<br>Lái xe điền</label> </td>
+                    <td><label>出發公里數<br>KM XP</label> </td>
+                    <td><span id="Label1"></span>&nbsp; </td>
+                    <td><label>出發時間<br>Thời gian XP</label> </td>
+                    <td><span id="lblOutTime"></span>&nbsp; </td></tr>
+                  <tr>
+                    <td><label>到達時間<br>Thời gian đến</label> </td>
+                    <td><span id="Label2"></span>&nbsp; </td>
+                    <td><label>返回公里數<br>KM về</label> </td>
+                    <td><span id="lblReturnKm"></span>&nbsp; </td></tr>
+                  <tr>
+                    <td><label>實際公里數<br>KM Thực tế</label> </td>
+                    <td><span id="Label3"></span>&nbsp; </td>
+                    <td><label>發生費用<br>Chi phí phát sinh</label> </td>
+                    <td><span id="Label4"></span>&nbsp; </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>用車人確認<br>Người dùng xe XN</label> </td>
+                    <td colspan="3">
+                      <span id="Label5">
+                    </span>&nbsp; </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="6">
+                      <label style="FONT-SIZE: 22px; FONT-WEIGHT: bold">備註<br>Ghi 
+                      chú</label> 
+                    </td>
+                    <td style="TEXT-ALIGN: left" colspan="4">
+                      <label>1.派車流程：填寫派車單-部級主管核准-車調確認-通知使用者-出車-上車前需要交給司機派車單-司機填寫用車參數-用車者確認-派車單交給車調中心 
+                      Điền đơn điều xe - chủ quản duyệt - điều xe xác nhận - thông báo người xin 
+                      xe - xuất xe - khi lên xe đưa cho lái xe đơn điều xe - lái xe điền km - 
+                      người dùng xe xác nhận - giao lại đơn điều xe cho tổ điều xe</label> 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="TEXT-ALIGN: left" colspan="4">
+                      <label>2.正常用車必須提前一個小時 Điều xe đi 
+                      trong ngày phải đăng ký trước 1 tiếng</label> 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="TEXT-ALIGN: left" colspan="4"><label>3.大型活動或參觀及長途等公務用車必須提前1天申請預告 
+                      Điều xe đi thăm quan,đi đường dài hoặc những hoạt động lớn phải điều trước 
+                      1 ngày</label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="TEXT-ALIGN: left" colspan="4">
+                      <label>4.車輛派出因故不能如期返回，請電話通知車輛調度單位調度員 Nếu dùng xe có phát sinh sự 
+                      cố không thể về đúng TG dự định, phải thông báo cho nhân viên điều 
+                      xe</label> 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="TEXT-ALIGN: left" colspan="4">
+                      <label>5.派車時請通知車輛調度單位調度員，如跟司機直接聯絡都無效 Khi điều xe phải thông báo 
+                      cho nhân viên điều xe, nếu tự ý liên lạc với lái xe sẽ không có hiệu 
+                      lực</label>
+                    </td>
+                    </tr>
+                  <tr>
+                    <td style="TEXT-ALIGN: left" colspan="4">
+                      <label>6.車調員聯繫方式：535-20143 Phương 
+                      thức liên hệ điều xe: Máy lẻ: 535--20143, DD: 0919 437 528</label> 
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label style="FONT-SIZE: 22px; FONT-WEIGHT: bold">簽核記錄<br>Ký 
+                      duyệt</label> </td>
+                    <td style="FONT-SIZE: 13px; TEXT-ALIGN: center" colspan="4">
+                      <div>
+                        <table id="gridCheckHistory" class="gridCss" style="WIDTH: 100%; BORDER-COLLAPSE: collapse" cellspacing="0" rules="all" border="1">
+                          <tbody>
+                            <tr class="gridCss">
+                              <th style="WIDTH: 25%" scope="col">簽核人</th>
+                              <th style="WIDTH: 25%" scope="col">簽核動作</th>
+                              <th style="WIDTH: 25%" scope="col">簽核時間</th>
+                            </tr>
+                            <tr>
+                              <td align="left">裴氏酸</td>
+                              <td align="left">發起</td>
+                              <td align="left">2022/06/18 14:07:27</td>
+                            </tr>
+                            <tr>
+                              <td align="left">陳再發</td>
+                              <td align="left">簽核</td>
+                              <td align="left">2022/06/18 14:07:48</td>
+                            </tr>
+                            <tr>
+                              <td align="left">DRI</td>
+                              <td align="left">同意</td>
+                              <td align="left">2022/06/18 14:08:37</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </form>
+
+      </body>
+
+    </html>
+
+  {% endif %}
+{% endfor %}

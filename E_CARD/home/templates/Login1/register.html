@@ -1,0 +1,82 @@
+{% extends "login/baselogin.html" %}
+
+{% load static %}
+
+{% block title %}
+Login E-Sign4.0 CNCS
+{% endblock %}
+
+{% block content %}
+
+<div class="col-xl-12 col-md-12 col-sm-12 mb-2">
+  <div class="input-group has-validation">
+    <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-id-card"></i></span>
+    <input data-i18n="input-user-login"  type="text" name="username" class="form-control" id="yourUsername" placeholder='User ID Card' required>
+    <div class="invalid-feedback">Please enter your ID.</div>
+  </div>
+</div>
+
+<div class="col-xl-12 col-md-12 col-sm-12 mb-2">
+  <div class="input-group has-validation">
+    <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-envelope"></i></span>
+    <input data-i18n="input-user-login"  type="email" name="email" class="form-control" data-i18n="email-forgot" placeholder='Email' required>
+    <div class="invalid-feedback">Please enter your Email.</div>
+  </div>
+</div>
+
+
+<div class="col-xl-6 col-md-6 col-sm-12 mb-2">
+ <div class=" input-group has-validation">
+  <!--                      	<label for="yourPassword" class="form-label">Password</label>-->
+  <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-fingerprint"></i></span>
+  <input data-i18n="input-pass-login" type="password" name="password1" class="form-control" id="yourPassword" placeholder="Password" required>
+  <div class="invalid-feedback">Please enter your password!</div>
+</div>
+</div> 
+
+<div class="col-xl-6 col-md-6 col-sm-12 mb-2">
+ <div class=" input-group has-validation">
+   <!--                    <label for="yourPassword" class="form-label">Password</label>-->
+   <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-fingerprint"></i></span>
+   <input data-i18n="pass2-register" type="password" name="password2" class="form-control" id="yourPassword" placeholder="Confirm Password" required>
+   <div class="invalid-feedback">Please enter your password!</div>
+ </div>
+
+</div> 
+
+<div class="col-xl-6 col-md-6 col-sm-12 mb-2">
+ <div class=" input-group has-validation">
+   <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-users"></i></span>
+   <input data-i18n="Department" type="text" name="Department" class="form-control" id="Department" placeholder="Department" required>
+   <div class="invalid-feedback">Please enter your Department!</div>
+ </div>
+
+</div> 
+
+<div class="col-xl-6 col-md-6 col-sm-12 mb-2">
+ <div class=" input-group has-validation">
+   <span class="input-group-text" id="tell"><i class="far fa-globe-americas"></i></span>
+   <input data-i18n="BU" type="text" name="BU" class="form-control" id="BU" placeholder="Bu" required>
+   <div class="invalid-feedback">Please enter your Businiss unit!</div>
+ </div>
+
+</div> 
+
+<div class="col-12 mb-2">
+  <div class="form-check">
+    <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+    <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+    <div class="invalid-feedback">You must agree before submitting.</div>
+  </div>
+</div>
+
+<div class="col-12 mb-2">
+  <button class="btn btn-primary w-100" type="submit" name="btn_register" id="registerID" onclick="check_password();" data-i18n="btn-register">Register</button>
+</div>
+<div class="col-12 mb-2">
+  <p class="small mb-0"><i class="far fa-lightbulb-on"></i>
+    <a href="/forgotpass/" data-i18n="forgot-pass-login">Forgot Password</a> / 
+    <a href="{% url 'login' %}" data-i18n="login-login">Login</a></p>
+  </div>
+  
+  {% endblock %}

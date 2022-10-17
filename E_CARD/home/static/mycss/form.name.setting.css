@@ -1,0 +1,15 @@
+.main-body {
+    margin: 0px 0px 0px 0px !important;
+    border: 1px solid rgba(86, 61, 124, .2);
+}
+
+.page-wrapper1 {
+    margin: 10px 10px 10px 10px !important;
+}
+
+
+/* <!--css checkbox--> */
+
+.form-check input {
+    transform: scale(1.5);
+}

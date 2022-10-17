@@ -1,0 +1,2 @@
+cd /home/V0500103/Article_car/
+sudo python3.9 /home/V0500103/Article_car/manage.py runsslserver --certificate /home/V0500103/Article_car/Certificate/fkvehicle.efoxconn.com.pem --key /home/V0500103/Article_car/Certificate/fkvehicle_efoxconn_com.key.pem 0.0.0.0:443

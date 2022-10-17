@@ -1,0 +1,183 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+TRA CỨU THÔNG TIN
+{% endblock %}
+
+
+{% block mainbody %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'data_table/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="/static/datepicker/jquery.datetimepicker.css">
+
+<style>
+  table.dataTable tbody th,
+  table.dataTable tbody td {
+   padding:3px 3px !important
+  }
+</style>
+
+<!--Main body start -->
+<div class="main-body" onload="">
+  <div class="page-wrapper">
+    <!-- Page body start -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card form-card">
+            <div class="card-header" style="height: 100%;">
+              <h5><i class="fas  fa-id-card  f-20"></i> <a data-i18n="nhatkythaotac">NHẬT KÝ THAO TÁC</a></h5>                                                   
+            </div>           
+
+            <div class="card-block table-border-style mt-0 ">
+
+                <!--Person List-->
+                <div class="row title-fist mt-0">
+                  <h5  ><i class="fa fa-info" aria-hidden="true"></i> <a data-i18n='chitietns'>Chi tiết nhân sự</a></h5> 
+                </div>
+
+
+                <div class="row d-flex text-justify-center  card-application" id="Div_area">
+
+                  <!--Mã thẻ-->
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-2 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="mathe">Mã thẻ</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm " type="text" id="emp_no" name="emp_no" required="Please not entry.." value="">
+                      <i class="fad fa-id-card text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                           
+                  </div>
+                      
+                  
+                  <!--Phòng ban-->
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-2 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="phongban">Phòng ban</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm  " type="text" id="deptname" name="deptname" required="Please not entry.." value="{{sql.DOC_NO}}">
+                      <i class="fad fa-users text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>
+                  </div>
+
+                  
+
+
+                  <!--Nhày máy-->
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-2 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="nhamay">Nhà máy</label><span class="text-danger">:</span>
+                      <select class="form-control form-control-sm" name="FACTORYCODE" id="FACTORYCODE" value="FACTORYCODE">
+                        <option  value=""></option>
+                        {% if select %}
+                          {% for item in select %}
+                            <option value="{{item.FGATE}}">{{item.FGATE}}</option>
+                          {% endfor %}
+                        {% endif %}
+                      </select>
+                      <i class="fad fa-building text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>                          
+                  </div>  
+
+                  <!--Người thao tác-->
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-2 mt-0" >
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="nguoithaotac">Người thao tác</label><span class="text-danger">:</span>
+                      <input class="form-control form-control-sm " type="text" id="CreatedBy" name="CreatedBy" required="Please not entry.." value="">
+                      <i class="fad fa-id-card text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>
+                  </div>             
+                 
+
+                  <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 col-12 mt-3 d-flex justify-content-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <!--Buton add-->
+                      <span type="button" onclick="TRA_CUU_LICHSU();" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Search"><i class="fa fa-search" aria-hidden="true"></i></span>
+                      <!--Buton reset field-->
+                      <span type="button" onclick="RESET_AREA('Div_area')" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset all field"><i class="fad fa-sync" aria-hidden="true"></i></span>
+                      <!--Buton tải file exel-->
+                      <span type="button" onclick="PRINT_EXEL_LOG_ACTION_SERVER()" class="btn btn-outline-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save to exel"><i class="fad fa-file-excel f-18" aria-hidden="true"></i></span>
+                    </div>
+                  </div>
+
+
+                  <div class="col-12 mb-0">
+                        <hr>           
+                  </div>
+                
+
+                  
+               
+                  <!--Bảng danh sách người đi xe Passenger list-->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-0 mt-0">
+                    <div class=" table-responsive text-center" style="width:100%;overflow:auto" >
+                      <table id="table_data" class="table-sm text-center table-hover  table-bordered " style="width:100%;font-size:12px;">                   
+                        <thead>
+                          <tr class="bg-light text-dark" >
+                            <th style="width:5px !important;">0</th>                        
+                            <th data-i18n="mathe" >Mã thẻ</th>       
+                            <th data-i18n="tentiengtrung" >Tên CN</th>  
+                            <th data-i18n="tentiengviet" >Tên VN</th>
+                            <th data-i18n="phongban">Phòng ban</th>
+                            <th data-i18n="nhamay">Nhà máy</th>
+                            <th data-i18n="ipthaotac">IP thao tác</th>
+                            <th data-i18n="thaotac">Thao tác</th>
+                            <th data-i18n="ngaytao">Ngày tạo</th>
+                            <th data-i18n="nguoitao">Người tạo</th>
+                          </tr>
+                        </thead>
+                       
+                        <tbody id="tbody_data">                        
+                         
+                        </tbody>
+                      </table>  
+                    </div>                      
+                    </div>
+                  
+                  </div>
+                   
+                </div>
+                <!-- END-->              
+              
+             <hr>
+              <!-- Bảng hiển thị thông tin đơn End-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body end -->
+  </div>
+  <div id="styleSelector"></div>
+</div>
+<!--Main body end -->
+
+
+<!-- Danh sách MODAL START-->
+  
+
+
+<!-- Danh sách MODAL END-->
+
+<script type="text/javascript" src="{% static 'assets/js/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'myjs/ecard.js' %}"></script>  
+
+<script src="{% static 'exportXLSX/xlsx.full.min.js' %}"></script>
+<script src="{% static 'exportXLSX/ToExel.js' %}"></script>
+
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+<script src="/static/datepicker/datetimepicker.js"></script> 
+<script>
+    ACTIVE_MENUY('TRA_CUU') ;
+    jQuery(document).ready(function () {
+      'use strict';
+      jQuery('#INTIME1, #INTIME2').datetimepicker();
+  });
+    $(document).ready(function() {
+      $('#table_data').DataTable();
+    } );
+</script>
+
+
+{% endblock %}

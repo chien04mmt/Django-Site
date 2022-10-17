@@ -1,0 +1,400 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Quản lý tài khoản
+{% endblock %}
+
+{% block mainbody %}
+<link rel="stylesheet" type="text/css" href="{% static 'data_table/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mycss/approver.setting.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'mycss/permission.css' %}">
+<!--Main body start -->
+<div class="main-body1" onload="">
+  <div class="page-wrapper1">
+    <!-- Page body start -->
+    <div class="page-body1">
+      <div class="row1">
+        <div class="col-md-121">
+          <div class="card form-card">
+            <div class="card-header" style="height: 100%;">
+              <h5><i class="fas fa-users-cog f-20"></i> <a data-i18n="title-acount">QUẢN LÝ TÀI KHOẢN</a></h5>                                                   
+            </div>
+
+            <div class="card-block ">
+
+              <div class=" row">
+                <!-- Tên loại hình-->
+                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mt-0">
+                  <div class="form-group mb-0 mt-0">                  
+                    <label class="mb-0 mt-0" data-i18n="taikhoan-modal">Tài khoản:</label>                     
+                    <input class="form-control form-control-sm" id="mathenhanvien" type="text" placeholder="Nhập vào tài khoản" data-i18n="input-acount">
+                    <i class="fad fa-address-book text-c-blue f-16"></i><span class="focus-input100"></span>	
+                  </div>
+                </div>
+
+                <!--Tìm kiếm đơn-->
+                <div class="col-lg-2 col-md-2 col-sm-3 mt-0">
+                  <div class="form-group mb-0 mt-0">
+                    <label class="mb-0 mt-0" data-i18n=""></label>                     
+                    <button name="btn_tk3"  type="button" class="btn-outline-primary form-control form-control-sm" onclick="TIM_TAIKHOAN()" ><i class="fa fa-search"></i><span data-i18n="btn-Search">Search</span></button>
+                  </div>
+                </div>
+                <!--Thêm mới-->
+                <div class="col-lg-2 col-md-2 col-sm-3 mt-0" hidden>
+                  <div class="form-group mb-0 mt-0">
+                    <label class="mb-0 mt-0" data-i18n=""></label>                     
+                    <button class="btn-outline-success  float-end  form-control form-control-sm" data-toggle="modal" data-target="#modaledituser" onclick="RESET_AREA('modaledituser');"><i class="fa fa-plus"></i><span data-i18n="btn-Add"> Thêm mới</span></button>
+                  </div>
+                </div>
+
+              </div><hr>
+
+             
+              <!-- Bảng Hiển thị thông tin FORM NAME SETTING START-->   
+              <div class="table-responsive" style="overflow:auto;">      
+                <table id="table_acount" class="table-sm table-hover  table-bordered  nowrap no-footer mt-0" cellspacing="0" style="width:100%;font-size:12px">               
+                  <thead class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                    <tr class="bg-light text-dark"> 
+                      <th  data-i18n="no">No</th>
+                      <th  data-i18n="id-no">Mã thẻ</th>
+                      <th  data-i18n="site">Khu vực</th>
+                      <th  data-i18n="Department">Phòng ban</th>
+                      <th  data-i18n="Full-Name">Họ tên</th>
+                      <th  data-i18n="machip">Mã chi phí</th>
+                      <th  data-i18n="so-dt">ĐT</th>
+                      <th  data-i18n="Email">Thư điện tử</th>
+                      <th data-i18n="Permission">Phân quyền</th>
+                      <th  data-i18n="td-hanhdong">Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody_acount">
+                   
+                  </tbody>    
+                </table><hr>
+
+              </div>
+              <!-- Bảng hiển thị thông tin đơn End-->
+
+     
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body end -->
+  </div>
+  <div id="styleSelector"></div>
+</div>
+<!--Main body end -->
+
+
+
+<!--LIST Modal START-->
+
+
+<!-- Modal Show Profile start -->
+
+<!-- Modal Show Profile start -->
+<div class="modal fade bd-example-modal-lg" id="modaledituser" tabindex="-5" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <div class="container-fluid ">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-edit f-20"></i><a data-i18n="title-modal-Profile"> User Profile </a></h5>
+        </div>       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card">  
+          <div class="card-header">
+            <h5 id="id_userx"></h5>
+            <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>--> 
+          </div>   
+
+          <div class="row container">
+
+            <div class="card col-md-4 col-sm-12 mx-auto my-auto" id="bg_user" style="box-shadow:none"> 
+              <img class="mt-4"  src="{% static 'media' %}/{{sql1.img}}">
+            </div>
+
+            <div class="card col-md-8 col-sm-12" style="box-shadow:none"> 
+
+              <!--Thông tin cá nhân--> 
+              <div class="col-md-12 col-sm-12">
+                <div class=" mb-0 card-table flex-fill">
+                  
+                  <div class="card-body" style="padding: 0px;">
+                    <div class="row">
+                      
+                      <!--txt UserID Title-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-1">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="userid-modal">用戶名(User ID):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="userid_modal_user" name="" required="Please not entry.." title="Please fill this fiel." value="V0515000">
+                          <i class="fad fa-id-card f-16 text-success"></i>
+                          <span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--cbx Site-->
+                      <div class="col-lg-6 col-md-6 col-sm-12 mb-0 mt-1">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="site-modal">廠區(Site):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="siteid_modal_user" name="" required="Please not entry.." title="Please fill this fiel." value="">
+                          
+                          
+                          <i class="fad fa-globe-asia f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--cbx BU-->
+                      <div class="col-lg-6 col-md-6 col-sm-12 mb-0 mt-1">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="bu-modal">事業處(BU):<span class="text-danger">*</span></label>
+                           <input class="form-control  " type="text" id="buid" name="" required="Please not entry.." title="Please fill this fiel." value="">
+                        
+                          <i class="fad fa-briefcase text-info" aria-hidden="true"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--txt username-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="username-modal">姓名(User Name):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="usernameid_modal_user" name="usernameid_modal_user" required="Please not entry.." title="Please fill this fiel." value="VU VAN CHIEN">
+                          <i class="fad fa-user f-16 text-info" aria-hidden="true"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--txt empno-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="emp-modal">工號(Emp.No):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="empnoid_modal_user" name="empnoid_modal_user" required="Please not entry.." title="Please fill this fiel." value="V0515000">
+                          <i class="far fa-id-card-alt f-16 text-info"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--txt dept-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Dept-modal">部門(Dept):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="deptid_modal_user" name="deptid_modal_user" required="Please not entry.." title="Please fill this fiel." value="CNCS 中央网通">
+                          <i class="fad fa-users-crown f-16 text-info"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--txt costno-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="CostNO-modal">費用代碼(CostNO):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="costnoid_modal_user" name="costnoid_modal_user" required="Please not entry.." title="Please fill this fiel." value="DH7007F7">
+                          <i class="far fa-dollar-sign f-16 text-info" aria-hidden="true"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--txt tell-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Ext-modal">分機(Ext):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="extid_modal_user" name="" required="Please not entry.." title="Please fill this fiel." value="112">
+                          <i class="fal fa-phone f-16 text-info" aria-hidden="true"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--txt your Mail-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Mail-modal">電子郵件(Mail):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="emailid_modal_user" name="emailid_modal_user" required="Please not entry.." title="Please fill this fiel." value="CNCS-VN-OA@MAIL.FOXCONN.COM">
+                          <i class="fal fa-mailbox f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>                      
+                      
+                      <!--txt your passw-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Password-modal">新密碼(Password):<span class="text-danger">*</span></label>
+                          <input class='form-control  '  name="password1_modal" type="password"  id="pass1id" value="{{sql.PassWord}}">
+                          <span class="show-btn  mt-2"><i id="togglePassword" class="fas fa-eye" onclick="SHOW_PASSWORD();"></i></span>
+                          <i class="fad fa-lock-alt f-16 text-danger"></i><span class="focus-input100"></span>                         
+                        </div>
+                        
+                      </div>
+
+                      <!--txt your password2-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2" hidden>
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Confirm-modal">新密碼(Confirm Password):<span class="text-danger">*</span></label>
+                          <input class="form-control " type="password" id="pass2id" name="pass2id" required="Please not entry.." title="Please fill this fiel." >
+                        </div>
+                      </div>
+
+                    </div>
+                    <hr>
+
+                    <div class="row d-flex justify-content-center">
+                     
+                      <!--Button Thêm Đơn -->
+                      <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 mb-2 mt-0">
+                        <span style="color:white;" >
+                          <button id="btn_save" class="btn btn-outline-info" type="button"  onclick="SaveModifyProfile_user();"><i class="fa fa-plus"></i><a  data-i18n="btn-save">Save</a></button>
+                        </span>   
+                      </div>
+                    
+                      <!--Button Quay lại thoát  -->
+                      <div class="col-xl-5 col-lg-5 col-md-6 col-sm-6 mb-2 mt-0">
+                        <span>
+                          <button  type="button" class="btn btn-outline-dark float-end" data-dismiss="modal"><i class="fa fa-reply"></i><a  data-i18n="btn-exit">Exit</a></button>                    
+                        </span> 
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!--/Thông tin cá nhân END--> 
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+      
+      
+<!--Modal Cấp quyền hạn -->
+<div class="modal right fade" id="modal_Permiss" style="">
+  <div class="modal-dialog " id="">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-pen f-20"></i> <a data-i18n="capquyenhannguoidung">CẤP QUYỀN HẠN NGƯỜI DÙNG</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_areaPermiss">              
+
+            <!--Mã nhân viên-->
+            <div class="col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">             
+                <label data-error="wrong" data-success="right" for="UserID" data-i18n="mathe">Mã thẻ</label><span>:</span>
+                <input type="text" class="form-control" id="UserID" readonly>               
+                <i class="fad fa-user f-18 text-info"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+                 
+            <!-- Tên nhân viên-->
+            <div class="col-sm-6 col-12 mt-0 mb-4">     
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="UserName" data-i18n="hoten">Họ và tên</label><span>:</span>
+                <input type="text" class="form-control " id="UserName" readonly>
+                <i class="fas fad fa-font f-18 text-info"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <!--Chọn quyền hạn cấp-->
+            <div class="col-sm-6 col-12 mt-0 mb-4">
+              <div class="form-group ">   
+                <label data-error="wrong" data-success="right" for="Code_Permission" data-i18n="mainmenu">Chọn nhóm tài khoản</label><span>(*):</span>              
+                <select class="form-control" id="Code_Permission" onchange="" value="">
+                  <option selected="selected" value="" data-i18n="chonnhom">---Chọn nhóm---</option>
+                </select>
+                <i class="fad fa-shield-check f-18 text-danger"></i><span class="focus-input100"></span>        
+              </div> 
+            </div>           
+
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer justify-content-center" id="Div_btn1">
+        <!--Button cập nhật thông tin -->
+        <div class="col-6 mb-0 mt-0" id="div_btnUpdate1">
+            <button class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="SAVE_PERMISSION()"><i class="fa fa-save"></i> <span data-i18n="btn-save">Lưu</span></button>
+        </div>      
+        <!--Button Quay lại thoát  -->
+        <div class="col-6 mb-0 mt-0">        
+            <button type="button" class="btn form-control btn-outline-dark waves-effect waves-light" data-dismiss="modal"><i class="fa fa-reply"></i> <span data-i18n="btn-exit">Thoát</span></button>                    
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- The  modalpermission_user start -->
+<div class="modal fade bd-example-modal-lg" id="modalpermission_user" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+        <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-fingerprint f-20"></i><a data-i18n="title-modal-acount"> Acount Permission</a></h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->             
+      <div class="modal-body text-center" >            
+       
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center">
+       
+          <!--Button cập nhật quyền -->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-2 mt-0">
+            <span style="color:white;">
+              <button type="button" class="btn btn-outline-info" onclick="SAVE_PERMISS_USER();"><i class="fas fa-user-edit"></i><a  data-i18n="btn-save">Save</a></button>
+            </span>   
+          </div>
+        
+          <!--Button Quay lại thoát  -->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 mb-2 mt-0">
+            <span>
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal"><i class="fas fa-sign-out-alt"></i><a  data-i18n="btn-exit">Exit</a></button>
+            </span> 
+          </div> 
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal modalpermission_usern End-->
+
+
+<!--LIST Modal END-->
+
+
+<script type="text/javascript" src="{% static 'assets/js/jquery/jquery.min.js' %}"></script>
+<!-- Impport js -->  
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'myjs/myjs.js' %}"></script>  
+<script type="text/javascript" src="{% static 'myjs/quanlytaikhoan.js' %}"></script>  
+<script type="text/javascript" src="{% static 'myjs/nhomquyenhan.js' %}"></script>  
+<script type="text/javascript" src="{% static 'myjs/modify.password.js' %}"></script> 
+
+<!-- validate FORM js --> 
+<script type="text/javascript" src="{% static 'myjs/validate/jquery.validate.js' %}"></script> 
+
+
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+<script>
+    ACTIVE_MENUY('QUANLY_TAIKHOAN') ;
+    LOAD_LIST_PERMISSION();
+    $(document).ready(function() {
+      $('#table_acount').DataTable();
+    } );
+</script>
+
+{% endblock %}

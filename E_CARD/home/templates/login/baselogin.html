@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+<meta name="author" content="Codedthemes"/>
+
+
+
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'FontAwesome.Pro.5.15.4.Web/css/all.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'FontAwesome.Pro.5.15.4.Web/css/all.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/main.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'login_/lang.css' %}">
+
+<title>{% block title %}{% endblock %}</title>
+
+
+
+</head>
+
+<body  >
+
+	<div class="limiter">
+		<video id="background-video" autoplay loop muted poster="/static/login_/img/V3.mp4" >
+			<source src="/static/login_/img/V3.mp4" type="video/mp4">
+		</video>
+		<div class="container-login100 my-auto">
+			
+
+			<div class='ticket text-center' style="background-color:#;width:370px; height:40px; right:10px;bottom:20px; position:absolute;font-size:20px;cursor:pointer;"><a href="/manual/" style="font-size:20px;color: white;"><h3 style="float:right"><i class="far fa-address-book text-warning f-22"></i> Liên hệ hỗ trợ (聯繫幫助)<a data-i18n=""></a></a></div>
+
+				<div class='ticket text-center' style="background-color:none;width:70px; height:70px; left:10px;top:10px; position:absolute;font-size:40px;cursor:pointer;"><a href="/manual/" style="font-size:40px;color: white;"><i class="far fa-question-circle"></i></a></div>
+	
+				{% comment %} <div class='ticket text-center' style="background-color:none; left:80px;top:10px; position:absolute;font-size:35px;cursor:pointer;"><a href="/manual/" style="color: white;"><img class="" src="/static/assets/images/logo.png" alt="Theme-Logo" width="150" height="40"></a></div> {% endcomment %}
+				
+				<div class='ticket text-center' style="background-color:none; left:80px;top:10px; position:absolute;font-size:40px;cursor:pointer;">
+					<a href="/manual/" style="color: yellow;font-size:30px;">SOP-HƯỚNG DẪN DỤNG(用户手册)</a>
+				</div>
+
+				<div class="wrap-login100">
+			
+					<div class="login100-pic js-tilt mx-auto my-auto" data-tilt >	
+						
+
+						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+							</ol>
+							<div class="carousel-inner" >
+								<div class="carousel-item active" >
+								<img class="d-block w-100" src="{% static 'login_/img/E.png' %}" alt="First slide">
+								</div>
+								<div class="carousel-item">
+								<img class="d-block w-100" src="{% static 'login_/img/E1.png' %}" alt="Second slide">
+								</div>
+								<div class="carousel-item">
+								<img class="d-block w-100" src="{% static 'login_/img/E3.png' %}" alt="Third slide">
+								</div>
+								<div class="carousel-item">
+									<img class="d-block w-100" src="{% static 'login_/img/E2.png' %}" alt="Four slide">
+								</div>
+							</div>
+							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+							</div>
+						{% comment %} <img src="{% static 'login_/img/E.png' %}" alt="IMG"> {% endcomment %}
+					</div>
+					
+					<form class="login100-form validate-form" method="post">
+						{% csrf_token %}
+					
+						{% block content %}
+						
+						{% endblock %}
+						
+						<div class="text-center ticket">
+							<div class="btn-group dropup">
+								<button type="button" id="btn_lang" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img id="img_lang" class="img-radius mx-auto my-auto" src="{% static 'images/en.gif' %} "> &ensp;<a id="txt_lang">English</a>
+								</button>
+								
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="#"><img class="img-radius mx-auto my-auto" src="{% static 'images/vn.gif' %} "> &ensp;Việt Nam</a>
+								<a class="dropdown-item" href="#" hidden><img class="img-radius mx-auto my-auto" src="{% static 'images/en.gif' %} " > &ensp;English</a>
+								<a class="dropdown-item" href="#"><img class="img-radius mx-auto my-auto" src="{% static 'images/cn.gif' %} "> &ensp;中文</a>
+								</div>
+							</div>
+						</div>
+						
+					</form>
+					<div class='' id="urlstatic_JS" hidden>{% static '' %}</div>
+				</div>
+	
+		</div>
+	</div>
+
+	<!-- Vendor CSS Files -->
+	<script src="{% static 'bootstrap4.6/js/jquery.slim.min.js' %}"></script>
+	<script src="{% static 'bootstrap4.6/js/popper.min.js' %}"></script>
+	<script src="{% static 'bootstrap4.6/js/bootstrap.min.js' %}"></script>
+
+<!--Javascrips--> 
+<script type="text/javascript" src="{% static 'myjs/J-query/3.6.0/jquery.min.js' %} "></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login_/vendor/tilt/tilt.jquery.min.js' %}"></script> 
+
+	<!-- Login My js -->
+	<script src="{% static 'login_/vendor/bootstrap/js/authen.js' %}"></script> 
+	<script src="{% static 'login_/vendor/setCookie.js' %}"></script> 
+
+	<script>
+		var txt="<scr"+"ip"+"t type='text/javascript' src='/static/myjs/IE/Alert.js'></s"+"cript>";
+		var txt1="<sc"+"ript type='text/javascript' src='/static/myjs/sweetalert2@11.js'></s"+"cript>";
+		var txt2="<sc"+"ript type='text/javascript' src='/static/myjs/Alert.sweet2.js'></s"+"cript>";
+		
+		//<!-- Kiểm tra IE js -->  
+		var isIE = window.ActiveXObject || "ActiveXObject" in window;
+		//<!--Nếu  là  IE js -->
+		if (isIE) {
+		$('body').append(txt);
+			//<!--Nếu Không phải là  IE js -->
+		} else {
+		$('body')
+		.append(txt1)
+		.append(txt2);    
+		}
+	</script>
+
+
+
+	<script src="{% static 'lang/lang.js' %}"></script> 
+
+	
+	<script>
+		SHOW_LANG_();
+		myFunction();
+		Set_cookie_CRSTOKEN() ;
+		if (crossOriginIsolated) {
+			// Post SharedArrayBuffer
+		  } else {
+			// Do something else
+		  }
+
+		var vid = document.getElementById("background-video");
+  		vid.playbackRate = 1;
+
+	</script>
+<!--===============================================================================================-->
+
+
+</body>
+
+</html>

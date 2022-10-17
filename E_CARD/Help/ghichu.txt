@@ -1,0 +1,10 @@
+//Các trạng thái của đơn
+Waiting: sau khi tạo đơn sẽ là trạng thái chờ ký
+Pending:sau khi ký hết người ký thì chuyển chờ cấp xe(chưa xử lý)
+Completed:Đã cấp xe chờ kiểm toán và nhập số km
+Closed:Sau khi kiểm toán xong hoặc nhập số KM
+Rejected:từ chối cấp xe
+
+Canceled:Trường hợp đơn bị hủy bởi người ký hoặc bởi người cấp xe
+
+

@@ -1,0 +1,4 @@
+input {
+    background-color: #fff;
+    background-image: url(./bg.gif);
+    border-color: #b5b8c8;

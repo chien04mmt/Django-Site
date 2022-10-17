@@ -1,0 +1,246 @@
+{% extends "home/base.html" %}
+  {% load static %}
+
+  {% block title %}
+Cài đặt tham số Article 2.0
+  {% endblock %}
+
+
+  {% block mainbody %}
+  <link rel="stylesheet" type="text/css" href="{% static 'mycss/query.doc.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'data_table/jquery.dataTables.min.css' %}">
+              
+  <link rel="stylesheet" type="text/css" href="{% static 'mycss/dulieuhoatdong/thongtintaixe.css' %}">
+
+<!--Main body start -->
+<div class="main-body" onload="">
+  <div class="page-wrapper">
+    <!-- Page body start -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card form-card">
+              <div class="card-header" style="height: 100%;">
+                <h5><i class="fas fa-wrench f-20"></i> <a data-i18n="caidatts-title">CÀI ĐẶT THAM SỐ</a></h5>                                                   
+              </div>
+
+              <!---->                       
+              <div class="card-block table-border-style mt-0 ">
+
+                <div class=" row">
+                  <!-- Tên loại hình-->
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-12 mt-0">
+                    <div class="form-group mb-0 mt-0">                    
+                      <label class="mb-0 mt-0" data-i18n="chonloaihinh">Chọn loại hình:</label>                     
+                      <select class="form-control form-control-sm" type="text" id="loaihinhthamso" name="loaihinhthamso" value="">
+                        <option value=""  data-i18n=""></option> 
+                        {% if sql2 %}
+                        {% for item in sql2 %}
+                          <option value="{{item.DATA_TYPE|cut:"None"}}">{{item.DATA_TYPE|cut:"None"}}</option>
+                        {% endfor%}
+                      {% endif %}
+                      </select>
+                      <i class="fad fa-address-book text-c-blue f-16"></i><span class="focus-input100"></span>	
+                    </div>
+                  </div>
+
+                  <!--Tìm kiếm đơn-->
+                  <div class="col-lg-2 col-md-2 col-sm-3 mt-0">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n=""></label>                     
+                      <button class=" btn-outline-info form-control  form-control-sm" onclick="SEARCH_PARAM();"><i class="fa fa-search"></i><a data-i18n="btn-Search"> Search</a> </button>                      
+                    </div>
+                  </div>
+                  <!--Thêm mới-->
+                  <div class="col-lg-2 col-md-2 col-sm-3 mt-0">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n=""></label>                     
+                      <button  data-toggle="modal" data-target="#modal_param" class=" btn-outline-success form-control  form-control-sm" onclick="SHOW_ADD_NEW_PARAM();"><i class="fa fa-plus"></i><a data-i18n="btn-Add"> Add new</a> </button>                      
+                    </div>
+                  </div>
+                 
+                </div><hr>
+
+                <div class="row mt-2">
+                <!-- Cụm nút lệnh điều khiển tìm kiếm END-->
+                <div class="col-md-12 col-sm-12 container-fluid">
+                  <div class="table-responsive ">  
+                      <table  id="table_caidatthamso" class="table-sm table-hover  table-bordered  nowrap no-footer  table-inverse text-center" style="width:100%;">
+                          <thead>
+                            <tr class="fw-bold fs-6 text-gray-800 bg-light font-weight-bold text-dark text-center"> 
+                              <th data-i18n="edit">Sửa</th>
+                              <th data-i18n="kieudl">Kiểu dữ liệu</th>
+                              <th data-i18n="mahoa">Mã hóa</th>
+                              <th data-i18n="tiengtrung">Giá trị CN</th>
+                              <th data-i18n="tiengviet">Giá trị VN</th>
+                              <th data-i18n="mota">Mô tả</th>
+                            </tr>
+                          </thead>
+                          <tbody id="tbody_caidatthamso" class="text-left">
+                            {% if sql %}
+                              {% for item in sql %}
+                              <tr class="clickable-row">
+                                <td id="rowEdit_{{forloop.counter}}"><i id="btnEdit_{{forloop.counter}}" class="fas fa-edit " style="cursor: pointer;" onclick="edit_param(this);"></i></td>
+                                <td id="DATA_TYPE_{{forloop.counter}}">{{item.DATA_TYPE|cut:'None'}}</td>
+                                <td id="DATATYPE_{{forloop.counter}}">{{item.DATATYPE}}</td>
+                                <td id="DATACODE_CN_{{forloop.counter}}">{{item.DATACODE_CN}}</td>
+                                <td id="DATACODE_VN_{{forloop.counter}}">{{item.DATACODE_VN}}</td>
+                                <td id="DETAIL_{{forloop.counter}}">{{item.DETAIL}}</td>
+                              </tr>
+                              {% endfor%}
+                            {% endif %}
+                          </tbody>
+                        </table>
+                  </div>                  
+            
+                </div>
+
+              </div>
+              <!-- Bảng hiển thị thông tin đơn End-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body end -->
+  </div>
+  <div id="styleSelector"></div>
+</div>
+<!--Main body end -->
+
+
+
+<!-- Modal Thông tin lái xe-->
+<div class="modal fade bd-example-modal-lg" id="modal_param" tabindex="-5" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <div class="container-fluid ">
+          <h5 class="modal-title" id=""><i class="fas fa-user-edit f-20"></i><a data-i18n="title-thamso"> Thông tin tham số</a></h5>
+        </div>       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <div class="row">
+            <div class=" col-md-12 col-sm-12"> 
+
+              <!--Thông tin cá nhân--> 
+              <div class="col-md-12 col-sm-12">
+                <div class=" mb-0 card-table flex-fill">
+
+                  <div class="card-body" style="padding: 0px;">
+                    <div class="row">
+
+                      <!--Kiểu dữ liêu-->
+                      <div class="col-lg-6 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="kieudl-modal">Kiểu dữ liệu :</label>
+                          <select class="form-control form-control-sm" type="text" id="modal_DATA_TYPE" name="modal_DATA_TYPE" value="">
+                            <option value=""  data-i18n="" ></option>
+                              {% if sql2 %}
+                                {% for item in sql2 %}
+                                  <option value="{{item.DATA_TYPE|cut:"None"}}">{{item.DATA_TYPE|cut:"None"}}</option>
+                                {% endfor%}
+                              {% endif %}
+                          </select>
+                          <i class="fad fa-keyboard text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>
+
+
+                      <!--Mã hóa kí hiệu-->
+                      <div class="col-lg-6 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="mahoa-modal">Mã hóa:</label>
+                          <input class="form-control form-control-sm " type="text" id="modal_DATATYPE" name="modal_DATATYPE"   value="">
+                          <i class="fad fa-superscript text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>
+
+                      <!--Giá trị CN-->
+                      <div class="col-lg-6 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="tiengtrung-modal">Hiển thị tiếng trung :</label>
+                          <input class="form-control form-control-sm " type="text" id="modal_DATACODE_CN" name="modal_DATACODE_CN"   value="">
+                          <i class="fad fa-comment-dots text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>
+
+                      <!--Giá trị tiếng việt-->
+                      <div class="col-lg-6 col-md-6 col-sm-6 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="tiengviet-modal">Hiển thị tiếng việt :</label>
+                          <input class="form-control form-control-sm " type="text" id="modal_DATACODE_VN" name="modal_DATACODE_VN"   value="">
+                          <i class="fad fa-comment-dots text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>
+
+                      <!--Miêu tả chi tiết-->
+                      <div class="col-lg-12 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <span class="fad fa-font text-c-blue f-16"></span>
+                          <label class="mb-0 mt-0" data-i18n="mieuta-modal"><a class="text-success"><i class="fas fa-comment-edit"></i></a> Miêu tả:</label>
+                          <textarea class="form-control form-control-sm " type="text" id="modal_DETAIL" name="modal_DETAIL"></textarea>
+                          <span class="focus-input100"></span>	
+                        </div>
+                      </div>
+
+                    </div>
+                     <hr>
+
+                    <div class="row d-flex justify-content-center" id="btn_footer">
+                      <!--Button Thêm mới-->
+                      <div class="col-lg-3 col-md-4 col-sm-4 col-12 mb-2 mt-2" id="btn_modal_themmoi">
+                          <button id="" class="btn btn-outline-success" type="button" style="width: 100%;"  onclick="ADD_NEW_PARAM();"><i class="fa fa-plus"></i><a  data-i18n="btn-Add">Thêm mới</a></button>
+                      </div>
+                      <!--Button Cập nhật-->
+                      <div class="col-lg-3 col-md-4 col-sm-4 col-12 mt-2" id="btn_modal_capnhat">
+                          <button id="" class="btn btn-outline-info" type="button" style="width: 100%;"  onclick="UPDATE_PARA();"><i class="fa fa-pencil"></i><a  data-i18n="btn-edit">Cập nhật</a></button>
+                      </div>
+                      <!--Button Xóa-->
+                      <div class="col-lg-3 col-md-4 col-sm-4 col-12 mt-2" id="btn_modal_xoa">
+                        <button id="" class="btn btn-outline-danger" type="button" style="width: 100%;"  onclick="DELETE_PARAM();"><i class="fa fa-trash"></i><a  data-i18n="btn-del">Xóa</a></button>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!--/Thông tin cá nhân END--> 
+
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script src="{% static 'myjs/J-query/3.6.0/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'myjs/query.doc.js' %}"></script>  
+<script  type="text/javascript" src="{% static 'myjs/myjs.js' %}"></script>
+<script  type="text/javascript" src="{% static 'myjs/caidatthamso.js' %}"></script>
+<script src="{% static 'exportXLSX/xlsx.full.min.js' %}"></script>
+<script src="{% static 'exportXLSX/ToExel.js' %}"></script>
+
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+
+<script type="text/javascript" language="javascript" src="{% static 'data_table/jquery.dataTables.min.js' %}"></script>
+<script>
+    ACTIVE_MENUY('caidatthamso') ;  
+$(document).ready(function() {
+  $('#table_caidatthamso').DataTable();
+} );
+
+</script>
+
+{% endblock %}

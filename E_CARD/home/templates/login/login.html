@@ -1,0 +1,82 @@
+{% extends "login/baselogin.html" %}
+
+{% load static %}
+
+{% block title %}
+LOGIN ARTICLE CAR 2.0
+{% endblock %}
+
+{% block content %}
+
+				<span class="login100-form-title" data-i18n="loginecard">
+					LOGIN E-CARD 1.0.0
+				</span>
+
+				<div class="wrap-input100 validate-input form-group" data-validate = "Valid userID is required: V0515000" style="z-index:initial !important">
+					<input data-toggle="dropdown" aria-expanded="true" class="input100" type="text" id="username" name="username" placeholder="User ID Card" required  data-i18n="input-user-login" autocomplete="off" onkeyup="filterFunction('username', 'myDropdown_USER')">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fas fa-id-card"></i>
+					</span>
+					
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="myDropdown_USER">
+					
+					</div>				
+
+				</div>
+
+
+				<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<input class="input100" id="pass1id" type="password" name="password" placeholder="Password" data-i18n="input-pass-login" autocomplete="current-password">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+					</span>
+					<span class="show-btn  mt-2"><i id="togglePassword" class="fad fa-eye-slash" onclick="SHOW_PASSWORD();"></i></span>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Valid Capchar ...">
+					<input data-toggle="dropdown" aria-expanded="true"  class="input100" type="text" id="input_captcha" placeholder="captcha" required="Please input Captcha" data-i18n="input-capt-login">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-key " aria-hidden="true"></i>
+					</span>					
+					<span class="focus-input100 text-right text-success" id="span_captcha"><h3 id="kq_input_1">3JC0O</h3></span>
+				</div>
+
+
+
+
+				<div class="col-md-12 col-sm-12 mb-0 mt-0">
+					<div class="custom-control  d-flex">
+						<input type="checkbox" class="form-check-input  align-content-center" id="rememberpass" style="width:20px;height:26px !important">
+						<label class="form-check-label align-content-center" for="rememberpass" data-i18n="save-pass" style="margin-top: 5px;color:#0596f1">Nhớ mật khẩu ?</label>
+					</div>
+				</div>
+
+				  
+		   		<div class="container-login100-form-btn">
+					<button class="login100-form-btn" id="login-btn" type="submit" onclick="check_captcha();" data-i18n="btn-login">
+					Login
+					</button>
+		  		</div>
+
+				<div class="text-center p-t-1">
+					<a class="txt2" href="{% url 'forgotpass' %}" data-i18n="forgot-pass-login">
+					Username / Password?
+					</a>
+					<a class="txt2" href="{% url 'register' %}" data-i18n="creat-login">
+						Create your Account
+						</a>
+						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+				</div>
+			
+				{% comment %} <div class="text-center ">
+					<a class="txt2" href="{% url 'register' %}" data-i18n="creat-login">
+					Create your Account
+					</a>
+					<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+				</div> {% endcomment %}
+
+
+{% endblock %}
+

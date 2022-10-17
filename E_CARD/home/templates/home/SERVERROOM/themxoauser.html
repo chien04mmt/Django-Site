@@ -1,0 +1,340 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+CẤP QUYỀN RA VÀO PHÒNG MÁY CHỦ
+{% endblock %}
+
+
+{% block mainbody %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'data_table/jquery.dataTables.min.css' %}">
+<link rel="stylesheet" href="/static/datepicker/jquery.datetimepicker.css">
+
+<style>
+  table.dataTable tbody th,
+  table.dataTable tbody td {
+   padding:3px 3px !important
+  }
+</style>
+<!--Main body start -->
+<div class="main-body" onload="">
+  <div class="page-wrapper">
+    <!-- Page body start -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card form-card">
+            <div class="card-header" style="height: 100%;">
+              <h5><i class="fad fa-user-edit f-20"></i> <a data-i18n="themxoaquyenphongmay">THÊM-XÓA QUYỀN RA VÀO PHÒNG MÁY</a></h5>                                                   
+            </div>           
+
+            <div class="card-block table-border-style mt-0 ">
+
+                <!--Person List-->
+                <div class="row title-fist mt-2" >
+                  <h5  ><i class="fa fa-info" aria-hidden="true"></i> <a data-i18n='chitietns'>Chi tiết nhân sự</a></h5> 
+                </div>
+
+
+                <div class="row d-flex text-justify-center  card-application" id="Div_area">
+                  
+                  <div class="col-12" >                   
+
+                    <div class="row" >
+                      <!--Mã thẻ-->
+                      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="mathe">Mã thẻ</label><span class="text-danger">:(*)</span>
+                          <input class="form-control form-control-sm" type="text" id="emp_no" name="emp_no" required="Please not entry.." value="">
+                          <i class="fad fa-id-card text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>                           
+                      </div>
+
+                      <!--Tên tiếng Trung-->
+                      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="tentiengtrung">Tên tiếng Trung</label><span class="text-danger">:(*)</span>
+                          <input class="form-control form-control-sm" type="text" id="cname" name="cname" required="Please not entry.." value="" >
+                          <i class="far fa-font f-16 text-c-blue"></i><span class="focus-input100"></span>	
+                        </div>                           
+                      </div>              
+
+                      <!--Tên tiếng Việt-->
+                      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="tentiengviet">Tên tiếng Việt</label><span class="text-danger">:(*)</span>
+                          <input class="form-control form-control-sm " type="text" id="yname" name="yname" required="Please not entry.." value="">
+                          <i class="fad fa-font text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>                          
+                      </div>                            
+                      
+                      <!--Phòng ban-->
+                      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="phongban">Phòng ban</label><span class="text-danger">:(*)</span>
+                          <input class="form-control form-control-sm " type="text" id="deptname" name="deptname" required="Please not entry.." value="{{sql.DOC_NO}}">
+                          <i class="fad fa-users text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>
+                      </div>
+
+                      <!--Nhày máy-->
+                      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="nhamay">Nhà máy</label><span class="text-danger">:(*)</span>                        
+                          <select class="form-control form-control-sm" name="FACTORYCODE" id="FACTORYCODE" value="">
+                            <option  value=""></option>
+                            {% if FACTORYCODE %}
+                              {% for item in FACTORYCODE %}
+                                <option value="{{item.FFACTORYCODE}}">{{item.FFACTORYCODE}}</option>
+                              {% endfor %}
+                            {% endif %}                        
+                          </select>
+                          <i class="fad fa-building text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>                          
+                      </div>  
+
+                      <!--Ghi chú-->
+                      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="ghichu">Ghi chú</label><span class="text-danger">:(*)</span>
+                          <input class="form-control form-control-sm " type="text" id="FREMARK" name="FREMARK" required="Please not entry.." value="{{sql.DOC_NO}}">
+                          <i class="fad fa-comment-medical text-c-blue f-16"></i><span class="focus-input100"></span>	
+                        </div>                          
+                      </div>  
+                    </div>  
+                    
+                    <!--Tìm kiếm theo thông tin người thao tác và thời gian -->
+                    <div class="row" {{ADMIN}}>
+                      <!--Người thao tác-->
+                      <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group ">           
+                          <label data-error="wrong" data-success="right" for="CreatedBy" data-i18n="nguoithaotac">Người thao tác</label><span>:</span>
+                          <input type="text" class="form-control " id="CreatedBy" >
+                          <i class="fas fad fa-user f-18 text-danger"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+                    
+
+                      <!--Từ ngày-->
+                      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group ">           
+                          <label data-error="wrong" data-success="right" for="START_TIME" data-i18n="tungay">Từ ngày</label><span>:</span>
+                          <input type="text" class="form-control " id="START_TIME" autocomplete="off">
+                          <i class="fad fa-calendar-edit f-18 text-info"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                      <!--Đến ngày-->
+                      <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4 mt-0" >
+                        <div class="form-group ">           
+                          <label data-error="wrong" data-success="right" for="END_TIME" data-i18n="denngay">Đến ngày</label><span>:</span>
+                          <input type="text" class="form-control " id="END_TIME" readonly=""  autocomplete="off">                      
+                          <i class="fas fa-calendar-edit f-18 text-info"></i><span class="focus-input100"></span>
+                        </div>
+                      </div>
+
+                    </div> 
+
+                  </div>
+
+                  <!--Buton add and delete-->
+                  <!--download template - Upload view -->
+                  <div class="col-12 mb-0 mt-0 mb-0">
+                    <div class="row " id="frm_csftk">    
+                        {% csrf_token %}
+                       
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-0 mt-0 mb-2 d-flex justify-content-center">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                            <!--Buton add-->
+                            <span type="button" onclick="ADD_PERSON();" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add new person to table"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                            <!--Buton reset field-->
+                            <span type="button" onclick="RESET_AREA('Div_area')" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reset all field"><i class="fad fa-sync fa-spin1" aria-hidden="true"></i></span>
+                             
+                            <!--Buton delete-->
+                             <span type="button" onclick="DELETE_PERSON()" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Empno"><i class="fad fa-trash-alt" aria-hidden="true"></i></span>
+                            
+                            <!--Buton dowload tempate-->
+                            <span {{ADMIN}} type="button" onclick="window.open('/static/media/ImportPerson.xlsx', '_blank')" class="btn btn-outline-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Download template"><i class="fa fa-download" aria-hidden="true"></i></span>
+                          </div>
+                        </div> 
+
+                        <div class="col-xl-8 col-lg-6 col-md-4 col-sm-12 col-12 mb-0 mt-0 mb-2" {{ADMIN}}>
+                          <div class="form-group mb-0 mt-0">
+                            <input id="File_upload" onchange="FILE_SELECTED(this)" class="form-control form-control-sm  btn-outline-warning " type="file" name="File_upload" multiple="" accept="file_extension(,.xlsx,.xlsx)">
+                          </div>
+                        </div> 
+
+                        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-0 mt-0 mb-2 d-flex justify-content-center">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+
+                            <!--Buton thêm danh sách-->
+                            <span hidden {{ADMIN}} type="button" id="btn_addUp" onclick="UPLOAD_EXEL_LIST('INSERT');" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add list person"><i class="fad fa-user-plus" aria-hidden="true"></i></span>
+                            
+                            <!--Buton xóa theo danh sách-->
+                            <span hidden {{ADMIN}} type="button" id="btn_delUp" onclick="UPLOAD_EXEL_LIST('DELETE');" class="btn btn-outline-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete list person"><i class="fad fa-user-minus" aria-hidden="true"></i></span>
+                            
+                            <!--Buton download file view-->
+                            <span type="button" onclick="TRA_CUU_QUYEN_PHONG_MAY()" id="btn_viewdown" class="btn btn-outline-primary" readonly="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Search info"><i class="fa fa-eye" aria-hidden="true"></i></span>                                     
+                            
+                            <!--Buton download file view-->
+                            <span type="button" onclick="PRINT_EXEL_PERMISS_SERVER()" id="btn_viewdown" class="btn btn-outline-primary" readonly="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Save to exel"><i class="fad fa-file-excel f-18" aria-hidden="true"></i></span>                                     
+                          
+                            <!--Buton tùy chọn tìm kiếm-->
+                            <span type="button" onclick="$('#modal_optionSearch').modal('show')" id="btn_viewdown" class="btn btn-outline-primary" readonly="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Search info" hidden><i class="fa fa-search" aria-hidden="true"></i></span>                                     
+                          
+                          </div>
+                        </div> 
+                    
+                    </div> 
+                                     
+                  </div>
+
+                  <div class="col-12 mb-2 mt-3" style="height:1px; border:1px;background-color: burlywood;"></div>
+
+                  <!--Bảng danh sách -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-0 mt-0">
+                    <div class=" table-responsive text-center" style="width:100%;overflow:auto">
+                      <table id="table_data" class="table-sm text-center table-hover  table-bordered " style="width:100%;font-size:12px;">                   
+                        <thead>
+                          <tr class="bg-light text-dark" >
+                            <th style="width:5px !important;">
+                              <input name="" type="checkbox" id="cbk_all" onclick="" style="">
+                            </th>                        
+                            <th data-i18n="mathe">Mã thẻ</th>       
+                            <th data-i18n="tentiengtrung">Tên tiếng Trung</th>  
+                            <th data-i18n="tentiengviet">Tên tiếng Việt</th>
+                            <th data-i18n="phongban">Phòng ban</th>
+                            <th data-i18n="nhamay">Nhà máy</th>
+                            <th data-i18n="ghichu">Ghi chú</th>
+                            <th data-i18n="thoigian">Thời gian</th>
+                            <th data-i18n="nguoitao">Người tạo</th>
+                          </tr>
+                        </thead>
+                       
+                        <tbody id="tbody_data">                        
+                         
+                        </tbody>
+                      </table>
+  
+                    </div>
+                      
+                    </div>
+                  
+                  </div> 
+                   
+                </div>         
+              
+             <hr>
+              <!-- Bảng hiển thị thông tin đơn End-->
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body end -->
+  </div>
+  <div id="styleSelector"></div>
+</div>
+<!--Main body end -->
+
+
+<!-- Danh sách MODAL START-->
+  
+
+
+<!--Modal ASSIGN-->
+<div class="modal right fade show" id="modal_optionSearch">
+  <div class="modal-dialog " id="">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-pen f-20"></i> <a data-i18n="tuychontimkiem">Tùy chọn tìm kiếm</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_modal">                   
+            
+            <!--Người tạo-->
+             <div class="col-xl-4 col-lg-12 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="CreatedBy1" data-i18n="nguoitao">Người tạo</label><span>(*):</span>
+                <input type="text" class="form-control " id="CreatedBy1">
+                <i class="fas fad fa-user f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+           
+
+            <!--Từ ngày-->
+             <div class="col-xl-4 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="START_TIME" data-i18n="tungay">Từ ngày</label><span>(*):</span>
+                <input type="text" class="form-control " id="START_TIME1">
+                <i class="fad fa-calendar-edit f-18 text-info"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <!--Đến ngày-->
+             <div class="col-xl-4 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="END_TIME" data-i18n="denngay">Đến ngày</label><span>:</span>
+                <input type="text" class="form-control " id="END_TIME1" readonly="">
+                <i class="fas fa-calendar-edit f-18 text-info"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center" id="Div_btn3">
+       
+        <!--Button tìm kiếm -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">
+            <button id="btn_saveTGD" class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="TRA_CUU_QUYEN_PHONG_MAY()"><i class="fad fa-search"></i> <span data-i18n="btn-search">Tìm kiếm</span></button>
+        </div>
+      
+        <!--Button Quay lại thoát  -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">        
+            <button type="button" class="btn form-control btn-outline-dark waves-effect waves-light" data-dismiss="modal"><i class="fa fa-reply"></i> <span data-i18n="btn-exit">Thoát</span></button>                    
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--Modal END-->
+  
+<!-- Danh sách MODAL END-->
+
+<script type="text/javascript" src="{% static 'assets/js/jquery/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'myjs/ecard.js' %}"></script>  
+
+<script src="{% static 'exportXLSX/xlsx.full.min.js' %}"></script>
+<script src="{% static 'exportXLSX/ToExel.js' %}"></script>
+
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+<script src="/static/datepicker/datetimepicker.js"></script> 
+
+<script>
+    ACTIVE_MENUY('THEM_XOA') ;
+    $(document).ready(function() {
+      $('#table_data').DataTable();     
+    } );
+
+    jQuery(document).ready(function () {
+      'use strict';
+      jQuery('#START_TIME, #END_TIME').datetimepicker();
+  });
+
+</script>
+
+
+{% endblock %}

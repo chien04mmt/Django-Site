@@ -1,0 +1,60 @@
+{% extends "login/baselogin.html" %}
+
+{% load static %}
+
+{% block title %}
+Login E-Sign4.0 CNCS
+{% endblock %}
+
+{% block content %}
+
+  <!-- Nhập username -->
+  <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-id-card"></i></span>
+      <input data-i18n="input-user-login"  type="text" name="username" class="form-control" id="yourUsername" placeholder='User ID Card' required>
+      {% comment %} <input data-i18n="input-user-login" type="text" class="form-control" jsname="YPqjbf" autocomplete="username" spellcheck="false" tabindex="0" aria-label="Email hoặc số điện thoại" name="username" id="yourUsername"  autocapitalize="none" id="identifierId" dir="ltr" data-initial-dir="ltr" data-initial-value="" badinput="false" aria-invalid="false"> {% endcomment %}
+      <div class="invalid-feedback">Please enter your username.</div>
+    </div>
+  </div>
+  <!-- Nhập password -->
+  <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-fingerprint"></i></span>
+      {% comment %} <input data-i18n="input-pass-login" type="password" class="form-control" jsname="YPqjbf" autocomplete="current-password" spellcheck="false" tabindex="0" aria-label="Nhập mật khẩu của bạn" name="password" id="yourPassword" autocapitalize="none" dir="ltr" data-initial-dir="ltr" data-initial-value=""> {% endcomment %}
+
+      <input data-i18n="input-pass-login" type="password" name="password" class="form-control" id="yourPassword" placeholder="Password" required>
+      <div class="invalid-feedback" data-i18n="btn-login">Please enter your password!</div>
+    </div>
+  </div>
+  <!-- Nhập captcha -->
+  <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+    <input  data-i18n="input-capt-login" type="text" name="capt" class="form-control" id="input_captcha" placeholder="Captcha" required>
+    <div class="invalid-feedback" data-i18n="btn-checkcapt">Please enter your captcha !</div>
+  </div>
+  <!-- Mã captcha -->
+  <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+    <h3 id="kq_input_1" style="color: limegreen;">qiOrD</h3>
+  </div>
+  <!-- Nhập Nhớ tài khoản -->
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+      <label class="form-check-label" for="rememberMe" data-i18n="btn-remember">Remember me?</label>
+    </div>
+  </div>
+  <!-- Phím đăng nhập -->
+  <div class="col-12">
+    <button class="btn btn-primary w-100" type="submit" onclick="LOG_IN();" data-i18n="btn-login">Login</button>
+  </div>
+  <!--Quên mật khẩu -->
+  <div class="col-12">
+    <p class="small mb-0"><i class="far fa-lightbulb-on"></i>
+     <a href="/forgotpass/" data-i18n="forgot-pass-login">Forgot Password</a> / 
+     <a  href="/register/" data-i18n="creat-login">Create an account</a></p>
+   </div>
+
+
+  <!-- Login My js -->
+  {% comment %} <script src="{% static 'login/assets/js/login.js' %}"></script>  {% endcomment %}
+ {% endblock %}

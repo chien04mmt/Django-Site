@@ -1,0 +1,326 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+<meta name="author" content="Codedthemes"/>
+
+
+
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'FontAwesome.Pro.5.15.4.Web/css/all.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'FontAwesome.Pro.5.15.4.Web/css/all.min.css' %}">
+<!--===============================================================================================-->
+
+
+
+<title>Register Acount</title>
+
+
+
+</head>
+
+<body  >
+
+	<div class="">
+		<div class="container-login100" style="">
+			
+			<a href="/manual/" style="font-size:40px;color: white;">
+				<div  id="tawk-bubble-container" role="button" tabindex="0" class="tawk-bubble-container lienhe">
+					<div class="tawk-icon-right">					
+						{% comment %} <img src="{% static 'img/lienhe.png' %}" alt="" style="cursor:pointer;width: 316px; height: 288px; right:0px;bottom:27px; position:absolute;"> {% endcomment %}
+					</div>
+				</div>
+			</a>
+			
+			<div class='ticket text-center' style="background-color:none;width:70px; height:70px; left:10px;top:10px; position:absolute;font-size:40px;cursor:pointer;"><a href="/manual/" style="font-size:40px;color: white;"><i class="far fa-question-circle"></i></a></div>
+			<div class='ticket text-center' style="background-color:none; left:80px;top:10px; position:absolute;font-size:40px;cursor:pointer;">
+				<a href="/manual/" style="color: yellow;font-size:30px;">SOP-HƯỚNG DẪN DỤNG(用户手册)</a>
+			</div>
+
+				<div class="">	
+					<form name='Frm'  onsubmit="check_password()"  method="post">
+						{% csrf_token %}							
+
+						<link rel="stylesheet" type="text/css" href="{% static 'mycss/modify.pass.css' %}">
+						<link rel="stylesheet" type="text/css" href="{% static 'mycss/register.css' %}">
+
+						<div class="main-body">
+						<div class="page-wrapper"> 
+							
+							<!-- Page body start -->
+							<div class=" justify-content-center">
+
+								<div class="row d-flex justify-content-center">  
+
+									<!--Cột thông tin biểu mẫu Start-->
+									<div class="col-xl-10 col-lg-12 col-md-12 col-sm-12">
+										<div class="card" style="box-shadow:none">  
+
+											<div class="card-header">
+												<h5><i class="fas fa-address-card f-22"></i> <a data-i18n="title-">Đăng ký tài khoản(新用戶註冊) </a></h5>
+											</div>   
+
+											<div class="row col-12" style="position:relative">
+
+												<div class="card col-xl-5 col-lg-3 col-md-1 col-sm-1 col-1  my-auto" id='bg_user' style="box-shadow:none;padding-bottom:16px"> 
+													<img id="img_avatar" class=""  src="{% static 'img/pen.jpg' %}" style=" object-fit: contain;width:100%">
+												</div>
+
+												<div class="card col-xl-7 col-lg-9 col-md-12 col-sm-12 col-12"> 
+											
+													<!--Thông tin cá nhân-->    
+													<div class="" id="div_userinf">
+														<div class=" mb-0 card-table flex-fill">
+															
+															<div class="card-body" style="padding: 0px;">
+																<div class="row">																
+
+																	<!--txt UserID Title-->
+																	<div class="col-md-6 col-sm-12 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																			
+																			<label class="mb-0 mt-0" data-i18n="username">用戶名(User ID)</label><span class="text-danger">:*</span>
+																			<input class="form-control  input100" type="text" id="UserID" name="UserID" required="Please not entry.." title="Please fill this fiel." value="" autocompleted="false">
+																			<i class="fad fa-id-card f-16 text-success"></i>
+																			<span class="focus-input100"></span>		
+																		</div>
+																	</div>
+
+																	<!--cbx Site-->
+																	<div class="col-md-3 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																			
+																			<label class="mb-0 mt-0" data-i18n="site-modal">廠區(Site):</label><span class="text-danger">*</span>
+																			<select id="DFSite" name="DFSite" class="form-control form-control-round1" title="Please fill this fiel." required="Please not entry..">
+																				<option value=""></option>
+																				<option value="GZ(QC)">GZ(QC)</option>
+																				<option value="GW(QV)">GW(QV)</option>
+																				<option value="HT(DV)">HT(DV)</option>
+																				<option value="YZ(VT)">YZ(VT)</option>
+																			</select>
+																			<i class="fad fa-globe-asia f-16 text-success" aria-hidden="true"></i>
+																			<span class="focus-input100"></span>	
+																		</div>
+																	</div>
+
+																	<!--cbx BU-->
+																	<div class="col-md-3 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																			
+																			<label class="mb-0 mt-0" data-i18n="bu-modal">事業處(BU):</label><span class="text-danger">*</span>
+																			<input class="form-control  input100" type="text" id="division" name="division" required="Please not entry.." title="Please fill this fiel." value="" >																		
+																			<i class="fad fa-briefcase text-success" aria-hidden="true"></i>
+																			<span class="focus-input100"></span>	
+																		</div>
+																	</div>
+
+																	<!--txt username-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																		
+																			<label class="mb-0 mt-0"  data-i18n="username-modal">姓名(User Name):</label><span class="text-danger">*</span>
+																			<input class="form-control  form-control-round1" type="text" id="UserName" name="UserName" required="Please not entry.." title="Please fill this fiel." value="">
+																			<i class="fad fa-user f-16 text-info" aria-hidden="true"></i>
+																			<span class="focus-input100"></span>	
+																		</div>
+																	</div>
+
+																	<!--txt empno-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																		
+																			<label class="mb-0 mt-0" data-i18n="emp-modal">工號(Emp.No):</label><span class="text-danger">*</span>
+																			<input class="form-control  form-control-round1" type="text" id="Emp_NO" name="Emp_NO" required="Please not entry.." title="Please fill this fiel." value="">
+																			<i class="far fa-id-card-alt f-16 text-info"></i>
+																			<span class="focus-input100"></span>	
+																		</div>
+																	</div>
+
+																	<!--txt dept-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																		
+																			<label class="mb-0 mt-0" data-i18n="Dept-modal">部門(Dept):</label><span class="text-danger">*</span>
+																			<input class="form-control  form-control-round1" type="text" id="Dept" name="Dept" required="Please not entry.." title="Please fill this fiel." value="">
+																			<i class="fad fa-users-crown f-16 text-info"></i>
+																			<span class="focus-input100"></span>
+																		</div>
+																	</div>
+
+																	<!--txt costno-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																		
+																			<label class="mb-0 mt-0" data-i18n="CostNO-modal">費用代碼(CostCode):</label><span class="text-danger">*</span>
+																			<input class="form-control  form-control-round1" type="text" id="CostNo" name="CostNo" required="Please not entry.." title="Please fill this fiel." value="">
+																			<i class="far fa-dollar-sign f-16 text-info" aria-hidden="true"></i>
+																			<span class="focus-input100"></span>
+																		</div>
+																	</div>
+
+																	<!--txt tell-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																			
+																			<label class="mb-0 mt-0" data-i18n="Ext-modal">分機(Ext):</label><span class="text-danger">*</span>
+																			<input class="form-control  form-control-round1" type="text" id="Telephone" name="Telephone" required="Please not entry.." title="Please fill this fiel." value="" >
+																			<i class="fal fa-phone f-16 text-success" aria-hidden="true"></i>
+																			<span class="focus-input100"></span>
+																		</div>
+																	</div>
+
+																	<!--txt your Mail-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																			
+																			<label class="mb-0 mt-0"  data-i18n="Mail-modal">電子郵件(Mail):</label><span class="text-danger">*</span>
+																			<input class="form-control  form-control-round1" type="email" id="mailbox" name="mailbox" required="Please not entry.." title="Please fill this fiel." value="">
+																			<i class="fal fa-mailbox f-16 text-success" aria-hidden="true"></i>
+																			<span class="focus-input100"></span>
+																		</div>
+																	</div>
+																	
+																	<!--txt your passw-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																			
+																			<label class="mb-0 mt-0" data-i18n="Password-modal">新密碼(Password):<span class="text-danger">*</span></label>
+																			<i id="togglePassword" class="fas fa-eye-slash togglePassword"  onclick="SHOW_PASSWORD();"></i>
+																			<input class='form-control  form-control-round1'  name="PassWord" type="password"  id="pass1id" value="" required="Please not entry.." minlength="8">																			
+																			<i class="fad fa-lock-alt f-16 text-danger"></i>
+																			<span class="focus-input100"></span>
+																		</div>													
+																	</div>
+
+																	<!--txt your password2-->
+																	<div class="col-md-6 col-sm-6 mb-0 mt-4">
+																		<div class="form-group mb-0 mt-0">																			
+																			<label class="mb-0 mt-0" data-i18n="Confirm-modal">新密碼(Confirm Password):<span class="text-danger">*</span></label>
+																			<input class="form-control  form-control-round1" type="password" id="pass2id" name="PassWord2" required="Please not entry.." title="Please fill this fiel." minlength="8">
+																			<i class="fad fa-lock-alt f-16 text-danger"></i>
+																			<span class="focus-input100"></span>
+																		</div>
+																	</div>
+
+																</div>
+																<hr>
+
+																<div class="row d-flex justify-content-center mb-4">
+																	<!--Button Thêm Đơn -->
+																	<div class="col-lg-4 col-md-4 col-sm-4 mb-2 mt-0">												
+																		<div class="container-login100-form-btn">
+																			<button type="submit" class="form-control btn-success" name="btn_register" id="registerID" onclick="check_password();" data-i18n="btn-register">Đăng ký</button>
+																		</div>
+																	</div>												
+																	<!--Button Quay lại thoát  -->
+																	<div class="col-lg-4 col-md-4 col-sm-4 mb-2 mt-0">												
+																		<div class="container-login100-form-btn">														
+																			<button type="button" class="form-control btn-info" name="btn_register" id="registerID" onclick="window.open('/home/','_self');" data-i18n="btn-exit">Thoát</button>
+																		</div>
+																	</div>	
+
+																</div>
+
+															</div>
+															
+														</div>
+													</div>
+													<!--/Thông tin cá nhân END--> 
+
+												</div>
+												
+											</div>
+											
+										</div>	
+									</div>
+									<!--End Cột thông tin biểu mẫu-->
+
+								</div>
+
+							</div>
+							<!-- Page body end -->
+							
+						</div>
+
+					</form>
+				</div>
+	
+		</div>
+	</div>
+
+	<!-- Vendor CSS Files -->
+	<script src="{% static 'bootstrap4.6/js/jquery.slim.min.js' %}"></script>
+	<script src="{% static 'bootstrap4.6/js/popper.min.js' %}"></script>
+	<script src="{% static 'bootstrap4.6/js/bootstrap.min.js' %}"></script>
+
+	<!--Javascrips--> 
+	<script type="text/javascript" src="{% static 'myjs/J-query/3.6.0/jquery.min.js' %} "></script>
+	<!--===============================================================================================-->
+	<script src="{% static 'login_/vendor/tilt/tilt.jquery.min.js' %}"></script> 
+
+	<!-- Login My js -->
+	<script type="text/javascript" src="{% static 'myjs/modify.password.js' %} "></script>
+	<script src="{% static 'lang/lang.js' %}"></script> 
+
+	<script>
+		SHOW_LANG_();
+		function check_password() {
+			var a = $('#pass1id').val();
+			var b = $('#pass2id').val();		
+			if (a == b) {			
+				return true;
+			  } else {
+					event.preventDefault();
+					alert("Passwords are not the same!");
+					return false;			
+			  }
+			}
+	</script>
+<!--===============================================================================================-->
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

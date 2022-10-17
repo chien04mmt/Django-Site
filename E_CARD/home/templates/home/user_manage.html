@@ -1,0 +1,494 @@
+{% extends "home/base.html" %}
+  {% load static %}
+
+  {% block title %}
+ Manager User E-Sign 4.0 CNCS
+  {% endblock %}
+
+
+  {% block mainbody %}
+  <link rel="stylesheet" type="text/css" href="{% static 'mycss/user.manager.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'mycss/permission.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'data_table/jquery.dataTables.min.css' %}">
+
+  <!-- Main-body start -->
+  <div class="main-body">            
+    <div class="page-wrapper" > 
+      <!-- Page-body start -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+
+                <!-- Tiêu đề  start-->
+                <div class="card-header">
+                  <h5><i class="fas fa-users-cog f-22"></i><a data-i18n="title-acount"> MANAGER USER ACOUNT</a></h5>              
+                </div>
+                <!-- Tiêu đề  END-->
+
+                <div class="card-block">
+
+                  <div class="row" id="search_div">
+
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-12 mt-2">
+                      <div class="form-group mb-0 mt-0">
+                        <i class="fa fa-address-book text-c-blue" aria-hidden="true"></i>
+                        <label class="mb-0 mt-0" data-i18n="input-user-login"></label>
+                        <input class="form-control form-control-sm " type="text"id="txt_userID2"  value="" placeholder="Username" data-i18n="input-acount">
+                      </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-12 mt-2">
+                      <div class="form-group mb-0 mt-0">
+                        <i class="fa fa-filter text-c-blue" aria-hidden="true"></i>
+                        <label class="mb-0 mt-0" data-i18n="cbx-filter"> Filter Search</label>
+                        <select class="form-control form-control-sm" id="cbx_searchdata1">
+                          <option selected="selected" value="UserID" data-i18n="username">UserID</option>
+                          <option value="ID" data-i18n="ID">ID</option>
+                          <option value="Name" data-i18n="Full-Name">Name</option>
+                          <option value="Department" data-i18n="Department">Department</option>
+                          <option value="Telephone" data-i18n="Extension">Telephone</option>
+                          <option value="Email" data-i18n="Email">Email</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt-4">
+                      <div class="btn-group" role="group" aria-label="Basic example" style="display:flex !important">
+                        <!--Tìm kiếm nâng cao-->
+                        <button type="button" onclick="Search_User()" class="form-control form-control-sm btn  btn-outline-success mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <!--bộ lọc-->
+                        <button type="button" hidden  class="form-control form-control-sm btn btn-outline-success mt-1" data-toggle="modal" data-target="#Modal_option_search"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                        
+                        <!--Buton reset-->
+                        <button hidden="" type="button" onclick="RESET_AREA('area_input');" class="form-control form-control-sm  btn-outline-danger  mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Reset"><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
+                        <!--Buton thêm mới-->
+                        <button  type="button" onclick="ADD_USER_ESIGN();" class="form-control form-control-sm btn  btn-outline-success  mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add new"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        <!--Xuất exel-->
+                        <button hidden type="button" onclick="ExportToExcel('xlsx','table_title_setting')" class="form-control form-control-sm btn  btn-outline-info  mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="ExportToExcel"><i class="fa fa-download" aria-hidden="true"></i></button>
+                     </div>
+                    </div>
+  
+                  </div><hr>
+
+
+                  <!-- Bảng hiển thị thông tin start-->
+                  <div class=" table-responsive">
+                      {% comment %} <table id= "table_Data" class="table-sm table-hover  table-bordered table-inverse nowrap no-footer" cellspacing="0"style="width:100%;" >          {% endcomment %}
+                        <table id="table_Data" class="table-sm table-hover table-bordered nowrap no-footer table-inverse text-left dataTable" style="width: 100%; font-size: 12px;">
+                          <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                              <tr >
+                                <th data-i18n="no">No.</th>
+                                <th data-i18n="site">Site</th>
+                                <th data-i18n="bu">Business</th>
+                                <th data-i18n="id-no">User Name</th>
+                                <th data-i18n="Full-Name">Name</th>                                                
+                                <th data-i18n="Department">Department</th>
+                                <th data-i18n="Job-number">Job number</th>
+                                <th data-i18n="Extension">Extension</th>
+                                <th data-i18n="Email">Email</th>
+                                <th data-i18n="Permission">Permission</th>
+                                <th data-i18n="th-edit-approver">Edit-Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ViewUser">
+                          {% if sql %}
+                          {% for item in sql %}
+                            <tr  class="clickable-row">                 
+                                <td>{{item.ID}}</td>
+                                <td>{{item.DFSite}}</td>
+                                <td>{{item.division}}</td>
+                                <td id="UserID_{{item.ID}}">{{item.UserID}}</td>
+                                <td>{{item.UserName}}</td>
+                                <td>{{item.Dept}}</td>
+                                <td>{{item.Emp_NO}}</td>
+                                <td>{{item.Telephone}}</td>
+                                <td>{{item.mailbox}}</td>
+                                <td class="text-center">
+                                    <i class="fas fa-edit " id="btnpermiss_{{item.ID}}" style="cursor: pointer;" onclick="edit_permission_user(this);"></i><i class="fas ">
+                                </td>
+                                <td class="text-center">
+                                    <i  class="fas fa-edit " id="btn_user_edit_{{item.ID}}" style="cursor: pointer;" onclick="edit_data_user(this);"></i><i class="fas ">&nbsp;&nbsp;</i>
+                                    <i  class="fas fa-trash-alt"  id="btn_user_del_{{item.ID}}" style="cursor: pointer;" onclick="delete_data_user(this);"></i>
+                                </td>
+                            </tr> 
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>
+                    </table>
+                  </div>
+                  <!-- Bảng hiển thị thông tin END-->
+                  <hr>  
+                      
+                  <!-- Phân trang start-->
+                  <nav class="nav1" aria-label="Page navigation example" hidden>
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="javascript:void(0);" data-i18n="first"><< Previous</a></li>
+                      <li class="page-item"><a class="page-link" href="javascript:void(0);"><</a></li>
+                      <li class="page-item"><select class="page-link">
+                        <option>1</option>
+                      </select></li>
+                      <li class="page-item"><a class="page-link" href="javascript:void(0);">></a></li>
+                      <li class="page-item"><a class="page-link" href="javascript:void(0);" data-i18n="last">Next >></a></li>
+                    </ul>
+                    <ul class="pagination">
+                      <p class="note" data-i18n="note">  Have total (1) record !</p>
+                    </ul>
+                  </nav>
+                  <!-- Phân trang End--> 
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page-body END -->
+    </div>
+  </div>
+  <!-- Main-body END -->
+
+
+
+<!-- List MODAL-->
+
+
+<!-- The  modalpermission_user start -->
+<div class="modal fade bd-example-modal-lg" id="modalpermission_user" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+        <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-fingerprint f-20"></i><a data-i18n="title-modal-acount"> Acount Permission</a></h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!-- Modal body -->             
+      <div class="modal-body text-center" >            
+        <div class="table-responsive text-center" style="overflow:auto;max-height:500px !important">
+          <table class="table-sm table-hover table-dark text-left" id="table_permiss" style="width:100%;overflow:auto;">
+            <thead>
+              <tr class="bg-dark">
+                <th>
+                  <input name="chk_all_user" type="checkbox" id="chk_all_user" onclick="SELECT_ALL_MERMISS(this)"></td>
+                </th>
+                <th data-i18n="funid-acount" >Mã quyền hạn</th>
+                <th data-i18n="funme-acount">Tên quyền hạn</th>
+                <th data-i18n="funtyp-acount">Kiểu quyền hạn</th>           
+              </tr>
+            </thead>
+
+            <tbody id="tbody_permiss">
+
+              <!--Thông tin menu tạo đơn-->
+              <tr >
+                <td><input name="LIST_FORM" type="checkbox" id="LIST_FORM" onclick=""></td>
+                <td data-i18n="">[LIST_FORM]</td>
+                <td data-i18n="pm-dsmd">Cho phép xem danh sách mẫu đơn</td>
+                <td data-i18n="quantri">Người dùng</td>
+              </tr>
+              <tr>
+                <td><input name="NEW_BUS" type="checkbox" id="NEW_BUS" onclick=""></td>
+                <td data-i18n="">[NEW_BUS]</td>
+                <td data-i18n="pm-tddx">Cho phép tạo đơn điều xe</td>
+                <td data-i18n="quantri">Người dùng</td>
+              </tr> 
+
+              <!--Thông tin menu hòm thư-->
+              <tr>
+                <td><input name="APPROVAL" type="checkbox" id="APPROVAL" onclick=""></td>
+                <td data-i18n="">[APPROVAL]</td>
+                <td data-i18n="pm-kddx">Cho phép xem và ký đơn</td>
+                <td data-i18n="quantri">Người dùng</td>
+              </tr> 
+              <tr>
+                <td><input name="MY_DOC" type="checkbox" id="MY_DOC" onclick=""></td>
+                <td data-i18n="">[MY_DOC]</td>
+                <td data-i18n="pm-xddx">Cho phép xem đơn của của mình</td>
+                <td data-i18n="quantri">Người dùng</td>
+              </tr> 
+              <tr>
+                <td><input name="ARCHIVED_DOC" type="checkbox" id="ARCHIVED_DOC" onclick=""></td>
+                <td data-i18n="">[ARCHIVED_DOC]</td>
+                <td data-i18n="pm-tdlt">Quyền tìm đơn lưu trữ</td>
+                <td data-i18n="nguoidung">Người dùng</td>
+              </tr> 
+
+              <!--Thông tin menu Thiết lập tham số <-->
+              <tr>
+                <td><input name="PARA_SETING" type="checkbox" id="PARA_SETING" onclick=""></td>
+                <td data-i18n="">[PARA_SETING]</td>
+                <td data-i18n="pm-tlts">Quyền thiết lập tham số</td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr> 
+              <tr>
+                <td><input name="USER_MANAGE" type="checkbox" id="USER_MANAGE" onclick=""></td>
+                <td data-i18n="">[USER_MANAGE]</td>
+                <td data-i18n="pm-tdtknd">Quyền thay đổi tài khoản người dùng</td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr>
+              <tr>
+                <td><input name="DATA_ORGANIZATION" type="checkbox" id="DATA_ORGANIZATION" onclick=""></td>
+                <td data-i18n="">[DATA_ORGANIZATION]</td>
+                <td data-i18n="pm-tcdl">Quyền tổ chức dữ liệu</td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr> 
+              <tr>
+                <td><input name="PROFILE_SETING" type="checkbox" id="PROFILE_SETING" onclick=""></td>
+                <td data-i18n="">[PROFILE_SETING]</td>
+                <td data-i18n="pm-tdttcn">Quyền thay đổi thông tin các nhân</td>
+                <td data-i18n="nguoidung">Người dùng</td>
+              </tr>
+
+              <!--Thông tin menu dữ liệu hoạt động <-->
+              <tr>
+                <td><input name="DRIVER_INF" type="checkbox" id="DRIVER_INF" onclick=""></td>
+                <td data-i18n="">[DRIVER_INF]</td>
+                <td data-i18n="pm-qllx">Quyền thay quản lý lái xe</td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr>
+              <tr>
+                <td><input name="CAR_INF" type="checkbox" id="CAR_INF" onclick=""></td>
+                <td data-i18n="">[CAR_INF]</td>
+                <td data-i18n="pm-qlx">Quyền quản lý xe</td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr>
+              <tr>
+                <td><input name="FORM_APPLY" type="checkbox" id="FORM_APPLY" onclick=""></td>
+                <td data-i18n="">[FORM_APPLY]</td>
+                <td data-i18n="pm-xddkx">Quyền xuất đơn đăng ký xe </td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr>             
+              <tr>
+                <td><input name="VEHICLE_SCHE" type="checkbox" id="VEHICLE_SCHE" onclick=""></td>
+                <td data-i18n="">[VEHICLE_SCHE]</td>
+                <td data-i18n="pm-tkltx">Quyền thống kê lịch trình xe </td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr>
+              <tr>
+                <td><input name="FORM_QUERY" type="checkbox" id="FORM_QUERY" onclick=""></td>
+                <td data-i18n="">[FORM_QUERY]</td>
+                <td data-i18n="pm-tvmd">Quyền truy vấn mẫu đơn</td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr>
+              <tr>
+                <td><input name="VEHICLE_USAGE" type="checkbox" id="VEHICLE_USAGE" onclick=""></td>
+                <td data-i18n="">[VEHICLE_USAGE]</td>
+                <td data-i18n="pm-tksdx">Quyền thống kê sử dụng xe</td>
+                <td data-i18n="quantri">Quản trị viên</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer  text-center">
+       
+          <!--Button cập nhật quyền -->
+          <div class="col-md-6 col-sm-6 mb-2 mt-0">
+            <span style="color:white;">
+              <button type="button" class="btn btn-outline-success" onclick="Saved_permission_func();"><i class="fas fa-user-edit"></i><a  data-i18n="btn-save">Save</a></button>
+            </span>   
+          </div>
+        
+          <!--Button Quay lại thoát  -->
+          <div class="col-md-6 col-sm-6 mb-2 mt-0">
+            <span>
+              <button type="button" class="btn btn-outline-dark" data-dismiss="modal"><i class="fas fa-sign-out-alt"></i><a  data-i18n="btn-exit">Exit</a></button>
+            </span> 
+          </div> 
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal modalpermission_usern End-->
+
+
+<!-- Modal Show Profile start -->
+<div class="modal fade bd-example-modal-lg" id="modaledituser" tabindex="-5" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <div class="container-fluid ">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-edit f-20"></i><a data-i18n="title-modal-Profile"> User Profile </a></h5>
+        </div>       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card">  
+          <div class="card-header">
+            <h5 id="id_userx"></h5>
+            <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>--> 
+          </div>   
+
+          <div class="row container">
+
+            <div class="card col-md-4 col-sm-12 mx-auto my-auto" id="bg_user"> 
+              <img class="mt-4"  src="{% static 'media' %}/{{sql1.img}}">
+            </div>
+
+            <div class="card col-md-8 col-sm-12"> 
+
+              <!--Thông tin cá nhân--> 
+              <div class="col-md-12 col-sm-12">
+                <div class=" mb-0 card-table flex-fill">
+                  
+                  <div class="card-body" style="padding: 0px;">
+                    <div class="row">
+                      
+                      <!--txt UserID Title-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-1">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="userid-modal">用戶名(User ID):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="userid_modal_user" name="" required="Please not entry.." title="Please fill this fiel." value="V0515000">
+                        </div>
+                      </div>
+
+                      <!--cbx Site-->
+                      <div class="col-lg-6 col-md-6 col-sm-12 mb-0 mt-1">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="site-modal">廠區(Site):<span class="text-danger">*</span></label>
+                          <select id="siteid_modal_user" name="siteid_modal_user" class="form-control " title="Please fill this fiel.">
+                            <option value=''></option>
+                              {% if sql2 %}
+                                {% for item in sql2 %}
+                                  <option value="{{item.Site}}">{{item.Site}}</option>
+                                {% endfor %}
+                              {% endif %} 
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--cbx BU-->
+                      <div class="col-lg-6 col-md-6 col-sm-12 mb-0 mt-1">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="bu-modal">事業處(BU):<span class="text-danger">*</span></label>
+                          <select id="buid" name="buid" class="form-control " required="Please select BU..." title="Please fill this fiel.">
+                            <option value=""></option>
+                              {% if sql3 %}
+                                {% for item in sql3 %}
+                                  <option value="{{item.Dept_Name}}">{{item.Dept_Name}}</option>
+                                {% endfor %}
+                              {% endif %}     
+                          </select>
+                        </div>
+                      </div>
+
+                      <!--txt username-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="username-modal">姓名(User Name):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="usernameid_modal_user" name="usernameid_modal_user" required="Please not entry.." title="Please fill this fiel." value="VU VAN CHIEN">
+                        </div>
+                      </div>
+
+                      <!--txt empno-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="emp-modal">工號(Emp.No):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="empnoid_modal_user" name="empnoid_modal_user" required="Please not entry.." title="Please fill this fiel." value="V0515000">
+                        </div>
+                      </div>
+
+                      <!--txt dept-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Dept-modal">部門(Dept):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="deptid_modal_user" name="deptid_modal_user" required="Please not entry.." title="Please fill this fiel." value="CNCS 中央网通">
+                        </div>
+                      </div>
+
+                      <!--txt costno-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="CostNO-modal">費用代碼(CostNO):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="costnoid_modal_user" name="costnoid_modal_user" required="Please not entry.." title="Please fill this fiel." value="DH7007F7">
+                        </div>
+                      </div>
+
+                      <!--txt tell-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Ext-modal">分機(Ext):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="extid_modal_user" name="" required="Please not entry.." title="Please fill this fiel." value="112">
+                        </div>
+                      </div>
+
+                      <!--txt your Mail-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2">
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Mail-modal">電子郵件(Mail):<span class="text-danger">*</span></label>
+                          <input class="form-control  " type="text" id="emailid_modal_user" name="emailid_modal_user" required="Please not entry.." title="Please fill this fiel." value="CNCS-VN-OA@MAIL.FOXCONN.COM">
+                        </div>
+                      </div>                      
+                      
+                      <!--txt your passw-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2" >
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Password-modal">新密碼(Password):<span class="text-danger">*</span></label>
+                          <input class='form-control  '  name="password1_modal" type="password"  id="pass1id" value="{{sql.PassWord}}">
+                          <span class="show-btn  mt-2"><i id="togglePassword" class="fas fa-eye" onclick="SHOW_PASSWORD();"></i></span>
+                          {% comment %}<i class="far fa-eye" id="togglePassword" style="margin-left:240px;margin-top:23px;cursor: pointer;position:absolute;" required="Please not entry.." title="Please fill this fiel." ></i> {% endcomment %}
+                        </div>
+                        
+                      </div>
+
+                      <!--txt your password2-->
+                      <div class="col-lg-6 col-md-12 col-sm-12 mb-0 mt-2" hidden>
+                        <div class="form-group mb-0 mt-0">
+                          <label class="mb-0 mt-0" data-i18n="Confirm-modal">新密碼(Confirm Password):<span class="text-danger">*</span></label>
+                          <input class="form-control " type="password" id="pass2id" name="pass2id" required="Please not entry.." title="Please fill this fiel." >
+                        </div>
+                      </div>
+
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                     
+                      <!--Button Thêm Đơn -->
+                      <div class="col-md-6 col-sm-6 mb-2 mt-0">
+                        <span style="color:white;" >
+                          <button id="btn_save" class="btn btn-outline-info" type="button"  onclick="SAVE_OPTION_USER();"><i class="fa fa-plus"></i><a  data-i18n="btn-save">Save</a></button>
+                        </span>   
+                      </div>
+                    
+                      <!--Button Quay lại thoát  -->
+                      <div class="col-md-6 col-sm-6 mb-2 mt-0">
+                        <span>
+                          <button  type="button" class="btn btn-outline-dark float-end" data-dismiss="modal"><i class="fa fa-reply"></i><a  data-i18n="btn-exit">Exit</a></button>                    
+                        </span> 
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!--/Thông tin cá nhân END--> 
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+
+<script type="text/javascript" src="{% static 'myjs/ajax.jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'myjs/user_manage.js' %}"></script>  
+
+<script type="text/javascript"  src="{% static 'myjs/menu.active.js' %}"></script>
+<script>
+    ACTIVE_MENUY('USER_MANAGE1') ;
+    $(document).ready(function() {
+      $('#table_Data').DataTable();
+    } );
+</script>
+{% endblock %}

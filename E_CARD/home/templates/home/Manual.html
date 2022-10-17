@@ -1,0 +1,166 @@
+
+
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Hướng dẫn sử dụng hệ thống
+{% endblock %}
+
+
+{% block mainbody %}
+
+<!-- plugin css for this page -->
+<link rel="stylesheet" href="{% static 'show_manual/lightgallery.min.css' %}">
+<link rel="stylesheet" href="{% static 'show_manual/style.css' %}">
+
+<div class="main-body">
+  <div class="page-wrapper">
+    <!-- Page-body start -->
+    <div class="page-body">
+      <div class="col-md-12 col-sm-12">
+
+        <div class="row">
+
+          <!--Liên lạc hỗ trợ-->
+          <div class="col-lg-12 grid-margin">
+            <div class="card" style="height:auto">
+              <div class="card-header">
+                <h5><i class="far fa-address-book f-22"></i><a data-i18n=""> LIÊN HỆ HỖ TRỢ (联系支持)</a></h5>
+              </div>
+              <div class="card-body">
+              
+                <div id="" class="row lightGallery">
+                  <div class=" contact">
+                    <div class="col-12 center">
+                        <p class='text-c-blue'>
+                          <i class="fad fa-user-tie f-16 text-info"></i>&emsp;Name: Vũ Văn Chiện<br/>
+                          <i class="fad fa-phone-volume f-16 text-info"></i>&emsp;Ext: 20888 / 20111<br/>
+                          <i class="fad fa-mobile-android-alt f-16 text-info"></i>&emsp;Mobile: 0348.236.333<br/>
+                          <i class="fad fa-at f-16 text-danger"></i>&emsp;Email: van-chien.vu@foxconn.com<br/>                  
+                        </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!--Hướng dẫn sử dụng hệ thống-->
+          <div class="col-lg-12 grid-margin">
+            <div class="card" style="height:auto">
+              <div class="card-header">
+                <h5><i class="fas fa-question-circle f-22"></i><a data-i18n=""> HƯỚNG DẪN SỬ DỤNG (用户手册)</a></h5>
+              </div>
+              <div class="card-body">
+              
+                <div id="lightgallery" class="row lightGallery">
+                  <a href="{% static 'show_manual/1.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="TỔNG QUAN (概述)"><img src="{% static 'show_manual/1.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/2.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="THÊM XÓA QUYỀN HẠN PHÒNG SERVER"><img src="{% static 'show_manual/2.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/3.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="TRA CỨU NHẬT KÝ RA VÀO PHÒNG SERVER"><img src="{% static 'show_manual/3.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/4.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="TRA CỨU NHẬT KÝ THAO TÁC"><img src="{% static 'show_manual/4.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/5.0.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="CÀI ĐẶT NHÓM QUYỀN HẠN"><img src="{% static 'show_manual/5.0.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/5.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="PHÂN QUYỀN CHO NHÓM QUYỀN HẠN"><img src="{% static 'show_manual/5.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/6.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="CẤP QUYỀN NGƯỜI DÙNG (用户权利给予)"><img src="{% static 'show_manual/6.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/7.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="THAY ĐỔI THÔNG TIN CÁ NHÂN (更新个人信息)"><img src="{% static 'show_manual/7.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/8.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="QUÊN MẬT KHẨU ĐĂNG NHẬP (忘记登录密码)"><img src="{% static 'show_manual/8.jpg' %}" alt="image small"></a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--Hướng dẫn tạo tài khoản-->
+          <div class="col-lg-12 grid-margin">
+            <div class="card " style="height:auto">
+              <div class="card-header">
+                <h5><i class="fab fa-creative-commons-by f-22"></i><a data-i18n=""> HƯỚNG DẪN TẠO TÀI KHOẢN (帐户创建指南)</a></h5>
+              </div>
+              <div class="card-body">
+                <div id="lightgallery-without-thumb" class="row lightGallery">
+                  <a href="{% static 'show_manual/9.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 1(第一步)"><img src="{% static 'show_manual/9.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/10.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 2(第 2 步)"><img src="{% static 'show_manual/10.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/11.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 3(第 3 步)"><img src="{% static 'show_manual/11.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/12.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 4(第 4 步)"><img src="{% static 'show_manual/12.jpg' %}" alt="image small"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+     
+          <!--Hướng dẫn cài đặt đơn mới-->       
+          <div class="col-lg-12 grid-margin" hidden>
+            <div class="card " style="height:auto">
+              <div class="card-header">
+                <h5><i class="fas fa-align-justify f-22"></i><a data-i18n=""> QUẢN LÝ XE VÀ TÀI XẾ (車輛和駕駛員管理)</a></h5>
+              </div>
+              <div class="card-body">
+                <div id="video-gallery" class="row lightGallery">
+                  <a href="{% static 'show_manual/13.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="Thông tin lái xe (司機信息) (STEP1)"><img src="{% static 'show_manual/13.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/14.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="Thông tin lái xe (司機信息) (STEP2)"><img src="{% static 'show_manual/14.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/15.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="Thông tin xe (車輛信息) (STEP1)"><img src="{% static 'show_manual/15.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/16.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="Thông tin xe (車輛信息) (STEP2)"><img src="{% static 'show_manual/16.jpg' %}" alt="image small"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+     
+          <!--Hướng dẫn Thao tác khác-->        
+          <div class="col-lg-12 grid-margin" hidden>
+            <div class="card " style="height:auto">
+              <div class="card-header">
+                <h5><i class="fas fa-file-signature f-22"></i><a data-i18n=""> CẤP PHÁT XE(申請單簽核)</a></h5>
+              </div>
+              <div class="card-body">
+                <div id="lightgallery1" class="row lightGallery">
+                  <a href="{% static 'show_manual/16.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 0(第 0 步)"><img src="{% static 'show_manual/16.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/17.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 1(第 1 步)"><img src="{% static 'show_manual/17.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/18.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 2(第 2 步)"><img src="{% static 'show_manual/18.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/19.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 3(第 3 步)"><img src="{% static 'show_manual/19.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/20.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 4(第 4 步)"><img src="{% static 'show_manual/20.jpg' %}" alt="image small"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Hướng dẫn Ghép chữ ký vào tệp FORM PDF-->        
+          <div class="col-lg-12 grid-margin" hidden>
+            <div class="card " style="height:auto">
+              <div class="card-header">
+                <h5><i class="fad fa-file-pdf f-22"></i><a data-i18n=""> Ghép chữ ký tệp PDF (合并 PDF 文件)</a></h5>
+              </div>
+              <div class="card-body">
+                <div id="lightgallery2" class="row lightGallery">
+                  <a href="{% static 'show_manual/21.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 1(第一步)"><img src="{% static 'show_manual/21.jpg' %}" alt="image small"></a>
+                  <a href="{% static 'show_manual/22.jpg' %}" class="image-tile" data-toggle="tooltip" data-placement="top" title="BƯỚC 2(第 2 步)"><img src="{% static 'show_manual/22.jpg' %}" alt="image small"></a>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+      
+
+          <!--   <footer class="footer">
+              <div class="container-fluid clearfix">
+                <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022 <a href="#">CNCS-VN</a>. All rights reserved.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted &amp; made with <i class="mdi mdi-heart text-danger"></i></span>
+              </div>
+            </footer>
+          -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="{% static 'show_manual/vendor.bundle.base.js' %}"></script>
+<script src="{% static 'show_manual/lightgallery-all.min.js' %}"></script>
+<script src="{% static 'show_manual/light-gallery.js' %}"></script>
+
+{% endblock  %}

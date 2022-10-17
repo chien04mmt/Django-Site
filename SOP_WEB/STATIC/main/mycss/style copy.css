@@ -1,0 +1,226 @@
+@media only screen and (max-width: 360px) {}
+
+
+/* Extra small devices (phones, 400px and down) */
+
+@media only screen and (max-width: 415px) {}
+
+
+/* Small devices (portrait tablets and large phones, 400px and up) */
+
+@media only screen and (min-width: 416px) {}
+
+
+/* Medium devices (landscape tablets, 576px and up) */
+
+@media only screen and (max-width: 576px) {}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 767px) {}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 1024px) {}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (max-width: 1280px) {}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+div label {
+    font-weight: 505 !important;
+    color: rgb(31, 24, 24) !important;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: #333;
+    /* old IE */
+    background-color: #333;
+    /* Modern Browsers */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 1px solid #9c24a0;
+    padding-left: 15px;
+    font-size: 13px;
+    outline: none;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+
+/* .form-group input,
+.form-group select,
+td input {
+    height: 35px;
+} */
+
+.form-group input::placeholder {
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-group input:valid~span,
+.form-group textarea {
+    display: block;
+}
+
+.form-group span i.hide-btn::before {
+    content: "f070";
+}
+
+
+/* .form-group span {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #8e44ad;
+    cursor: pointer;
+    display: none;
+} */
+
+.card {
+    width: 100%;
+    border-radius: 24px;
+    /* box-shadow: 7px 7px 5px lightblue; cornflowerblue*/
+    box-shadow: 7px 7px 10px #afa588;
+}
+
+.pcoded-navbar {
+    box-shadow: 7px 7px 10px #afa588 !important;
+}
+
+.card-header h5,
+.modal-title {
+    color: #000000 !important;
+}
+
+.card-header h5 i,
+.modal-header h5 i {
+    color: #1590e5 !important;
+}
+
+.img-fluid {
+    height: 40px;
+}
+
+#bg_user img {
+    padding: 0.8rem;
+    border-radius: 5px !important;
+    border: 1px solid #cccccc;
+    max-height: 400px;
+}
+
+.img-radius {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.img-flag {
+    width: 45px;
+    height: 35px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.container {
+    height: 100%;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.form-group input[type='radio'] {
+    height: 17px;
+    width: 17px;
+    vertical-align: middle;
+}
+
+div>.largerCheckbox {
+    transform: scale(1.6);
+    -webkit-transform: scale(1.6);
+    -moz-transform: scale(1.6);
+    -ms-transform: scale(1.6);
+    -o-transform: scale(1.6);
+}
+
+
+/* Style của icon tìm kiếm trong model phê duyệt */
+
+.field-icon {
+    float: right;
+    margin-right: 4px;
+    margin-top: -14px;
+    position: relative;
+    z-index: 2;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.field-icon :hover {
+    color: #0e8f24;
+}
+
+span button {
+    width: 100%;
+    border-radius: 5px !important;
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    -ms-border-radius: 5px !important;
+    -o-border-radius: 5px !important;
+}
+
+
+/* Style của icon cờ ngôn ngữ*/
+
+.dropdown-item:hover {
+    background-color: #012258 !important;
+    color: #ffffff !important;
+}
+
+.pcoded-inner-navbar {
+    overflow: auto !important;
+    /* position: fixed !important; */
+}
+
+.live-show {
+    height: 168px !important;
+    width: auto !important;
+    margin: auto;
+}
+
+#Show_docnolist {
+    max-height: 500px;
+    overflow: auto;
+}

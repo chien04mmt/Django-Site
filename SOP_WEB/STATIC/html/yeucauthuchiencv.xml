@@ -1,0 +1,392 @@
+<div class="main-body">
+    <!-- Page body --> 
+    <div class="page-wrapper">   
+    
+        <!-- <form class="form-control -sm  col-form-label-lg justify-content-center"> -->
+            <div class="row"> 
+
+                <!--Cột thông tin biểu mẫu Start-->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">                
+                        <div class="card-header">
+                            <h5 ><i class="fad fa-tags f-22"></i><a data-i18n="donyeucauthuchiencv" style="color:#000"> ĐƠN YÊU CẦU THỰC HIỆN CÔNG VĂN</a></h5>
+                            <!--<span>Add class of <code>.form-control  </code> with <code>&lt;input&gt;</code> tag</span>--> 
+                        </div>
+
+                        <div class="card-block "> 
+                            <!--form-->
+
+                                <div class="col-md-12" id="Div_area">
+
+                                    <div class="row title-subform" >
+                                        <h3 style=""><i class="fad fa-info-circle f-22"></i><a data-i18n="donthuchienvk" style="font-size:16px;"> 文 書 會 辦 單 Đơn thực  hiện văn kiện</a></h3>
+                                    </div>
+
+                                    <div class=" mb-0 card-table flex-fill" style="padding: 0px;border: 1px solid #dee2e6;padding:10px 10px;">                   
+                                        <div class="card-body" style="padding: 0px;">
+                                            <div class="row"> 
+
+                                                <!--Loại công văn-->
+                                                <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">                                                    
+                                                    <label class="mb-0 mt-0" data-i18n="loaicongvan">Loại công văn</label><span class="text-danger">(*):</span>
+                                                    <select id="Loaicongvan" name="" class="form-control fill" title="Please fill this fiel.">
+                                                            <option value="Normal" data-i18n="Normal">Thông thường</option>                                    
+                                                            <option value="Urgent" data-i18n="Urgent"><span>Hỏa tốc</span></option>  
+                                                    </select>
+                                                    <i class="fad fa-siren-on f-16 text-danger" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>     
+
+                                                <!--Số đơn-->
+                                                <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">                                                     
+                                                        <label class="mb-0 mt-0" data-i18n="sodon">Số đơn</label><span class="text-danger">:</span>
+                                                        <input class="form-control" type="text" id="Sodon" name="" value="SOP-H" required="Please not entry.." title="Please fill this fiel."  readonly>
+                                                        <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Người trình đơn-->
+                                                <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">                                                    
+                                                        <label class="mb-0 mt-0" data-i18n="nguoitrinhdon">Người trình đơn</label><span class="text-danger">(*):</span>
+                                                        <input class="form-control" type="text" id="Nguoitrinhdon" name="" required="Please not entry.." title="Please fill this fiel."  readonly>
+                                                        <i class="fad fa-user f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>                                               
+
+
+                                                <!--Ngày nhận văn kiện-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="ngaynhanvk">Ngày nhận CV</label><span class="text-danger">(*):</span>
+                                                        <input class="form-control" type="text" id="Ngaynhanvankien" name="" required="Please not entry.." title="Please fill this fiel." value="" >
+                                                        <i class="fad fa-calendar f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Số biên nhận-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">                                                  
+                                                        <label class="mb-0 mt-0" data-i18n="sobiennhan">Mã CV</label><span class="text-danger">(*):</span>
+                                                        <input class="form-control" type="text" id="Sobiennhan" name="" required="Please not entry.." title="Please fill this fiel.">
+                                                        <i class="fad fa-leaf f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>                                                
+
+                                                <!--Ngày trình ký giám đốc-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="ngaytrinhkygd">Ngày trình TGĐ</label><span class="text-danger">(*):</span>
+                                                        <input class="form-control" type="text" id="NgaytrinhkyGD" name="" required="Please not entry.." title="Please fill this fiel." value=""  readonly>
+                                                         <i class="fad fa-calendar f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Số văn kiện-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">                                                  
+                                                        <label class="mb-0 mt-0" data-i18n="sovk">來文文號/ Số trên CV</label><span class="text-danger">(*):</span>
+                                                        <input class="form-control" type="text" id="Sovankien" name="" required="Please not entry.." title="Please fill this fiel.">
+                                                        <i class="fad fa-leaf f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <!--Nội dung công văn-->
+                                                <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <span class="text-success"><i class="fad fa-font f-18"></i></span>
+                                                        <label class="mb-0 mt-0" data-i18n="noidungcv">主旨:Nội dung công văn</label><span class="text-danger">(*):</span>
+                                                        <textarea id="Noidungcongvan" class="form-control" type="text" required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 49px;"></textarea>
+                                                        <span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <!--Có cần văn bản phụ lục-->
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4 mt-0" hidden>
+                                                    <div class="form-check form-check-inline">                                                        
+                                                        <input class="form-check-input" type="checkbox" id="Vanbanphuluc" onclick="SetValue_CheckBox(this)" value="0">
+                                                        <label class="form-check-label" for="Vanbanphuluc">Có cần văn bản phụ lục</label>
+                                                    </div>
+                                                </div>                                               
+
+                                                <!--File đính kèm PDF-->
+                                                <div class="col-md-10 col-sm-8 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0" id="frm_csftk">
+                                                        <input type="hidden" name="csrfmiddlewaretoken" value="BKBuMJQMeL27SRZhvy39oQ1kmdXVqaFM80EhLte2qTve5HADt607drLfx82V65Ae" hidden>
+                                                        <div class="ml-0">
+                                                            <span class="text-success"> <i class="fa fa-file-pdf f-18 text-danger" aria-hidden="true"></i></span>
+                                                            <label class="mb-0 mt-0" data-i18n="thempdf"> Chọn tệp công văn scan(PDF)</label><span class="text-danger">(*):</span>
+                                                            <input id="TepscanPDF" class="form-control forn-control-sm btn-outline-warning" type="file" name="TepscanPDF" value="" accept="file_extension(,.pdf,)">
+                                                           <span class="focus-input100"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2 col-sm-4 col-12 mb-4 mt-1">
+                                                    <div id="" class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="push1"></label><span class="text-danger"></span>
+                                                        <button id="send_Upload_1" class="form-control btn btn-outline-info waves-effect waves-light" type="button" name="btn_upload" value="" onclick="Upload_PDF()"><i class="fa fa-upload"></i> <span  data-i18n="Upload">Đăng</span></button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!--Hiển thị file PDF -->
+                                                <div class="col-md-6 col-sm-5 mb-4 ml-2 mt-2">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <li type="button" class="text-success" id="show_PDF" onclick="ShowPDF(this);" style="cursor: pointer;"><i class="fas fa-eye"></i> &ensp;<a id="show_pdf" data-i18n="view-pdf-">Show PDF</a></li>
+                                                        <a id="file_PDF" style="color:#448aff;text-decoration:underline;" href="javascript:void(0);" ></a>                            
+                                                    </div>
+                                                </div>
+
+                                                <!--Tải ứng dụng Adobe reader -->
+                                                <div class="col-md-5 col-sm-6 mb-4 mt-2">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <li type="button">
+                                                        <a class="text-danger" href="#" onclick="window.open('/static/media/AdbeRdr11010-en-US.exe', '_blank')">
+                                                        <i class="fad fa-box-full"></i></a><a data-i18n="install-pdf"> Nếu không hiển thị PDF hãy cài đặt:</a>                            
+                                                        <a style="color:#11c15b;text-decoration:underline;cursor: pointer;" onclick="window.open('/static/media/AdbeRdr11010-en-US.exe', '_blank')">AdbeRdr11010-en-US.exe</a></li>
+                                                    </div>
+                                                </div>
+                                                                  
+                                            </div>                                
+                                        </div>
+                                    </div>
+
+                                    <!--Tổng giám đốc phê duyệt-->      
+                                    <div class="row mt-4 title-subform" hidden>
+                                        <h3 style="color:#0072ff"><i class="fad fa-info-circle f-22"></i> <a data-i18n="tonggiamdocpheduyet" style="font-size:16px;">總經理批示:TGĐ phê duyệt</a></h3>
+                                    </div>
+
+                                    <div class=" mb-0 card-table flex-fill mt-0" style="padding: 0px;border: 1px solid #dee2e6;padding:10px 10px;" hidden>                   
+                                        <div class="card-body" style="padding: 0px;">
+                                            <div class="row">
+
+                                                <!--ghi chú cho đơn-->
+                                                <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="ghichu">Ghi chú</label><span class="text-danger">:</span>
+                                                        <input id="Ghichu" class="form-control" type="text" required="Please not entry.." title="Please fill this fiel." />
+                                                        <i class="fad fa-comment-edit f-16 text-success"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                                <!--Đơn vị xin (chủ sự)-->
+                                                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 mb-4 mt-0" id="Div_donvichusu">
+                                                    <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="donvichusu">Đơn vị phụ trách CV chính</label><span class="text-danger">(*):</span>
+                                                    <select id="Donvichusu" name="" onchange="ChoiceOption_AddLi_Ul(this,'ul_Donvichusu')" class="form-control fill" title="Please fill this fiel.">
+                                                       
+                                                    </select>
+                                                    <i class="fad fa-users-crown f-16 text-danger" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-12 mb-0 mt-4">
+                                                    <ul class="select-multi" id="ul_Donvichusu">
+                                                       
+                                                    </ul>
+                                                </div>
+                                               
+
+                                                <!--Danh sách đơn vị liên quan họp bàn-->
+                                                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">                                                       
+                                                        <label class="mb-0 mt-0" data-i18n="dvhopban">Đơn vị hỗ trợ</label><span class="text-danger">:</span>
+                                                        <input hidden class="form-control" type="text" id="Donvihopban1" data-toggle="dropdown" aria-expanded="false" onkeyup="filterFunction('Donvihopban', 'myDropdown_Donvihopban')" autocomplete="off" name="" required="Please not entry.." title="Please fill this fiel." >
+                                                        <select id="Donvihopban" name="" onchange="ChoiceOption_AddLi_Ul(this,'ul_Donvihopban')" class="form-control fill" title="Please fill this fiel.">
+                                                       
+                                                        </select>
+                                                        <i class="fad fa-users-class f-16 text-danger" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-12 mb-0 mt-4">                          
+                                                    <ul class="select-multi" id="ul_Donvihopban">
+                                                    </ul>
+                                                </div>  
+
+
+                                                <!--Đơn vị khác-->  
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-1 mt-0">
+                                                    <div class="form-check form-check-inline">                                                        
+                                                        <input class="form-check-input" type="checkbox" id="Chondvkhac" onclick="SetValue_CheckBox(this);Show_Hide_Dovikhac(this)" value="0">
+                                                        <label class="form-check-label" for="Chondvkhac" data-i18n="donvikhac">其他部門:Đơn vị khác</label>
+                                                    </div>
+                                                </div>
+                                                <!--danh sách đơn vị khác-->
+                                                <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-0" id="Div_Donvikhac" hidden>
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="danhsachdvkhac">Danh sách đơn vị khác</label><span class="text-danger">:</span>
+                                                        <input id="Donvikhac" class="form-control" type="text" required="Please not entry.." title="Please fill this fiel." />
+                                                        <i class="fad fa-user-friends f-16 text-info"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>                                
+                                        </div>
+                                    </div>
+                                    
+
+
+                                    <!--Người thực hiện-->      
+                                    <div class="row mt-4 title-subform" hidden>
+                                        <h3 style="color:#0072ff"><i class="fad fa-info-circle f-22"></i> <a data-i18n="nguoithuchien" style="font-size:16px;">承辦單位 Đơn vị phụ trách</a></h3>
+                                    </div>
+
+                                    <div class=" mb-0 card-table flex-fill mt-0" style="padding: 0px;border: 1px solid #dee2e6;padding:10px 10px;" hidden>                   
+                                        <div class="card-body" style="padding: 0px;">
+                                            <div class="row">
+
+                                              
+
+                                                <!--Văn kiện có được đóng sau cuộc họp-->  
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-1 mt-0">
+                                                    <div class="form-check form-check-inline">                                                        
+                                                        <input class="form-check-input" type="checkbox" id="Dongsauhop" onclick="SetValue_CheckBox(this)" value="0">
+                                                        <label class="form-check-label" for="Dongsauhop">會辦後結案:Kết án sau khi xử lý</label>
+                                                    </div>
+                                                </div>  
+
+                                                <!--Có cần trả lời văn bản -->  
+                                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-112 mb-4 mt-0">
+                                                    <div class="form-check form-check-inline">                                                        
+                                                        <input class="form-check-input" type="checkbox" id="Traloivanban" onclick="SetValue_CheckBox(this);Show_Hide_uploadvbtraloi(this)" value="0">
+                                                        <label class="form-check-label" for="Traloivanban">需回文:Trả lời kết quả xử lý CV</label>
+                                                    </div>
+                                                </div>  
+
+                                               
+                                                <!--Văn bản cần trả lời-->
+                                                <div class="col-xl-2 col-lg-4 col-md-4 col-sm-8 col-12 mb-4 mt-0" id="Div_chonvbtraloi" hidden>
+                                                    <div class="form-group mb-0 mt-0">                                                      
+                                                        <div class="ml-0">
+                                                            <span class="text-success"> <i class="fa fa-file-pdf f-18 text-info" aria-hidden="true"></i></span>
+                                                            <label class="mb-0 mt-0" data-i18n="vanbantraloi">Văn bản trả lời</label><span class="text-danger">(*):</span>
+                                                            <input id="Tepvbtraloi" class="form-control forn-control-sm btn-outline-warning" type="file" name="Tepvbtraloi" value="" accept="file_extension(,.pdf,)">
+                                                        <span class="focus-input100"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-xl-1 col-lg-2 col-md-2 col-sm-4 col-12 mb-4 mt-1" id="Div_btnvbtraloi" hidden>
+                                                    <div id="" class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="push1"></label><span class="text-danger"></span>
+                                                        <button class="form-control btn btn-outline-info waves-effect waves-light" type="button" name="btn_upload" value="" onclick="Upload_VBTRALOI()"><i class="fa fa-upload"></i> <span  data-i18n="Upload">Đăng</span></button>
+                                                    </div>
+                                                </div>
+                                                <!--tệp trả lời-->
+                                                <div class="col-xl-9 col-lg-6 col-md-6 col-sm-6 mb-0 mt-4" id="Div_tenvbtraloi" hidden>
+                                                    <div class="form-group mb-0 mt-0">                                                        
+                                                        <a id="file_vbtraloi" style="color:#448aff;text-decoration:underline;" href="javascript:void(0);" ></a>                            
+                                                    </div>
+                                                </div>
+                                            
+
+                                                <!--Thời gian xử lý-->
+                                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-112 mb-4 mt-0">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="thoigianxyly">處理時間:Thời gian xử lý CV</label><span class="text-danger">:</span>
+                                                        <input class="form-control" type="text" id="Thoigianxyly" name="" required="Please not entry.." title="Please fill this fiel." style="pointer-events:none">
+                                                        <i class="fad fa-calendar f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                                </div>                                                
+
+
+                                                <!--Ý kiến khác-->
+                                                <div class="col-lg-12 col-md-12 col-sm-12 mb-0 mt-0">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <span class="fas fa-comment-edit f-16 text-success"></span>
+                                                        <label class="mb-0 mt-0" data-i18n="ykienkhac">其他意見:Ý kiến khác</label><span class="text-danger">:</span>
+                                                        <textarea id="Ykienkhac" class="form-control" type="text" required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 49px;" readonly></textarea>
+                                                        <span class="focus-input100"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>                                
+                                        </div>
+                                    </div>
+                                    
+                                               
+                                    <!--Bảng lưu trình ký-->      
+                                    <div class=" table-responsive text-center mt-2" style="width:100%;overflow:hidden" hidden>
+                                        <table id="table_vanban" class="table-sm table-hover table-bordered " style="width: 100%; font-size: 12px;overflow:hidden">
+                                            <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                                                <th class="text-left text-bold bg-violet" colspan="8"><i class="fad fad fa-file-signature f-18"></i><a> Lưu trình ký</a></th> 
+                                            </thead>
+                                            <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">                                                            
+                                                <th class="text-bold text-bold " data-toggle="tooltip" data-placement="top" title="Vị trí" data-original-title="Vị trí" style="width:100px">Vị trí</td>
+                                                <th class="text-center text-bold ">Bộ phận </th>
+                                                <th class="text-center text-bold ">Họ tên</th>
+                                                <th class="text-center text-bold ">Số điện thoại</th>   
+                                                <th class="text-center text-bold ">Ngày giờ</th>       
+                                                <th class="text-center text-bold ">Tình trạng ký</th>      
+                                                <th class="text-center text-bold ">Thời gian</th>      
+                                                <th class="text-center text-bold ">Ghi chú</th>    
+                                            </thead>
+                                            <tbody id="tbody_phuluckemtheo">   
+                                              
+                                            </tbody>   
+                                          
+                                        </table>
+                                    </div>  
+                                  
+                                    <!--Cụm nút phê duyệt và tạo đơn-->  
+                                    <div class="">
+                                        <div class=" text-center">
+
+                                            <hr>   
+
+                                            <div class="row justify-content-center ">
+                                                <!--Button tạo đơn -->
+                                                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 mb-2 mt-0" id="Div_btnCreateArr">
+                                                    <span style="color:white;">
+                                                        <button id="btn_timkiem" type="button" class="btn btn-outline-info" onclick="TaoYeuCauCongVanDen()"><i class="fas fa-plus fa-x"></i><a data-i18n="btn-newapp">Tạo đơn</a></button>                
+                                                    </span>
+                                                </div>
+
+                                                <!--Button thoát-->
+                                                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 mb-2 mt-0">  
+                                                    <span style="color:white;">                                                 
+                                                        <button onclick="window.open('/home/','_self')"  type="button" class="btn btn-outline-info"><i class="fas fa-sign-out fa-x"></i> <a data-i18n="btn-exit"> Thoát</a></button>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            <!--/form--> 
+                        </div>
+                    </div>
+                </div>
+                <!--End Cột thông tin biểu mẫu-->
+        
+            </div>
+        <!-- </form> -->
+     
+    </div>
+    <!-- Page body end -->    
+</div>
+
+
+
+<script type="text/javascript" src="/static/main/myjs/quanlycongvanden.js"></script>    
+
+<script>
+$("#Nguoitrinhdon").val($("#user_login").text());
+$("#NgaytrinhkyGD").val(GET_STRING_DATETIME1(GET_TIME_NOW()));
+Get_Department();
+ACTIVE_MENUY($('#YEUCAU_CV')) ;
+    $( function() {
+        Move_modal('modal_upfilevb');
+    } );
+    $( function() {
+      $('#Ngaynhanvankien,#Thoigianxyly').datepicker();
+   } );
+    document.getElementById("btn_timkiem").setAttribute("onclick", funtionName);
+    SHOW_LANG_();
+</script>

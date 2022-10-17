@@ -1,0 +1,5 @@
+.modal-body label {
+    font-style: italic !important;
+    /* font-weight: bold !important; */
+    color: #1d1e20 !important;
+}

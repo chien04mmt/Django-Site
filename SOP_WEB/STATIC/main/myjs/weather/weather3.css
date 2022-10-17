@@ -1,0 +1,270 @@
+.booked-prime-days-in {
+	text-align: center;
+	font-family: "Roboto", "Open Sans", sans-serif;
+}
+.widget-type-prime-days * {
+	font-family:  verdana, sans-serif;
+}
+.widget-type-prime-days {
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+}
+
+.widget-type-prime-days {
+	text-decoration: none;
+}
+
+.booked-prime-days-data {
+	padding: 10px;
+}
+
+.booked-prime-days-data .booked-pd-today {
+	display: flex;
+	margin-bottom: 10px;
+	align-items: center;
+}
+
+.booked-prime-days-data .booked-pd-today-img {
+	background-image: url(./wmedium1.webp) !important;
+	background-repeat: no-repeat !important;
+	width: 50px;
+	height: 42px;
+}
+.booked-prime-days-data .booked-prime-days-data {
+	display: inline-flex;
+	flex-direction: column;
+}
+.booked-prime-days-data .booked-pd-today-temperature {
+	margin-right: 3px;
+	display: flex;
+	align-items: flex-end;
+	margin-left: 3px;
+}
+.booked-prime-days-data .booked-pd-today-extreme {
+	margin-left: 5px;
+	color: #333;
+	font-size: 12px;
+}
+.booked-prime-days-data .booked-pd {
+	line-height: 1.5;
+	font-weight: 600;
+}
+.booked-prime-days-data .booked-pd span{
+	font-weight: 300;
+}
+.booked-prime-days-data .booked-wzs-pd-val {
+	display: flex;
+	font-weight: 600;
+	text-decoration: none;
+	position: relative;
+	color: #333;
+	align-items: center;
+}
+.booked-prime-days-data .booked-wzs-pd-number {
+	font: bold 35px/35px Arial, sans-serif !important;
+	letter-spacing: -1px;
+	margin-right: 4px !important;
+	display: flex;
+}
+.booked-prime-days-data .booked-wzs-pd-dergee {
+	text-align: center;
+}
+.booked-prime-days-data .booked-wzs-pd-dergee-val {
+	font-size: 28px !important;
+	font-weight: 600;
+	height: 20px;
+	margin-top: -2px;
+}
+.booked-prime-days-data .booked-wzs-pd-dergee-name {
+	font-size: 13px;
+}
+
+.booked-prime-days-data .booked-pd-nidi {
+	display: block !important;
+	width: 26px !important;
+	height: 26px !important;
+	margin: 0 auto !important;
+	background-image: url(./wsmall.webp) !important;
+	background-repeat: no-repeat !important;
+}
+.booked-pd-nidi.wrzs-01 {background-position: -5px -7px;}
+.booked-pd-nidi.wrzs-02 {background-position: -5px -63px;}
+.booked-pd-nidi.wrzs-03 {background-position: -5px -123px;}
+.booked-pd-nidi.wrzs-04 {background-position: -5px -181px;}
+.booked-pd-nidi.wrzs-05 {background-position: -5px -241px;}
+.booked-pd-nidi.wrzs-06 {background-position: -5px -302px;}
+.booked-pd-nidi.wrzs-07 {background-position: -5px -362px;}
+.booked-pd-nidi.wrzs-08 {background-position: -5px -420px;}
+.booked-pd-nidi.wrzs-11 {background-position: -5px -482px;}
+.booked-pd-nidi.wrzs-12 {background-position: -5px -541px;}
+.booked-pd-nidi.wrzs-13 {background-position: -5px -603px;}
+.booked-pd-nidi.wrzs-14 {background-position: -5px -663px;}
+.booked-pd-nidi.wrzs-15 {background-position: -5px -724px;}
+.booked-pd-nidi.wrzs-16 {background-position: -5px -784px;}
+.booked-pd-nidi.wrzs-17 {background-position: -5px -843px;}
+.booked-pd-nidi.wrzs-18 {background-position: -5px -901px;}
+.booked-pd-nidi.wrzs-19 {background-position: -5px -963px;}
+.booked-pd-nidi.wrzs-20 {background-position: -5px -1025px;}
+.booked-pd-nidi.wrzs-21 {background-position: -5px -1085px;}
+.booked-pd-nidi.wrzs-22 {background-position: -5px -1143px;}
+.booked-pd-nidi.wrzs-23 {background-position: -5px -1205px;}
+.booked-pd-nidi.wrzs-24 {background-position: -5px -1262px;}
+.booked-pd-nidi.wrzs-25 {background-position: -5px -1322px;}
+.booked-pd-nidi.wrzs-26 {background-position: -5px -1383px;}
+.booked-pd-nidi.wrzs-29 {background-position: -5px -1442px;}
+.booked-pd-nidi.wrzs-30 {background-position: 100% -1503px;}
+.booked-pd-nidi.wrzs-31 {background-position: -5px -1564px;}
+.booked-pd-nidi.wrzs-32 {background-position: -5px -1624px;}
+.booked-pd-nidi.wrzs-33 {background-position: -5px -1684px;}
+.booked-pd-nidi.wrzs-34 {background-position: -5px -1744px;}
+.booked-pd-nidi.wrzs-35 {background-position: -5px -1804px;}
+.booked-pd-nidi.wrzs-36 {background-position: -5px -1864px;}
+.booked-pd-nidi.wrzs-37 {background-position: -5px -1923px;}
+.booked-pd-nidi.wrzs-38 {background-position: -5px -1983px;}
+.booked-pd-nidi.wrzs-39 {background-position: -5px -2042px;}
+.booked-pd-nidi.wrzs-40 {background-position: -5px -2102px;}
+.booked-pd-nidi.wrzs-41 {background-position: -5px -2164px;}
+.booked-pd-nidi.wrzs-42 {background-position: -5px -2223px;}
+.booked-pd-nidi.wrzs-43 {background-position: -5px -2284px;}
+.booked-pd-nidi.wrzs-44 {background-position: -5px -2345px;}
+
+.booked-pd-today-img.wrz-01 {
+	background-position: center -2px;
+}
+.booked-pd-today-img.wrz-02 {
+	background-position: center -107px;
+}
+.booked-pd-today-img.wrz-03 {
+	background-position: center -206px;
+}
+.booked-pd-today-img.wrz-04 {
+	background-position: center -307px;
+}
+.booked-pd-today-img.wrz-05 {
+	background-position: center -404px;
+}
+.booked-pd-today-img.wrz-06 {
+	background-position: center -504px;
+}
+.booked-pd-today-img.wrz-07 {
+	background-position: center -604px;
+}
+.booked-pd-today-img.wrz-08 {
+	background-position: center -704px;
+}
+.booked-pd-today-img.wrz-09 {
+	background-position: center -804px;
+}
+.booked-pd-today-img.wrz-10 {
+	background-position: center -797px;
+}
+.booked-pd-today-img.wrz-11 {
+	background-position: center -905px;
+}
+.booked-pd-today-img.wrz-13,
+.booked-pd-today-img.wrz-14 {
+	background-position: center -1104px;
+}
+.booked-pd-today-img.wrz-15 {
+	background-position: center -1204px;
+}
+.booked-pd-today-img.wrz-16 {
+	background-position: center -1404px;
+}
+.booked-pd-today-img.wrz-17 {
+	background-position: center -1304px;
+}
+.booked-pd-today-img.wrz-18,
+.booked-pd-today-img.wrz-19 {
+	background-position: center -1604px;
+}
+.booked-pd-today-img.wrz-20,
+.booked-pd-today-img.wrz-21 {
+	background-position: center -1804px;
+}
+.booked-pd-today-img.wrz-22 {
+	background-position: center -1904px;
+}
+.booked-pd-today-img.wrz-23 {
+	background-position: center -2008px;
+}
+.booked-pd-today-img.wrz-24 {
+	background-position: center -2104px;
+}
+.booked-pd-today-img.wrz-25 {
+	background-position: center -2204px;
+}
+.booked-pd-today-img.wrz-26 {
+	background-position: center -2404px;
+}
+.booked-pd-today-img.wrz-29 {
+	background-position: center -2304px;
+}
+.booked-pd-today-img.wrz-30 {
+	background-position: center -2505px;
+}
+.booked-pd-today-img.wrz-31 {
+	background-position: center -2604px;
+}
+.booked-pd-today-img.wrz-32 {
+	background-position: center -2704px;
+}
+.booked-pd-today-img.wrz-33 {
+	background-position: center -2804px;
+}
+.booked-pd-today-img.wrz-34 {
+	background-position: center -2904px;
+}
+.booked-pd-today-img.wrz-35 {
+	background-position: center -3104px;
+}
+.booked-pd-today-img.wrz-36 {
+	background-position: center -3204px;
+}
+.booked-pd-today-img.wrz-37 {
+	background-position: center -3204px;
+}
+.booked-pd-today-img.wrz-38 {
+	background-position: center -3304px;
+}
+.booked-pd-today-img.wrz-39 {
+	background-position: center -3504px;
+}
+.booked-pd-today-img.wrz-40 {
+	background-position: center -3504px;
+}
+.booked-pd-today-img.wrz-41 {
+	background-position: center -3704px;
+}
+.booked-pd-today-img.wrz-42 {
+	background-position: center -3704px;
+}
+.booked-pd-today-img.wrz-43 {
+	background-position: center -3804px;
+}
+.booked-pd-today-img.wrz-44 {
+	background-position: center -3904px;
+}
+
+.booked-prime-days-data .booked-pd-ndays {
+	display: flex;
+	justify-content: space-between;
+}
+.booked-prime-days-data .booked-pd-nitem {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.booked-prime-days-data .booked-pd-nidw {
+	font-size: 13px;
+	color: #8c8b8b;
+	text-align: center;
+	margin-top: 3px;
+}
+
+.widget-weather-content-text {
+	text-indent: -99999px;
+	overflow: hidden;
+	position: absolute;
+}

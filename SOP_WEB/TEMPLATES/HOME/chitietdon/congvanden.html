@@ -1,0 +1,522 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Hệ thống quản lý công văn
+{% endblock %}
+
+{% block mainbody %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/mycss/new.app.css' %}">
+
+<div class="main-body">
+  <!-- Page body --> 
+  <div class="page-wrapper">   
+  
+      <!-- <form class="form-control -sm  col-form-label-lg justify-content-center"> -->
+        <div class="main-body">
+          <!-- Page body --> 
+          <div class="page-wrapper">   
+          
+              <!-- <form class="form-control -sm  col-form-label-lg justify-content-center"> -->
+                  <div class="row"> 
+      
+                      <!--Cột thông tin biểu mẫu Start-->
+                      <div class="col-lg-12 col-md-12 col-sm-12">
+                          <div class="card">                
+                              <div class="card-header">
+                                  <h5 ><i class="fad fa-tags f-22"></i><a data-i18n="donyeucauthuchiencv" style="color:#000"> ĐƠN YÊU CẦU THỰC HIỆN CÔNG VĂN</a></h5>
+                                  <!--<span>Add class of <code>.form-control  </code> with <code>&lt;input&gt;</code> tag</span>--> 
+                              </div>
+      
+                              <div class="card-block "> 
+                                  <!--form-->
+      
+                                      <div class="col-md-12" id="Div_area">
+      
+                                          <div class="row title-subform" >
+                                              <h3 style=""><i class="fad fa-info-circle f-22"></i><a data-i18n="donthuchienvk" style="font-size:16px;"> 文 書 會 辦 單 Đơn thực  hiện văn kiện</a></h3>
+                                          </div>
+      
+                                          <div class=" mb-0 card-table flex-fill" style="padding: 0px;border: 1px solid #dee2e6;padding:10px 10px;">                   
+                                              <div class="card-body" style="padding: 0px;">
+                                                  <div class="row"> 
+      
+                                                      <!--Loại công văn-->
+                                                      <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">                                                    
+                                                          <label class="mb-0 mt-0" data-i18n="loaicongvan">Loại công văn</label><span class="text-danger">(*):</span>
+                                                          <select id="Loaicongvan" name="" value="{{sql.Loaicongvan}}" class="form-control fill" title="Please fill this fiel." >
+                                                                  <option value="Normal" data-i18n="Normal">Thông thường</option>                                    
+                                                                  <option value="Urgent" data-i18n="Urgent"><span>Hỏa tốc</span></option>  
+                                                          </select>
+                                                          <i class="fad fa-siren-on f-16 text-danger" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>     
+      
+                                                      <!--Số đơn-->
+                                                      <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <i class="far fa-book f-16 text-success" aria-hidden="true"></i>
+                                                              <label class="mb-0 mt-0" data-i18n="sodon">Số đơn</label><span class="text-danger">:</span>
+                                                              <input class="form-control" type="text" id="Sodon" name="" value="{{sql.Sodon}}" required="Please not entry.." title="Please fill this fiel."  readonly>
+                                                              <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                      <!--Người trình đơn-->
+                                                      <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <i class="fad fa-user f-16 text-success" aria-hidden="true"></i>
+                                                              <label class="mb-0 mt-0" data-i18n="nguoitrinhdon">Người trình đơn</label><span class="text-danger">(*):</span>
+                                                              <input class="form-control" type="text" id="Nguoitrinhdon" name="" value="{{sql.Nguoitrinhdon}}" required="Please not entry.." title="Please fill this fiel."  readonly>
+                                                              <i class="fad fa-user f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>                                               
+      
+      
+                                                      <!--Ngày nhận văn kiện-->
+                                                      <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <label class="mb-0 mt-0" data-i18n="ngaynhanvk">Ngày nhận CV</label><span class="text-danger">(*):</span>
+                                                              <input class="form-control" type="text" id="Ngaynhanvankien" name="" value="{{sql.Ngaynhanvankien|date:'Y-m-d'}}" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                              <i class="fad fa-calendar f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                      <!--Số biên nhận-->
+                                                      <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">                                                  
+                                                              <label class="mb-0 mt-0" data-i18n="sobiennhan">Mã CV</label><span class="text-danger">(*):</span>
+                                                              <input class="form-control" type="text" id="Sobiennhan" name="" value="{{sql.Sobiennhan}}" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                              <i class="fad fa-leaf f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>                                                
+      
+                                                      <!--Ngày trình ký giám đốc-->
+                                                      <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <label class="mb-0 mt-0" data-i18n="ngaytrinhkygd">Ngày trình TGĐ</label><span class="text-danger">(*):</span>
+                                                              <input class="form-control" type="text" id="NgaytrinhkyGD" name="" value="{{sql.NgaytrinhkyGD|date:'Y-m-d H:i' }}" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                               <i class="fad fa-calendar f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                      <!--Số văn kiện-->
+                                                      <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">                                                  
+                                                              <label class="mb-0 mt-0" data-i18n="sovk">來文文號/ Số trên CV</label><span class="text-danger">(*):</span>
+                                                              <input class="form-control" type="text" id="Sovankien" name="" value="{{sql.Sovankien}}" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                              <i class="fad fa-leaf f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                      
+                                                      <!--Nội dung công văn-->
+                                                      <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <span class="text-success"><i class="fad fa-font f-18"></i></span>
+                                                              <label class="mb-0 mt-0" data-i18n="noidungcv">主旨:Nội dung công văn</label><span class="text-danger">(*):</span>
+                                                              <textarea id="Noidungcongvan" class="form-control" type="text"  required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 49px;" readonly>{{sql.Noidungcongvan}}</textarea>
+                                                              <span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                      
+                                                      <!--Có cần văn bản phụ lục-->
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-4 mt-0" hidden>
+                                                          <div class="form-check form-check-inline">                                                        
+                                                              <input class="form-check-input" type="checkbox" id="Vanbanphuluc" onclick="SetValue_CheckBox(this)" value="{{sql.Vanbanphuluc}}">
+                                                              <label class="form-check-label" for="Vanbanphuluc">Có cần văn bản phụ lục</label>
+                                                          </div>
+                                                      </div>                                               
+      
+                                                      <!--File đính kèm PDF-->
+                                                      <div class="col-md-10 col-sm-8 col-12 mb-4 mt-0" hidden>
+                                                          <div class="form-group mb-0 mt-0" id="frm_csftk">
+                                                              <input type="hidden" name="csrfmiddlewaretoken" value="BKBuMJQMeL27SRZhvy39oQ1kmdXVqaFM80EhLte2qTve5HADt607drLfx82V65Ae" hidden>
+                                                              <div class="ml-0">
+                                                                  <span class="text-success"> <i class="fa fa-file-pdf f-18 text-danger" aria-hidden="true"></i></span>
+                                                                  <label class="mb-0 mt-0" data-i18n="thempdf"> Chọn tệp công văn scan(PDF)</label><span class="text-danger">(*):</span>
+                                                                  <input id="TepscanPDF" class="form-control forn-control-sm btn-outline-warning" type="file" name="TepscanPDF" value="" accept="file_extension(,.pdf,)">
+                                                                 <span class="focus-input100"></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+      
+                                                      <div class="col-md-2 col-sm-4 col-12 mb-4 mt-1" hidden>
+                                                          <div id="" class="form-group mb-0 mt-0">
+                                                              <label class="mb-0 mt-0" data-i18n="push1"></label><span class="text-danger"></span>
+                                                              <button id="send_Upload_1" class="form-control btn btn-outline-info waves-effect waves-light" type="button" name="btn_upload" value="" onclick="Upload_PDF()"><i class="fa fa-upload"></i> <span  data-i18n="Upload">Đăng</span></button>
+                                                          </div>
+                                                      </div>
+                                                      
+                                                      <!--Hiển thị file PDF -->
+                                                      <div class="col-md-6 col-sm-5 mb-4 ml-0 mt-2" {{Show_TepPDF}}>
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <li type="button" class="text-success" id="show_PDF" onclick="ShowPDF(this);" style="cursor: pointer;"><span class="fas fa-eye"></span> &ensp;<a id="show_pdf" data-i18n="view-pdf-">Show PDF</a></li>
+                                                              <a id="file_PDF" style="color:#448aff;text-decoration:underline;" href="javascript:void(0);" onclick="window.open('/static/media/{{sql.TepscanPDF}}','_blank')">{{sql.TepscanPDF}}</a>                            
+                                                          </div>
+                                                      </div>
+      
+                                                      <!--Tải ứng dụng Adobe reader -->
+                                                      <div class="col-md-5 col-sm-6 mb-4 mt-2">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <li type="button">
+                                                              <a class="text-danger" href="#" onclick="window.open('/static/media/AdbeRdr11010-en-US.exe', '_blank')">
+                                                              <i class="fad fa-box-full"></i></a><a data-i18n="install-pdf"> Nếu không hiển thị PDF hãy cài đặt:</a>                            
+                                                              <a style="color:#11c15b;text-decoration:underline;cursor: pointer;" onclick="window.open('/static/media/AdbeRdr11010-en-US.exe', '_blank')">AdbeRdr11010-en-US.exe</a></li>
+                                                          </div>
+                                                      </div>
+                                                                        
+                                                  </div>                                
+                                              </div>
+                                          </div>
+      
+                                          <!--Tổng giám đốc phê duyệt-->      
+                                          <div class="row mt-4 title-subform" >
+                                              <h3 style="color:#0072ff"><i class="fad fa-info-circle f-22"></i> <a data-i18n="tonggiamdocpheduyet" style="font-size:16px;">總經理批示:TGĐ phê duyệt</a></h3>
+                                          </div>
+      
+                                          <div class=" mb-0 card-table flex-fill mt-0" style="padding: 0px;border: 1px solid #dee2e6;padding:10px 10px;">                   
+                                              <div class="card-body" style="padding: 0px;">
+                                                  <div class="row">
+      
+                                                      <!--ghi chú cho đơn-->
+                                                      <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <label class="mb-0 mt-0" data-i18n="ghichu">Ghi chú</label><span class="text-danger">:</span>
+                                                              <input id="Ghichu" value="{{sql.Ghichu}}" class="form-control" type="text" required="Please not entry.." title="Please fill this fiel." />
+                                                              <i class="fad fa-comment-edit f-16 text-success"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                      <!--Đơn vị xin (chủ sự)-->
+                                                      {% comment %} <div class="col-12 mb-4 mt-0" id="Div_donvichusu">
+                                                        <label class="mb-0 mt-0" data-i18n="donvichusu">Đơn vị phụ trách CV chính</label><span class="text-danger">(*):</span>
+                                                        <div class="form-group row">                                                            
+                                                            <div class="col-xl-2 col-lg-4 col-md-12 col-sm-12 col-12">
+                                                                <div class="form-group mb-0 mt-0">                                                                    
+                                                                    <select id="Donvichusu" name="" onchange="ChoiceOption_AddLi_Ul(this,'ul_Donvichusu')" class="form-control fill" title="Please fill this fiel.">
+
+                                                                    </select>
+                                                                    <i class="fad fa-users-crown f-16 text-danger" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12 col-12 mt-2">
+                                                                <ul class="select-multi" id="ul_Donvichusu">
+                                                                    {% for item in Donvichusu %}
+                                                                        <li class="select-multi select-choice" value="{{item.Department}}"><span>{{item.Department1}}</span> <i class="fa-del text-danger" onclick="$(this).parent().remove()">×</i></li>
+                                                                    {% endfor %}
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                      </div> {% endcomment %}
+
+
+                                                      <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 mb-4 mt-0" id="Div_donvichusu">
+                                                          <div class="form-group mb-0 mt-0">
+                                                          <label class="mb-0 mt-0" data-i18n="donvichusu">Đơn vị phụ trách CV chính</label><span class="text-danger">(*):</span>
+                                                          <select id="Donvichusu" name="" onchange="ChoiceOption_AddLi_Ul(this,'ul_Donvichusu')" class="form-control fill" title="Please fill this fiel.">
+                                                             
+                                                          </select>
+                                                          <i class="fad fa-users-crown f-16 text-danger" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                      <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-12 mb-0 mt-4">
+                                                          <ul class="select-multi" id="ul_Donvichusu">
+                                                            {% for item in Donvichusu %}
+                                                                <li class="select-multi select-choice" value="{{item.Department}}"><span>{{item.Department1}}</span> <i class="fa-del text-danger" onclick="$(this).parent().remove()">×</i></li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                      </div>
+                                                     
+      
+                                                      <!--Danh sách đơn vị liên quan họp bàn-->
+                                                      <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">                                                       
+                                                              <label class="mb-0 mt-0" data-i18n="dvhopban">Đơn vị hỗ trợ</label><span class="text-danger">:</span>
+                                                              <input hidden class="form-control" type="text" id="Donvihopban1" data-toggle="dropdown" aria-expanded="false" onkeyup="filterFunction('Donvihopban', 'myDropdown_Donvihopban')" autocomplete="off" name="" required="Please not entry.." title="Please fill this fiel." >
+                                                              <select id="Donvihopban" name="" onchange="ChoiceOption_AddLi_Ul(this,'ul_Donvihopban')" class="form-control fill" title="Please fill this fiel.">
+                                                             
+                                                              </select>
+                                                              <i class="fad fa-users-class f-16 text-danger" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-xl-10 col-lg-8 col-md-8 col-sm-6 col-12 mb-0 mt-4">                          
+                                                          <ul class="select-multi" id="ul_Donvihopban">
+                                                            {% for item in Donvihopban %}
+                                                                <li class="select-multi select-choice" value="{{item.Department}}"><span>{{item.Department1}}</span> <i class="fa-del text-danger" onclick="$(this).parent().remove()">×</i></li>
+                                                            {% endfor %}
+                                                          </ul>
+                                                      </div>  
+      
+      
+                                                      <!--Đơn vị khác-->  
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-0 mt-0">
+                                                          <div class="form-check form-check-inline">                                                        
+                                                              <input class="form-check-input" type="checkbox" id="Chondvkhac" onclick="SetValue_CheckBox(this);Show_Hide_Dovikhac(this)" value="{{sql.Chondvkhac}}" {{Chondvkhac}}>
+                                                              <label class="form-check-label" for="Chondvkhac" data-i18n="donvikhac">其他部門:Đơn vị khác</label>
+                                                          </div>
+                                                      </div>
+                                                      <!--danh sách đơn vị khác-->
+                                                      <div class="col-lg-12 col-md-12 col-sm-12 mb-4 mt-0" id="Div_Donvikhac" {{Donvikhac}}>
+                                                          <div class="form-group mb-0 mt-0">                                                            
+                                                              <input id="Donvikhac" class="form-control" type="text" value="{{sql.Donvikhac}}" required="Please not entry.." title="Please fill this fiel." />
+                                                              <i class="fad fa-user-friends f-16 text-info"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                  </div>                                
+                                              </div>
+                                          </div>
+                                          
+      
+      
+                                          <!--Người thực hiện-->      
+                                          <div class="row mt-4 title-subform" >
+                                              <h3 style="color:#0072ff"><i class="fad fa-info-circle f-22"></i> <a data-i18n="nguoithuchien" style="font-size:16px;">承辦單位 Đơn vị phụ trách</a></h3>
+                                          </div>
+      
+                                          <div class=" mb-0 card-table flex-fill mt-0" style="padding: 0px;border: 1px solid #dee2e6;padding:10px 10px;">                   
+                                              <div class="card-body" style="padding: 0px;">
+                                                  <div class="row">
+      
+                                                      <!--Văn kiện có được đóng sau cuộc họp-->  
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-1 mt-0">
+                                                          <div class="form-check form-check-inline">                                                        
+                                                              <input class="form-check-input" type="checkbox" id="Dongsauhop" onclick="SetValue_CheckBox(this)" value="{{sql.Dongsauhop}}" {{Dongsauhop}}>
+                                                              <label class="form-check-label" for="Dongsauhop" data-i18n="ketansauxl">會辦後結案:Kết án sau khi xử lý</label>
+                                                          </div>
+                                                      </div>  
+      
+                                                      <!--Có cần trả lời văn bản -->  
+                                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-112 mb-4 mt-0">
+                                                          <div class="form-check form-check-inline">                                                        
+                                                              <input class="form-check-input" type="checkbox" id="Traloivanban" onclick="SetValue_CheckBox(this);Show_Hide_uploadvbtraloi(this)" value="{{sql.Traloivanban}}" {{Traloivanban}}>
+                                                              <label class="form-check-label" for="Traloivanban" data-i18n="traloikqcongvan">需回文:Trả lời kết quả xử lý CV</label>
+                                                          </div>
+                                                      </div>
+      
+                                                     
+                                                      <!--Văn bản cần trả lời-->
+                                                      <div class="col-12 mb-4 mt-0" id="Div_chonvbtraloi" {{Div_traloivb}}>
+
+                                                          <div class="form-group mb-0 mt-0"  {{Tepvbtraloi1}}>                                                      
+                                                              <div class="ml-0">
+                                                                <span class="text-success"> <i class="fa fa-file-pdf f-18 text-info" aria-hidden="true"></i></span>
+                                                                <label class="mb-0 mt-0" data-i18n="vanbantraloi">Văn bản trả lời</label><span class="text-danger">(*):</span>
+
+                                                                <div class="form-group row">                                                                  
+                                                                    <div class="col-sm-10" {{btn_upfiletraloi}}>
+                                                                        <input id="Tepvbtraloi" class="form-control forn-control-sm btn-outline-warning" type="file" name="Tepvbtraloi" value="" accept="file_extension(,.pdf,)">
+                                                                    </div>
+                                                                    <div class="col-sm-2"  {{btn_upfiletraloi}}>
+                                                                        <button class="form-control-sm btn btn-outline-info waves-effect waves-light" type="button" name="btn_upload" value="" onclick="Upload_VBTRALOI()"><i class="fa fa-upload"></i> <span  data-i18n="Upload">Đăng</span></button>
+                                                                    </div>
+                                                                    <div class="col-sm-12 mt-2" {{Tepvbtraloi1}}>
+                                                                        <a id="file_vbtraloi" style="color:#448aff;text-decoration:underline;" href="javascript:window.open('/static/media/{{sql.file_vbtraloi.strip}}','_blank');" >{{sql.file_vbtraloi.strip}}</a>
+                                                                    </div>
+                                                                  </div>
+                                                                <span class="focus-input100"></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+      
+                                                     
+      
+                                                      <!--Thời gian xử lý-->
+                                                      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-112 mb-4 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <label class="mb-0 mt-0" data-i18n="thoigianxyly">處理時間:Thời gian xử lý CV</label><span class="text-danger">:</span>
+                                                              <input class="form-control" type="text" id="Thoigianxuly" name="" value="{{sql.Thoigianxuly|date:'Y-m-d H:i'}}" required="Please not entry.." title="Please fill this fiel.">
+                                                              <i class="fad fa-calendar f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>                                                
+      
+      
+                                                      <!--Ý kiến khác-->
+                                                      <div class="col-lg-12 col-md-12 col-sm-12 mb-0 mt-0">
+                                                          <div class="form-group mb-0 mt-0">
+                                                              <span class="fas fa-comment-edit f-16 text-success"></span>
+                                                              <label class="mb-0 mt-0" data-i18n="ykienkhac">其他意見:Ý kiến khác</label><span class="text-danger">:</span>
+                                                              <textarea id="Ykienkhac" class="form-control" type="text" required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 49px;">{{sql.Ykienkhac}}</textarea>
+                                                              <span class="focus-input100"></span>
+                                                          </div>
+                                                      </div>
+      
+                                                  </div>                                
+                                              </div>
+                                          </div>
+                                          
+                                                     
+                                          <!--Bảng lưu trình ký-->      
+                                          <div class=" table-responsive text-center mt-2" style="width:100%;overflow:hidden">
+                                              <table id="table_appro" class="table-sm table-hover table-bordered " style="width: 100%; font-size: 12px;overflow:hidden">
+                                                  <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                                                      <th class="text-left text-bold bg-violet" colspan="8"><i class="fad fad fa-file-signature f-18"></i> <a data-i18n="luutrinhky">Lưu trình ký</a></th> 
+                                                  </thead>
+                                                  <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">                                                            
+                                                      <th class="text-bold text-bold " data-toggle="tooltip" data-placement="top" title="Vị trí" data-original-title="Vị trí" style="width:100px" data-i18n="vitri">Vị trí</th>
+                                                      <th class="text-center text-bold " data-i18n="bophan">Bộ phận </th>
+                                                      <th class="text-center text-bold " data-i18n="hoten">Họ tên</th>
+                                                      <th class="text-center text-bold " data-i18n="sodienthaoi">Số điện thoại</th>   
+                                                      <th class="text-center text-bold " data-i18n="thoigian">Ngày giờ</th>  
+                                                      <th class="text-center text-bold " data-i18n="ghichu">Ghi chú</th>    
+                                                      <th class="text-center text-bold " data-i18n="ky">Ký</th>  
+                                                  </thead>
+                                                  <tbody id="tbody_appro">
+                                                    {% for item in tbl_appro %}
+                                                        <tr>
+                                                            <td>{{item.Station}}</td>
+                                                            <td data-i18n="{{item.Department}}">{{item.Department1}}</td>
+                                                            <td>{{item.HoTen}}</td>
+                                                            <td>{{item.SoDienThoai}}</td>
+                                                            <td>{{item.Time|date:'Y-m-d H:i'}}</td>  
+                                                            <td>{{item.Comment}}</td>
+                                                            {% if 'Y' in item.IsCheck %}
+                                                                <td class="text-center"><i class="fa fa-check f-16 text-success" aria-hidden="true"></i></td>
+                                                            {% else %}   
+                                                                <td class="text-center"></td>
+                                                            {% endif %}
+                                                        </tr>
+                                                    {% endfor %}                                                     
+                                                  </tbody>   
+                                                
+                                              </table>
+                                          </div>  
+                                        
+                                          <!--Cụm nút phê duyệt và tạo đơn-->  
+                                          <div class="">
+                                              <div class=" text-center">      
+                                                  <hr>   
+      
+                                                  <div class="row justify-content-center ">
+                                                      <!--Button phê duyệt-->
+                                                      <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 mb-2 mt-0" {{btn_pheduyet}}>
+                                                          <span style="color:white;">
+                                                              <button id="" type="button" class="btn btn-outline-info" onclick="Show_Modal_Appro('Passed')"><i class="fas fa-pen-nib fa-x"></i> <a data-i18n="btn-appro">Phê duyệt</a></button>                
+                                                          </span>
+                                                      </div>
+                                                      <!--Button hủy đơn-->
+                                                      <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 mb-2 mt-0" {{btn_pheduyet}}>
+                                                          <span style="color:white;">
+                                                              <button id="" type="button" class="btn btn-outline-warning"  onclick="Show_Modal_Appro('Rejected')"><i class="fas fa-ban fa-x"></i> <a data-i18n="btn-cancel">Hủy đơn</a></button>                
+                                                          </span>
+                                                      </div>
+                                                      <!--Button thoát-->
+                                                      <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 mb-2 mt-0">  
+                                                          <span style="color:white;">                                                 
+                                                              <button id="" type="button" class="btn btn-outline-info" onclick="window.open('/home/','_self')"><i class="fas fa-sign-out fa-x"></i> <a data-i18n="btn-exit"> Thoát</a></button>
+                                                          </span>
+                                                      </div>
+      
+                                                  </div>
+                                              </div>
+                                          </div>
+      
+                                      </div>
+      
+                                  <!--/form--> 
+                              </div>
+                          </div>
+                      </div>
+                      <!--End Cột thông tin biểu mẫu-->
+              
+                  </div>
+              <!-- </form> -->
+           
+          </div>
+          <!-- Page body end -->    
+      </div>
+      
+      
+
+  </div>
+  <!-- Page body end -->    
+</div>
+
+
+
+<!-- The Modal OK APPROVAL and Forward START-->
+<div class="modal fade bd-example-modal-lg" id="Modal_Comment" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" >
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title"> &ensp;<span class="text-success"><i class="fas fa-comment-dots  f-22"></i></span> <a  data-i18n="title-comment">Nội dung chữ ký</a></h5>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <!-- Modal body -->
+       <div class="modal-body">
+         <div class="card" style="box-shadow:none">
+          <div class="row" >             
+              <div class="col-md-12 col-sm-12 mb-0 mt-3">
+                <div class="form-group mb-0 mt-0">
+                  <span class="fas fa-pen-nib text-danger f-16"></span>
+                  <label class="mb-0 mt-0" data-i18n="ghichu">Ghi chú</label><span class="text-danger">:*</span>
+                  <textarea id="Comment" class="form-control form-control-solid  fill" type="text" required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: auto;"></textarea>
+               
+                </div>         
+              </div>
+
+          </div>
+      </div>
+    </div>
+    <!-- Modal footer -->
+    <div class="modal-footer">
+
+      <div class="row container d-flex justify-content-center" >
+        <!--Button quay lại trang -->
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-2 mt-0" >
+          <span style="color:white;">
+            <button class="btn btn-outline-secondary" type="button"  data-dismiss="modal"><i class="fa fa-reply f-16"></i> <a data-i18n="btn-thoat">Thoát</a></button>
+          </span>   
+        </div>
+        <!--Button Phê duyệt OK  -->
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-2 mt-0">
+            <span>
+              <button id="btn_xacnhan"  type="button" class="btn btn-outline-info" ><i class="fa fa-check f-16" aria-hidden="true"></i> <a data-i18n="btn-xacnhan">Xác nhân</a></button> 
+            </span> 
+        </div>
+
+      </div>
+     
+    </div>
+      </div>
+  </div>
+</div>
+<!-- The Modal COMMENT OK END -->
+
+
+
+
+
+<!-- Import JS -->
+<script src="{% static 'main/myjs/J-query/3.6.0/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'main/myjs/ajax.jquery.min.js' %}"></script>
+<script type="text/javascript" src="/static/main/myjs/myjs.js"></script>  
+<script type="text/javascript" src="/static/main/myjs/quanlycongvanden.js"></script>        
+<!-- Uto size text areal -->
+<script src="{% static 'main/myjs/autosize.min.js' %}"></script> 
+<!-- Active Menu-->
+<script type="text/javascript"  src="{% static 'main/myjs/menu.active.js' %}"></script>
+<script>
+  Get_Department();
+  ACTIVE_MENUY($('#DUYET_CV')) ;
+      $( function() {
+          Move_modal('Modal_Comment');
+      } ); 
+
+    autosize(document.getElementById("Ykienkhac"));
+    $( function() {
+      Move_modal('exampleModal');     
+    } );
+    $( function() {
+        $('#Thoigianxuly').datepicker();
+     } );
+  </script>
+
+{% endblock %}
+

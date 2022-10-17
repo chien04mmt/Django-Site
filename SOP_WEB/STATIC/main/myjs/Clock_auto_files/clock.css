@@ -1,0 +1,76 @@
+/* content panel */
+.container-fluid-clock {
+  height:200px;
+  overflow: hidden;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  background-color: white;
+}
+.container-fluid-clock:hover{
+  background-attachment: #007bff;
+}
+
+
+/* Common properties to hands of clock */
+.common {
+  position: relative;
+  transition: transform 0.5s linear;
+  transform: rotate(0deg);
+  transform-origin: bottom center;
+  border-radius: 2px;
+
+  box-shadow: 0 0 0px 0px transparent;
+  overflow: hidden;
+}
+
+/* Pivot - Axis bottom la do cao */
+.axis {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid #ff5252;
+  position: relative;
+  z-index: 1050 !important;
+}
+
+/* Upper Pivot bottom la dieu chinh do cao cua tam*/
+.up {
+  bottom: 10px;
+}
+
+/* Hour hand */
+.first {
+  width: 5px;
+  height: 50px;
+  bottom: 47.5px;
+  transform: rotate(0deg);
+  background-color: #f6931e;
+}
+
+/* Minute hand */
+.second {
+  width: 4px;
+  height: 70px;
+  bottom: 117px;
+  background-color:  blueviolet;
+
+}
+
+/* Second hand  w do day, h sang phai, b len tren*/
+.third {
+  width: 4px;
+  height: 93px;
+  bottom: 210px;
+  background-color:#ff5252;
+}
+
+
+
+
+
+
+
+

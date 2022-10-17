@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Main body start -->
+<div class="main-body" onload="">
+  <div class="page-wrapper">
+    <!-- Page body start -->
+    <div class="page-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header" style="height: 100%;">
+              <h5><i class="fas fa-pen f-20"></i> <a data-i18n="quanlydanhmuc_">QUẢN LÝ DANH MỤC</a></h5>                                                   
+            </div>
+
+            <div class="card-block " >
+              <div class="row">
+
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-12">
+                  <nav class="navbar navbar-light bg-light text-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="text-dark h6" style="left:45%;position: absolute;top:20px" data-i18n="danhmuc">Danh mục</div>
+                  </nav>
+                  <div class="collapse show" id="navbarToggleExternalContent">
+                    <ul class="bg-light p-2">
+                        <div class="p-2 ml-1 text-dark" style="border-top: ridge 2px;"></div>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00002');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="phongban">Phòng ban</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00001');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="chucvu">Chức vụ</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00003');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="nhaxuong">Nhà xưởng</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00010');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="loaivanban">Loại văn bản</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00005');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="trangthaiduyet">Trạng thái duyệt</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00006');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="nhommenu">Nhóm menu</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('MN');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="danhsachmenu">Danh sách Menu</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00007');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="ketan">Kết án</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00008');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="mailhethong">Email hệ thống</span></li>
+                          <li class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);load_OptionCategorys('CT-00009');Hide_Show_table('tb_congvanden', 'tb_congvanoibo')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="thoigianluutru">Thời gian lưu trữ</span></li>
+                          <li  class="bg-light p-2 ml-2 text-dark" onclick="Set_Effect_Menu(this);Action_DeptArrive('SELECT',this);Hide_Show_table('tb_congvanoibo', 'tb_congvanden')"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="donvichuquan">Đơn vị chủ quản</span></li>
+                          <li  class="bg-light p-2 ml-2 text-dark" onclick="Show_Modal_TongGiamDoc()"><i class="fas fa-hand-point-right f-18"></i> <span data-i18n="tonggiamdoc">Tổng giám đốc</span></li>
+                        <div class="p-2 ml-1 text-dark" style="border-top: ridge 2px;"></div>
+                    </ul>                
+                    <style>
+                      #navbarToggleExternalContent li{
+                        cursor:pointer;
+                      }
+                      #navbarToggleExternalContent li:hover{
+                        background-color:#343a408a !important;
+                        color:white !important;
+                      }
+                    </style>
+                  </div>
+                </div>
+
+                <!--Bảng quản lý danh mục-->
+                <div class="col-xl-10 col-lg-9 col-md-8 col-sm-6 col-12 bg-light">
+
+                    <!--Bảng quản lý danh mục công văn nội bộ-->
+                    <div class="table-responsive bg-light text-dark mt-2" style="overflow:auto;"  id="tb_congvanoibo">
+                        <table id="table_option" class="table-sm table-hover  table-bordered  nowrap no-footer mt-0" cellspacing="0" style="width:100%;">               
+                          <thead class="fw-bold fs-6 text-dark text-left bg-light font-weight-bold">
+                              <tr class="text-dark">
+                              <th  data-i18n="stt" style="width:20px;">STT</th>
+                              <th  data-i18n="ma">編號 / Mã</th>
+                              <th  data-i18n="ten">名稱 / Tên</th>
+                              <th  data-i18n="viettat" >首字母縮略詞 / Viết tắt</th>
+                              <th class="text-center"  data-i18n="thaotac" style="width:100px;">Thao tác</th>
+                              </tr>
+                          </thead>
+                          <tbody>                                      
+                            <tr>
+                              <td colspan="5" >
+                                  <div class="col-lx-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-0 mt-2 d-flex justify-content-center">
+                                    <button id="btn_AddCategory" type="button" class="form-control btn-outline-info" onclick="Show_Modal_AddCategorys()" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add"><i class="fad fa-layer-plus f-16"></i> <a data-i18n="btn-add">Thêm mới</a></button>
+                                  </div>
+                                  <div class="col-lx-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-0 mt-2 d-flex justify-content-center">
+                                    <button id="btn_deleted" hidden type="button" class="form-control btn-outline-info" onclick="load_OptionCategorys('LIST-DEL-MENUS')" data-toggle="tooltip" data-placement="top" title="" data-original-title="List Deleted Menus"><i class="fad fa-search f-16"></i> <a data-i18n="danhsachxoa">Danh sách xóa</a></button>
+                                  </div>                                
+                              </td>
+                            </tr>    
+                          </tbody>
+                          <tbody id="body_OptionCategorys">                                      
+                                      
+                          </tbody>
+                        </table>                       
+                    </div>
+
+                    <!--Bảng quản lý danh mục công văn đến-->
+                    <div class="table-responsive bg-light text-dark mt-2" style="overflow:auto;" id="tb_congvanden" hidden>
+                        <table id="table_OptionDept" class="table-sm table-hover  table-bordered  nowrap no-footer mt-0" cellspacing="0" style="width:100%;">               
+                          <thead class="fw-bold fs-6 text-dark text-left bg-light font-weight-bold">
+                              <tr class="text-dark">
+                              <th  data-i18n="stt" style="width:20px;">STT</th>
+                              <th  data-i18n="tenphongban">Tên phòng ban</th>                  
+                              <th  data-i18n="damnhiemchinh" >Đảm nhiệm chính</th>
+                              <th  data-i18n="chuquan" >Chủ quản</th>
+                              <th class="text-center"  data-i18n="thaotac" style="width:100px;">Thao tác</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td colspan="6" >
+                                  <div class="col-lx-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-0 mt-2 d-flex justify-content-center">
+                                    <button id="btn_AddDept" type="button" class="form-control btn-outline-info" onclick="Show_Modal_Dept('INSERT', this)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add"><i class="fad fa-layer-plus f-16"></i> <a data-i18n="btn-add">Thêm mới</a></button>
+                                  </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tbody id="body_OptionDept">
+                                      
+                          </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page body end -->
+  </div>
+</div>
+<!--Main body end -->
+
+
+
+<!--Modal Thêm sửa menu -->
+<div class="modal right fade " id="modal_edit_menu" >
+  <div class="modal-dialog " id="">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-pen f-20"></i><a data-i18n="chinhsuadanhmuc"> THÊM MỚI HOẶC CẬP NHẬT DANH MỤC</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_areadCategorys">  
+
+            <!-- Nhóm menu-->
+            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 mt-0 mb-4">
+              <div class="form-group ">   
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="danhmuc">名目 / Danh mục</label><span>(*):</span>
+                <input id="CatTypeCode" type="text" class="form-control " readonly>    
+                <i class="fad fad fa-bookmark f-18 text-danger"></i><span class="focus-input100"></span>        
+              </div> 
+            </div>  
+
+            <!-- Mã code -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0 mb-4"> 
+              <div class="form-group ">             
+                <label data-error="wrong" data-success="right" for="" data-i18n="ma">編號 / Mã</label><span>:</span>
+                <input type="text" class="form-control" id="CatCode" readonly>
+                <i class="fad fad fa-comment f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+                 
+            <!-- Tên menu-->
+            <div class="form-group col-12 mt-0 mb-4">     
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="tennhom">小組名稱 / Tên nhóm</label><span>(*):</span>
+                <input type="text" class="form-control " id="CatName" >
+                <i class="fas fad fa-font f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <!-- Tên viết tắt của tên (phòng ban)-->
+            <div class="form-group col-12 mt-0 mb-0">
+              <div class="form-group ">   
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="viettat">首字母縮略詞 / Viết tắt</label><span>(ABC):</span>
+                <input type="text" class="form-control " id="Code" onkeyup="UPERCASE_INPUT(this)">
+                <i class="fas fa-pen-fancy f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center"  id="Div_btn">
+        <!--Button thêm mới tài khoản-->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0" id="div_btnCreate">
+            <button id="btn_save" class="btn form-control btn-outline-success waves-effect waves-light" type="button" onclick="Action_Categorys('CREATE',this)"><i class="fa fa-plus"></i> <span data-i18n="btn-create">Thêm mới</span></button>  
+        </div>
+
+        <!--Button cập nhật thông tin -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0" id="div_btnUpdate">        
+            <button id="btn_save" class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="Action_Categorys('UPDATE',this)"><i class="fa fa-save"></i> <span data-i18n="btn-save">Lưu lại</span></button>
+        </div>
+      
+        <!--Button Quay lại thoát  -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">        
+            <button type="button" class="btn form-control btn-outline-dark waves-effect waves-light" data-dismiss="modal"><i class="fa fa-reply"></i> <span data-i18n="btn-exit">Thoát</span></button>                    
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--Modal Thêm sửa menu công văn nội bộ-->
+<div class="modal right fade " id="modal_edit_menus" >
+  <div class="modal-dialog " id="">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-pen f-20"></i> <a data-i18n="chinhsuamenu">THÊM MỚI HOẶC CẬP NHẬT MENU</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_areadMenu">  
+
+            <!-- Mã menu-->
+            <div class="form-group col-lg-6 col-md-6 col-sm-12 col-12 mt-0 mb-4">
+              <div class="form-group ">   
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="nhommenu">小組 / Nhóm menu</label><span>(*):</span>
+                <!-- <input id="Groups" type="text" class="form-control " readonly> -->
+                <select onchange="Change_select_Permiss(this)" id="Groups" class="form-control" required="Please select..." title="Please fill this fiel.">
+                  
+                </select>
+                <i class="fad fad fa-bookmark f-18 text-danger"></i><span class="focus-input100"></span>        
+              </div> 
+            </div>
+
+            <!--Tên -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12 mt-0 mb-4"> 
+              <div class="form-group ">             
+                <label data-error="wrong" data-success="right" for="" data-i18n="mamenu">編號 / Mã menu</label><span>:</span>
+                <input type="text" class="form-control" id="Code1" readonly>
+                <i class="fad fad fa-comment f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+                 
+            <!-- Tên menu-->
+            <div class="form-group col-12 mt-0 mb-4">     
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="tenmenu">名稱 / Tên menu</label><span>(*):</span>
+                <input type="text" class="form-control " id="Name" >
+                <i class="fas fad fa-font f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+           
+
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center"  id="Div_btn1">
+        <!--Button thêm mới tài khoản-->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0" id="div_btnCreate1">
+            <button  class="btn form-control btn-outline-success waves-effect waves-light" type="button" onclick="Action_Menus('CREATE',this)"><i class="fa fa-plus"></i> <span data-i18n="btn-create">Thêm mới</span></button>  
+        </div>
+
+        <!--Button cập nhật thông tin -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0" id="div_btnUpdate1">
+            <button class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="Action_Menus('UPDATE',this)"><i class="fa fa-save"></i> <span data-i18n="btn-save"> Lưu lại</span></button>
+        </div>
+      
+        <!--Button Quay lại thoát  -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">        
+            <button type="button" class="btn form-control btn-outline-dark waves-effect waves-light" data-dismiss="modal"><i class="fa fa-reply"></i> <span data-i18n="btn-exit"> Thoát</span></button>                    
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!--Modal Thêm sửa menu công văn đến-->
+<div class="modal right fade " id="modal_edit_Dept" >
+  <div class="modal-dialog " id="">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-pen f-20"></i><a data-i18n="chinhsuamenu"> THÊM MỚI HOẶC CẬP NHẬT MENU</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_areadDept">  
+                 
+            <!-- Tên phòng ban-->
+             <div class="col-xl-6 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">
+                <label data-error="wrong" data-success="right" for="Department" data-i18n="chonphongban">Chọn phòng ban</label><span>(*):</span>
+                <select type="text" class="form-control " id="Department" >
+
+                </select>
+                <i class="fas fad fa-users f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+            <!--Đảm nhiệm chính-->
+             <div class="col-xl-6 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="UserName" data-i18n="damnhiemchinh">Đảm nhiệm chính</label><span>(*):</span>
+                <input type="text" class="form-control " id="UserName" >
+                <i class="fas fad fa-user f-18 text-success"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+            <!--Chủ quản-->
+            <div class="col-xl-6 col-lg-6 col-sm-6 col-12 mt-0 mb-4">     
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="Manager" data-i18n="chuquan">Chủ quản</label><span>(*):</span>
+                <input type="text" class="form-control " id="Manager" >
+                <i class="fas fad fa-user f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+           
+
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center"  id="Div_btn2">
+       
+        <!--Button cập nhật thông tin -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">
+            <button id="btn_updateDept" class="btn form-control btn-outline-info waves-effect waves-light" type="button"><i class="fa fa-save"></i> <span data-i18n="btn-save"> Lưu lại</span></button>
+        </div>
+      
+        <!--Button Quay lại thoát  -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">        
+            <button type="button" class="btn form-control btn-outline-dark waves-effect waves-light" data-dismiss="modal"><i class="fa fa-reply"></i> <span data-i18n="btn-exit"> Thoát</span></button>                    
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--Modal Tổng giám đốc-->
+<div class="modal right fade " id="modal_tgd" >
+  <div class="modal-dialog " id="">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-pen f-20"></i> <a data-i18n="caidattonggiamdoc">CÀI ĐẶT TỔNG GIÁM ĐỐC</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+          <!-- input User -->
+          <div class="row " id="Div_areadTGD">                   
+            
+            <!--Mã thẻ tổng giám đốc-->
+             <div class="col-xl-6 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="TongGiamDoc" data-i18n="mathegiamdoc">Mã thẻ tổng giám đốc</label><span>(*):</span>
+                <input type="text" class="form-control " id="TongGiamDoc" >
+                <i class="fas fad fa-user f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <!--Tên tổng giám đốc-->
+             <div class="col-xl-6 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="TenTongGiamDoc" data-i18n="tengiamdoc">Tên tổng giám đốc</label><span>:</span>
+                <input type="text" class="form-control " id="TenTongGiamDoc" readonly>
+                <i class="fas fad fa-font f-18 text-danger"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+
+            <!--Mã thẻ Hỗ trợ giám đốc-->
+             <div class="col-xl-6 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="HoTroGiamDoc" data-i18n="mathehotrogiamdoc">Mã thẻ hỗ trợ giám đốc</label><span>(*):</span>
+                <input type="text" class="form-control " id="HoTroGiamDoc" >
+                <i class="fas fad fa-user f-18 text-info"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+            <!--Tên hỗ trợ giám đốc-->
+             <div class="col-xl-6 col-lg-6 col-sm-6 col-12 mt-0 mb-4"> 
+              <div class="form-group ">           
+                <label data-error="wrong" data-success="right" for="TenTongGiamDoc" data-i18n="tenhotrogiamdoc">Tên hỗ trợ giám đốc</label><span>:</span>
+                <input type="text" class="form-control " id="TenHoTroGiamDoc" readonly>
+                <i class="fas fad fa-font f-18 text-info"></i><span class="focus-input100"></span>
+              </div>
+            </div>
+
+
+          </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center"  id="Div_btn3">
+       
+        <!--Button cập nhật thông tin -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">
+            <button id="btn_saveTGD" class="btn form-control btn-outline-info waves-effect waves-light" type="button" onclick="Save_TGD()"><i class="fa fa-save"></i> <span data-i18n="btn-save">Lưu lại</span></button>
+        </div>
+      
+        <!--Button Quay lại thoát  -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-0 mt-0">        
+            <button type="button" class="btn form-control btn-outline-dark waves-effect waves-light" data-dismiss="modal"><i class="fa fa-reply"></i> <span data-i18n="btn-exit">Thoát</span></button>                    
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript" src="/static/main/myjs/quanlycongvanden.js"></script>  
+<script type="text/javascript" src="/static/main/myjs/quanlydanhmuc.js"></script>    
+
+<script>
+  Get_Department();
+  $( function() {
+    Move_modal('modal_groupPermiss');   
+    Move_modal('modal_edit_menu');   
+    Move_modal('modal_edit_menus');   
+    Move_modal('modal_acount');   
+  } );
+
+</script>
+

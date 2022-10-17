@@ -1,0 +1,229 @@
+{% extends "HOME/base.html" %}
+{% load static %}
+
+{% block title %}Hệ thống quản lý công văn{% endblock %}
+
+{% block mainbody %}
+		
+<div class="main-body">
+    <div class="page-wrapper">
+      <!-- Page-body start -->
+      <div class="page-body">
+
+        <!-- START Tên hệ thống văn bản-->
+        <div class="card" name="MN-00054" hidden>
+          <div class="card-block">
+              <h3  class="text-c-blue" data-i18n="home-title">Hệ thống quản lý văn kiện Tổng bộ Việt Nam</h3>
+              <div class="page-header-breadcrumb">
+                  <ul class="breadcrumb">
+                      <li class="breadcrumb-item">
+                          <a href="#!">
+                              <i class="fad fa-home  f-16"></i>
+                          </a>
+                      </li>
+                      <li class="breadcrumb-item"><a href="/home/" data-i18n="trangchu">Trang chủ</a>
+                      </li>
+                      
+                  </ul>
+              </div>
+          </div>
+        </div>
+        <!-- End--> 
+        
+        <!-- START Hệ thống quản lý công văn ngoại bộ của Trung tâm phục vụ và phát triển Việt Nam-->
+        <div class="card"  name="MN-00053" hidden>
+          <div class="card-block">
+              <h4  class="text-c-blue" data-i18n="home-title1">Hệ thống quản lý công văn ngoại bộ của Trung tâm phục vụ và phát triển Việt Nam</h4>
+              <div class="page-header-breadcrumb">
+                  <ul class="breadcrumb">
+                      <li class="breadcrumb-item">
+                          <a href="#!">
+                              <i class="fad fa-home  f-16"></i>
+                          </a>
+                      </li>
+                      <li class="breadcrumb-item"><a href="/home/"  data-i18n="trangchu">Trang chủ</a>
+                      </li>                      
+                  </ul>
+              </div>
+          </div>
+        </div>
+        <!-- End-->
+
+        <!-- menu icon-->
+        <div class="row">
+
+          <!--Đổi thông tin cá nhân-->
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 " name="MN-00032" style="pointer-events: none;" hidden> 
+            <a href="#" onclick="Load_html('Div_mainbody', '/static/html/trungtamcanhan.xml');ACTIVE_MENUY($('#TRUNG_TAM_CA_NHAN'))">
+                <div class="card text-center order-visitor-card">
+                  
+                    <div class="card-block" style="cursor: pointer;">
+                        <h6 class="m-b-0" data-i18n="trungtamcanhan">Trung tâm cá nhân</h6>
+                        <h4 class="m-t-15 m-b-15" id=""><span style="font-size:1.5rem;"><i class="fad fa-user text-success fa-2x m-r-15"></i></span></h4>
+                        <p class="m-b-0" data-i18n="doimatkhau">Đổi mật khẩu</p>
+                    </div>
+                  
+                </div> 
+            </a>
+          </div>
+
+          
+          <!--Các đơn đang chờ tôi ký-->
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 " name="MN-00030" style="pointer-events: none;" hidden> 
+            <a href="/waittingdoc/">
+                <div class="card text-center order-visitor-card">
+                  
+                    <div class="card-block" style="cursor: pointer;">
+                        <h6 class="m-b-0" data-i18n="chopheduyet"> Chờ phê duyệt</h6>
+                        <h4 class="m-t-15 m-b-15"><span style="font-size:1.5rem;"><i class="fad fa-envelope fa-2x m-r-15 text-danger"></i></span> <span id="my_waiting" style="font-size:1.5rem;">{{Sum_Waiting}}</span></h4>
+                        <p class="m-b-0" data-i18n="donchoky">Các đơn chờ bạn ký</p>
+                    </div>
+                  
+                </div> 
+            </a>
+          </div>
+
+          <!--Danh sách các đơn yêu cầu của tôi-->
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 " name="MN-00054" style="pointer-events: none;" hidden>
+            <div class="card text-center order-visitor-card">
+                <div class="card-block" style="cursor: pointer;" onclick="">
+                    <h6 class="m-b-0" data-i18n="doncuatoi">Yêu cầu của tôi</h6>
+                    <h4 class="m-t-15 m-b-15"><span style="font-size:1.5rem;"><i class="fad fa-envelope-open-text fa-2x m-r-15 text-c-green"></i></span><span id="total_application1" style="font-size:1.5rem;">{{SumMyDoc}}</span></h4>
+                    <p class="m-b-0" data-i18n="cacdonyeucau">Các đơn yêu cầu</p>
+                </div>
+            </div>
+          </div>
+
+          
+          <!--Các văn bản đã phát hành-->
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 " name="MN-00056" style="pointer-events: none;" hidden> 
+                <div class="card text-center order-visitor-card">
+                  
+                    <div class="card-block" style="cursor: pointer;" onclick="Load_html('Div_mainbody', '/static/html/tracuudsphathanhvb.xml','tracuudsphathanhvb','TraCuuDSPhatHanhVB()')">
+                        <h6 class="m-b-0" data-i18n="timvbphathanh">Tìm văn bản phát hành</h6>
+                        <h4 class="m-t-15 m-b-15" id='' ><span style='font-size:1.5rem;'><i class="fas fa-signature fa-2x m-r-15 text-c-red"></i></span></h4>
+                        <p class="m-b-0" data-i18n="dsvbphathanh">Danh sách các văn bản phát hành</p>
+                    </div>
+                  
+                </div> 
+          </div>
+                    
+
+
+
+
+
+
+
+          <!--Tạo mới công văn ngoại bộ-->
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 " name="MN-00053" style="pointer-events: none;" hidden> 
+            <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/yeucauthuchiencv.xml','TaoYeuCauCongVanDen()')" >
+                <div class="card text-center order-visitor-card">                  
+                    <div class="card-block" style="cursor: pointer;">
+                        <h6 class="m-b-0" data-i18n="taocongvan">Tạo yêu cầu công văn</h6>
+                        <h4 class="m-t-15 m-b-15"><span style="font-size:1.5rem;"><i class="fad fa-plus fa-2x m-r-15 text-info"></i></span></h4>
+                        <p class="m-b-0" data-i18n="lamdonyeucau">Làm đơn mới</p>
+                    </div>                  
+                </div> 
+            </a>
+          </div>
+
+          <!--Công văn ngoại bộ chờ ký-->
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 " name="MN-00053" style="pointer-events: none;" hidden> 
+            <a href="#" onclick="Load_html('Div_mainbody', '/static/html/duyetcv.xml','','DuyetCongVan()')">
+                <div class="card text-center order-visitor-card">
+                  
+                    <div class="card-block" style="cursor: pointer;">
+                        <h6 class="m-b-0" data-i18n="chopheduyet">Chờ ký duyệt</h6>
+                        <h4 class="m-t-15 m-b-15"><span style="font-size:1.5rem;"><i class="fad fa-envelope fa-2x m-r-15 text-danger"></i></span> <span id="chopheduyet_ngoaibo" style="font-size:1.5rem;">{{Sum_WaitingArr}}</span></h4>
+                        <p class="m-b-0" data-i18n="donchoky">Các đơn chờ bạn ký</p>
+                    </div>
+                  
+                </div> 
+            </a>
+          </div>
+
+          <!-- Tra cứu các đơn yêu cầu công văn ngoại bộ của tôi-->
+          <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 " name="MN-00053" style="pointer-events: none;" hidden> 
+            <a href="#" onclick="Load_html('Div_mainbody', '/static/html/tracuucv.xml','','TraCuuCongVan()')">
+                <div class="card text-center order-visitor-card">                  
+                    <div class="card-block" style="cursor: pointer;">
+                        <h6 class="m-b-0" data-i18n="tracuucongvan">Tra cứu công văn</h6>
+                        <h4 class="m-t-15 m-b-15"><span style="font-size:1.5rem;"><i class="fad fa-search fa-2x m-r-15 text-info"></i></span></h4>
+                        <p class="m-b-0" data-i18n="timkiemcongvan">Tìm kiếm các công văn</p>
+                    </div>                  
+                </div> 
+            </a>
+          </div>
+
+          
+
+
+
+
+
+
+
+          <!--Hướng dẫn sử dụng-->
+          <div class="col-xl-4 col-lg-8 col-md-8 col-sm-12">
+            <a href="/manual/">
+              <div class="card text-center order-visitor-card" onclick="" data-toggle="tooltip" data-placement="top" title="Tài liệu hướng dẫn sử dụng (用戶操作指南 )">
+
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                        <img class="d-block w-100 live-show" src="{% static 'login_/img/E.png' %}" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100 live-show" src="{% static 'login_/img/E1.png' %}" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                        <img class="d-block w-100 live-show" src="{% static 'login_/img/E2.png' %}" alt="Third slide">
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                    {% comment %} <div class="carousel-caption d-none d-md-block text-dark">
+                      <h5>Hướng dẫn</h5>
+                      <p>Chi tiết</p>
+                    </div> {% endcomment %}
+              </div>
+            </a>
+          </div>
+          
+            
+        </div>
+
+      </div>
+
+    <!-- Page-body end -->
+    </div>
+    <div id="styleSelector"> </div>
+  </div>
+
+
+
+  <script type="text/javascript" src="{% static 'main/assets/js/jquery/jquery.min.js' %}"></script>
+  <!--IMPORT JS CALENDAR -->
+  {% comment %} <script type="text/javascript"  src="{% static 'main/myjs/calendar/calendar.js' %}"></script>
+  <!--IMPORT JS clock -->
+  <script type="text/javascript"  src="{% static 'main/myjs/Clock_auto_files/clock.js' %}"></script> {% endcomment %}
+
+  <script type="text/javascript"  src="{% static 'main/myjs/menu.active.js' %}"></script>
+  <script type="text/javascript"  src="{% static 'main/myjs/index.js' %}"></script>
+  <script>
+    ACTIVE_MENUY($('#HOME-MENU')) ;
+  </script>
+{% endblock  %}

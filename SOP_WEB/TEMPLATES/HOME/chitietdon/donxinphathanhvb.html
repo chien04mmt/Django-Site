@@ -1,0 +1,479 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Hệ thống quản lý công văn
+{% endblock %}
+
+{% block mainbody %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/mycss/new.app.css' %}">
+
+<div class="main-body">
+  <!-- Page body --> 
+  <div class="page-wrapper">   
+  
+      <!-- <form class="form-control -sm  col-form-label-lg justify-content-center"> -->
+          <div class="row"> 
+
+              <!--Cột thông tin biểu mẫu Start-->
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="card">                
+                      <div class="card-header">
+                          <h5 ><i class="fad fa-pencil f-22"></i><a data-i18n="donxinphvb" style="color:#0072ff"> ĐƠN XIN PHÁT HÀNH VĂN BẢN</a></h5>
+                          {% comment %} <span>Thay đổi bổ sung văn bản đã phát hành <code></code></span> {% endcomment %}
+                      </div>
+                  
+                      <div class="card-block "> 
+                          <!--form--> 
+                          
+                              <div class="col-md-12">
+
+                                  <div class=" mb-0 card-table flex-fill">                   
+                                      <div class="card-body" style="padding: 0px;">
+                                          <div class="row"> 
+
+                                              <!--Đơn vị xin-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="donvixindon">Đơn vị xin đơn</label><span class="text-danger">:(*)</span>
+                                                    <select id="Department" name="Department" class="form-control   fill" title="Please fill this fiel.">
+                                                      <option value="{{sql.Department}}" data-i18n="{{sql.Department}}">{{sql.Department}}</option>                                                   
+                                                    </select>
+                                                    <i class="fad fa-briefcase text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+
+                                               <!--Người xin đơn -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="nguoixin">Người xin đơn</label><span class="text-danger">:(*)</span>
+                                                    <input class="form-control   " type="text" id="CreatedBy" name="" required="Please not entry.." title="Please fill this fiel." readonly  value="{{sql.CreatedBy}}">
+                                                    <i class="fad fa-user text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+
+                                               <!--Nhà xưởng xin-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12  mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="nhaxuong">Nhà xưởng xin đơn</label><span class="text-danger">:(*)</span>
+                                                    <select  id="ApplicationSite" name="ApplicationSite" class="form-control   fill" required="Please select Site..." title="Please fill this fiel.">
+                                                        <option value="{{sql.ApplicationSite}}" data-i18n="{{sql.ApplicationSite}}">{{sql.ApplicationSite}}</option>                                                     
+                                                    </select>
+                                                    <i class="fad fa-home-lg-alt text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+
+                                               <!--Nhà xưởng sử dụng-->
+                                              <div class="col-lg-3 col-md-3 col-sm-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="nhaxuongsd">Nhà xưởng sử dụng</label><span class="text-danger">:(*)</span>
+                                                    <select id="cbx_flowtitle" name="cbx_flowtitle" class="form-control   fill" title="Please fill this fiel." >
+                                                        <option value="{{sql.ApplicableSite}}" data-i18n="{{sql.ApplicableSite}}">{{sql.ApplicableSite}}</option>                                                     
+                                                    </select>
+                                                    <i class="fad fa-house-signal text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+                                              
+                                              <!--Mã đơn. -->
+                                              <div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="madon">Mã đơn</label><span class="text-danger">:(*)</span>
+                                                    <input class="form-control  " type="text" id="PublishDocument" name="" required="Please not entry.." title="Please fill this fiel." readonly value="{{sql.PublishDocument}}">
+                                                    <i class="fad fa-book text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+                                             
+
+                                              <!--Ngày xin đơn-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="ngayxin">Ngày xin đơn</label><span class="text-danger">:(*)</span>
+                                                    <input class="form-control   " type="text" id="CreatedDate" name="txt_Person" required="Please not entry.." title="Please fill this fiel."  readonly value="{{sql.CreatedDate|date:'Y-m-d H:i'}}">
+                                                    <i class="far fa-calendar-edit text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                              <!--Ngày có hiệu lực-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                      <label class="mb-0 mt-0" data-i18n="ngayhieuluc">Ngày có hiệu lực</label><span class="text-danger">:(*)</span>
+                                                      <input class="form-control   " type="text" id="EffectiveDate" name="" required="Please not entry.." title="Please fill this fiel." readonly value="{{sql.EffectiveDate|date:'Y-m-d H:i'}}">
+                                                      <i class="fad fa-calendar-check text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                              </div>
+                                            
+                                              <!--Mã văn bản -->
+                                              <div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="mavb">Mã văn bản</label><span class="text-danger">:(*)</span>
+                                                  <input class="form-control   " type="text" id="DocumentNo" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.DocumentNo}}" readonly >
+                                                  <i class="fad fa-leaf text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+                                              
+                                              <!--Phiên bản-->
+                                              <div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="phienban">Phiên bản</label><span class="text-danger">:(*)</span>
+                                                  <input class="form-control   " type="text" id="Rev" name="" required="Please not entry.." title="Please fill this fiel." readonly value="{{sql.Rev}}" readonly >
+                                                  <i class="fab fa-vuejs text-success f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                              <!--Tên văn bản-->
+                                              <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">                                                  
+                                                  <label class="mb-0 mt-0" data-i18n="tenvb">Tên văn bản</label><span class="text-danger">:(*)</span>
+                                                  <input class="form-control   " type="text" id="DocumentName" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.DocumentName}}" readonly >
+                                                  <i class="fad fa-font f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                              <!--Danh sách văn bản hủy khi văn bản mới được phát hành-->
+                                              <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="vanbanthaythe">Văn bản dưới đây sẽ bị hủy bỏ khi văn bản mới được phát hành</label><span class="text-danger">:(*)</span>
+                                                  <input class="form-control   " type="text" id="DeletedDocumentOld" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.DeletedDocumentOld}}" readonly>
+                                                  <i class="fad fa-search text-success f-20"  style="cursor:pointer;" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                             
+
+                                              <!--Văn bản tham khảo-->
+                                              <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">                                               
+                                                  <label class="mb-0 mt-0" data-i18n="vanbanthamkhao">Văn bản tham khảo</label><span class="text-danger">:(*)</span>
+                                                  <input class="form-control   " type="text" id="ReferenceDocument" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.ReferenceDocument}}" readonly>
+                                                  <i class="fad fa-search text-success f-20"  style="cursor:pointer;" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+                                              
+                                              <!--Thêm bản word-->
+                                              <div class="form-group col-md-12 col-12 mt-4">
+                                                <span class="text-success"> <i class="fa fa-file-word f-18 text-info" aria-hidden="true"></i></span>
+                                                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="themword">Thêm bản WORD</label><span class="text-danger">:(*)</span>
+                                                <p><a id="ContentFile" style="color:#448aff;text-decoration:underline;" href="javascript:void(0)" onclick="window.open('/static/media/{{item.ContentFile}}', '_blank')" title="Save File">{{sql.ContentFile}}</a></p>
+                                                <span style="color:white;"  {{btn_update}}>
+                                                    <input id="File_Upload_1" class="form-control   btn-outline-warning waves-effect waves-light" type="file" name="File_Upload_1" value="" accept=".doc,.docx,.xls,.xlsx">
+                                                </span>                                                
+                                              </div>
+
+                                              <!--Văn bản tham khảo-->   
+                                              <div class="col-12 mb-0 mt-2 table-sm" style="overflow:auto">                                                
+                                                <div class=" table-responsive text-center mt-4" style="width:100%;overflow:auto">
+                                                  <table id="table_vanban" class="table-sm table-hover table-bordered " style="width:100%; font-size:12px;overflow:auto">
+                                                      <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                                                          <th class="text-left text-bold bg-violet" colspan="7"><i class="fad fa-folder-open f-18"></i> <a data-i18n="phuluckemtheo">Phụ lục đính kèm</a></th> 
+                                                      </thead> 
+                                                      <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">                                                            
+                                                          <th class="text-bold text-bold " data-toggle="tooltip" data-placement="top" title="STT" data-original-title="STT" style="width:30px" data-i18n="stt">STT</th>
+                                                          <th class="text-center text-bold " data-i18n="maphuluc">Mã phụ lục</th>
+                                                          <th class="text-center text-bold " data-i18n="tenphuluc">Tên phụ lục</th>
+                                                          <th class="text-center text-bold " data-i18n="bophanluutru">Bộ phận lưu trữ</th>
+                                                          <th class="text-center text-bold " data-i18n="tgluutru">Thời hạn lưu trữ</th>
+                                                          <th class="text-center text-bold " data-i18n="dinhkem">File đính kèm</th>
+                                                          <th class="text-center text-bold " style="width:60px" data-i18n="xoabo">Xóa bỏ</th>
+                                                      </thead>
+                                                      <tbody id="tbody_vanbanthamkhao">   
+                                                          {% if list_docref %}
+                                                            {% for item in list_docref %}
+                                                              <tr>
+                                                                <td class="text-center">{{forloop.counter}}</td>
+                                                                <td class="text-center" style="max-width:150px !important; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;color:#" data-toggle="tooltip" data-placement="top" title="{{item.FormNo}}" data-original-title="{{item.FormNo}}">{{item.FormNo}}</td>
+                                                                <td class="text-left" style="max-width:150px !important; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;color:#" data-toggle="tooltip" data-placement="top" title="{{item.FormName}}" data-original-title="{{item.FormName}}">{{item.FormName}}</td>
+                                                                <td class="text-center" style="max-width:150px !important; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;color:#" data-toggle="tooltip" data-placement="top" title="{{item.PreservingDepartment}}" data-original-title="{{item.PreservingDepartment}}" data-i18n="{{item.PreservingDepartment}}">{{item.PreservingDepartment}}</td>
+
+                                                                <td class="text-center">{{item.PreservingTime|date:'Y-m-d'}}</td>
+                                                                <td class="text-left" style="max-width:150px !important;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;"><a style="color:#448aff;text-decoration:underline;" href="javascript:void(0);" onclick="window.open('/static/media/{{item.Attachment}}', '_blank')"  data-toggle="tooltip" data-placement="top" title="{{item.FileName}}" data-original-title="{{item.Attachment}}">{{item.Attachment}}</a></td>
+                                                                <td class="text-center"><i class="fad fa-lock-alt f-16" style=" pointer-events: none;" id="bdel_{{forloop.counter}}" onclick="delete_row(this);"></i></td>
+                                                              </tr>
+                                                            {% endfor %}
+                                                          {% endif %}
+
+                                                      </tbody>
+                                                      <tr  {{btn_update}}>
+                                                          <td colspan="7">
+                                                              <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 col-12 mb-0 mt-2">
+                                                                  <button class="form-control  btn-outline-primary"  data-toggle="modal" data-target="#modal_upfilevb"><i class="fa fa-plus f-18"></i> Thêm mới</button>    
+                                                              </div>
+                                                          </td>
+                                                      </tr>
+                                                  </table>
+                                                </div>  
+                                              </div>
+                              
+                                              <!--Chọn tệp văn bản đã ký-->
+                                              <div class="form-group col-md-12 col-12 mt-4">
+                                                <span class="text-success"> <i class="fa fa-file-pdf f-18 text-danger" aria-hidden="true"></i></span>
+                                                <label data-error="wrong" data-success="right" for="" data-i18n="thempdf"> Chọn tệp văn bản đã ký(PDF)</label><span class="text-danger">:(*)</span>
+                                                <p><a id="linkFileNeedRelease" style="color:#448aff;text-decoration:underline;" href="javascript:void(0)" onclick="window.open('/static/media/{{item.NeedReleaseFile}}', '_blank')" title="Save File">{{sql.NeedReleaseFile}}</a></p>
+                                                <span style="color:white;"  {{btn_update}}>
+                                                    <input id="File_Upload_1" class="form-control   btn-outline-warning waves-effect waves-light" type="file" name="File_Upload_1" value="" accept=".pdf">
+                                                </span>                                               
+                                              </div>
+
+                                             
+                                            <!--Bảng lưu trình ký-->    
+                                            <div class="col-lg-12 col-md-12 col-sm-12 mb-0 mt-0">  
+                                              <div class=" table-responsive text-center mt-4" style="width:100%;overflow:hidden">
+                                                <table id="table_vanban" class="table-sm table-hover table-bordered " style="width: 100%; font-size: 12px;overflow:hidden">
+                                                    <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                                                        <th class="text-left text-bold bg-violet" colspan="10"><i class="fad fad fa-file-signature f-18"></i> <a data-i18n="luutrinhky">Lưu trình ký</a></th> 
+                                                    </thead>
+                                                    <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">                                                            
+                                                      <th class="text-bold text-bold " data-toggle="tooltip" data-placement="top" title="Vị trí" data-original-title="Vị trí" style="width:100px" data-i18n="vitri">Vị trí</td>
+                                                        <th class="text-center text-bold " data-i18n="bophan">Bộ phận </th>
+                                                        <th class="text-center text-bold " data-i18n="hoten">Họ tên</th>
+                                                        <th class="text-center text-bold " data-i18n="mathe">Mã thẻ</th>
+                                                        <th class="text-center text-bold " data-i18n="sodienthoai">Số điện thoại</th>
+                                                        <th class="text-center text-bold " data-i18n="ngaygio">Ngày giờ</th>
+                                                        <th class="text-center text-bold " data-i18n="tinhtrangky">Tình trạng ký</th>
+                                                        <th class="text-center text-bold " data-i18n="thoigian">Thời gian</th>
+                                                        <th class="text-center text-bold " data-i18n="ghichu">Ghi chú</th>
+                                                        <th class="text-center text-bold "><i class="fad fa-user text-dark f-16 m-r-15"></i></th>    
+                                                    </thead>
+                                                    <tbody id="tbody_listappro">
+                                                      {% if list_appro %}
+                                                          {% for item in list_appro %}
+                                                            <tr>
+                                                              <td>{{item.Station}}</td>
+                                                                <td data-i18n="{{item.Dept}}">{{item.Dept}}</td>
+                                                                <td>{{item.Name}}</td>
+                                                                <td>{{item.UserName}}</td>
+                                                                <td>{{item.Ext}}</td>
+                                                                <td>{{item.UpdatedDate|date:'Y-m-d H:m'}}</td>
+                                                                <td data-i18n="{{item.Status1}}">{{item.Status}}</td>
+                                                                <td>{{item.Times}}</td>
+                                                                <td>{{item.Comment}}</td>
+                                                                <td>
+                                                                    {% if 'C-00009' in item.Status1 %}
+                                                                    <i class="fad fa-user text-danger f-16 m-r-15"></i>
+                                                                    {% elif 'C-00010' in item.Status1 %}
+                                                                    <i class="fad fa-check text-success f-16 m-r-15"></i>
+                                                                    {% elif 'C-00011' in item.Status1 %}
+                                                                    <i class="fad fa-ban text-danger f-16 m-r-15"></i>
+                                                                    {% endif %}
+                                                                </td>
+                                                            </tr>
+                                                          {% endfor %}
+                                                        {% endif %}                                             
+                                                    </tbody>   
+                                                  
+                                                </table>
+                                              </div>  
+                                            </div>  
+
+                                          </div>                                
+                                      </div>
+                                  </div>
+                               
+                                
+
+                                  <!--Nút lệnh tạo đơn yêu cầu-->
+                                  <div class=" mb-0 card-table flex-fill">                   
+                                      <div class="card-body" style="padding: 0px;">
+                                          <div class="row">                                    
+                                              <div class="col-12 mt-0">
+                                                  <div class="" name="frm-table">
+                                                      <div id="table" class="table-hover">
+                                                          <div class="card">
+                                                              <div class=" text-center">
+                                                                  <hr>   
+                                                                  <div class="row d-flex justify-content-center " >
+
+                                                                      <!--Button Cập nhật đơn -->
+                                                                      <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0" {{btn_update}}>
+                                                                        <span style="color:white;">
+                                                                            <button id="" type="button" class="btn btn-outline-info text-dark" onclick="Create_RegisterCode('UPDATE')"><i class="fas fa-save f-16 text-info"></i> <a data-i18n="btn-update">Cập nhật</a></button>                
+                                                                        </span>                                                                             
+                                                                      </div> 
+
+                                                                      <!--Button Xác nhận đẩy lưu trình ký-->
+                                                                      <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0" {{btn_appro}}>
+                                                                          <span style="color:white;">
+                                                                              <button id="" type="button" class="btn btn-outline-info text-dark" onclick="Show_modal_appro_regitercode()"><i class="fad fa-pen-nib f-16 text-danger"></i> <a data-i18n="btn-appro">Xác nhận</a></button>                
+                                                                          </span>                                                                             
+                                                                      </div> 
+
+                                                                      <!--Button hủy đơn-->
+                                                                      <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0" {{btn_cancel}}>
+                                                                        <span style="color:white;">
+                                                                            <button id="" type="button" class="btn btn-outline-info text-dark" onclick="Show_modal_cancel_regitercode()"><i class="fad fa-ban fa-1x f-16 text-danger"></i> <a data-i18n="btn-cancel">Hủy đơn</a></button>                
+                                                                        </span>
+                                                                      </div> 
+
+                                                                  </div>
+                                                              </div>            
+                                                          </div>                  
+                                                      </div>
+                                                  </div>
+                                              </div>                                                
+                                          </div>                                
+                                      </div>
+                                  </div>
+
+                                  
+                              </div>
+                              
+                          <!--/form--> 
+                      </div>
+                  </div>
+              </div>
+              <!--End Cột thông tin biểu mẫu-->
+      
+          </div>
+      <!-- </form> -->
+   
+  </div>
+  <!-- Page body end -->    
+</div>
+
+
+
+<!-- Modal DS VĂN BẢN Start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="" >
+    <div class="modal-content">
+      <div class="modal-header bg-" style="background-color:#f8f8f8;cursor:move">
+        <h5 class="modal-title " id="exampleModalLabel"> 文件發行清單 / DANH SÁCH VĂN BẢN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-6 col-sm-12 mb-2 mt-0" style="padding-left:0px">
+          <div class=" d-flex justify-content-center" role="group" aria-label="Basic example">
+            <input name="SearchPublishDocument" type="text" id="" class="form-control " placeholder="Input publish document" style="border-radius:6px">
+            <button type="button" class="btn btn-warning   text-dark" onclick=";"><i class="fa fa-search" aria-hidden="true" data-i18n="timmavb"> Tìm mã</i></button>
+          </div>
+        </div>
+
+        <form class="form-control text-center" style="max-height:500px;overflow:auto">
+          <table class="table-sm table-hover table-bordered table-white text-left" id="table_user" style="width:100%;">
+            <thead>
+              <tr class="bg-white"> 
+                  <th class="text-bold">Mã văn bản</th>
+                  <th class="text-bold">Tên văn bản</th>
+                  <th class="text-bold" style="width:120px">Ngày hiệu lực</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td > <a href="javascript:void(0)" value="VN-CHR-20180526-009" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180526-009 </a></td>   <td>總部周邊考勤管理規定 QUY DINH QUAN LY CHAM CONG DON VI CHUC NANG TW</td>   <td>2018/07/23</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-EHS-20180608-015" onclick="AddDocument(this)" style="color:#1E88E5">VN-EHS-20180608-015 </a></td>   <td>危險能量源，危險區域上鎖掛牌作業管理規範 Quy phạm quản lý tác nghiệp khóa và treo biển nguồn năng lượng nguy hại, khu vực nguy hiểm</td>   <td>2018/06/13</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-ATTW-20181218-012" onclick="AddDocument(this)" style="color:#1E88E5">VN-ATTW-20181218-012 </a></td>   <td>受限空間事故應急預案 Chuyên án ứng phó khẩn cấp sự cố không gian kín</td>   <td>2018/12/24</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-TVTW-20180521-001" onclick="AddDocument(this)" style="color:#1E88E5">VN-TVTW-20180521-001 </a></td>   <td>宿舍管理作業辦法 BIỆN PHÁP QUẢN LÍ KTX NHÀ XƯỞNG</td>   <td>2018/06/05</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+              <tr><td > <a href="javascript:void(0)" value="VN-CHR-20180526-009" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180526-009 </a></td>   <td>總部周邊考勤管理規定 QUY DINH QUAN LY CHAM CONG DON VI CHUC NANG TW</td>   <td>2018/07/23</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-EHS-20180608-015" onclick="AddDocument(this)" style="color:#1E88E5">VN-EHS-20180608-015 </a></td>   <td>危險能量源，危險區域上鎖掛牌作業管理規範 Quy phạm quản lý tác nghiệp khóa và treo biển nguồn năng lượng nguy hại, khu vực nguy hiểm</td>   <td>2018/06/13</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-ATTW-20181218-012" onclick="AddDocument(this)" style="color:#1E88E5">VN-ATTW-20181218-012 </a></td>   <td>受限空間事故應急預案 Chuyên án ứng phó khẩn cấp sự cố không gian kín</td>   <td>2018/12/24</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-TVTW-20180521-001" onclick="AddDocument(this)" style="color:#1E88E5">VN-TVTW-20180521-001 </a></td>   <td>宿舍管理作業辦法 BIỆN PHÁP QUẢN LÍ KTX NHÀ XƯỞNG</td>   <td>2018/06/05</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+              <tr><td > <a href="javascript:void(0)" value="VN-CHR-20180526-009" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180526-009 </a></td>   <td>總部周邊考勤管理規定 QUY DINH QUAN LY CHAM CONG DON VI CHUC NANG TW</td>   <td>2018/07/23</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-EHS-20180608-015" onclick="AddDocument(this)" style="color:#1E88E5">VN-EHS-20180608-015 </a></td>   <td>危險能量源，危險區域上鎖掛牌作業管理規範 Quy phạm quản lý tác nghiệp khóa và treo biển nguồn năng lượng nguy hại, khu vực nguy hiểm</td>   <td>2018/06/13</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-ATTW-20181218-012" onclick="AddDocument(this)" style="color:#1E88E5">VN-ATTW-20181218-012 </a></td>   <td>受限空間事故應急預案 Chuyên án ứng phó khẩn cấp sự cố không gian kín</td>   <td>2018/12/24</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-TVTW-20180521-001" onclick="AddDocument(this)" style="color:#1E88E5">VN-TVTW-20180521-001 </a></td>   <td>宿舍管理作業辦法 BIỆN PHÁP QUẢN LÍ KTX NHÀ XƯỞNG</td>   <td>2018/06/05</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+            </tbody>
+          </table>
+        </form>
+
+
+      </div>
+      <div class="modal-footer " style="display:block">
+        <div class="row justify-content-center ">
+          <div class="col-md-3 col-sm-6 mb-2 mt-0">
+              <span style="color:white;">
+                  <button id="" type="button" class="btn btn-outline-info" data-dismiss="modal" ><i class="fas fa-sign-out fa-x"></i><a data-i18n="btn-exit"> Thoát</a></button>                
+              </span>                                                                             
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal End-->
+
+
+<!-- The Modal OK APPROVAL and Forward START-->
+<div class="modal fade bd-example-modal-lg" id="Modal_Comment" >
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" >
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title"> &ensp;<span class="text-success"><i class="fas fa-comment-dots  f-22"></i></span><a  data-i18n="comment"> Your Comment For Signature</a></h5>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <!-- Modal body -->
+       <div class="modal-body">
+         <div class="card" style="box-shadow:none">
+          <div class="row" >             
+              <div class="col-md-12 col-sm-12 mb-0 mt-3">
+                <div class="form-group mb-0 mt-0">
+                  <span class="fas fa-pen-nib text-danger f-16"></span>
+                  <label class="mb-0 mt-0" data-i18n="ghichu">Ghi chú</label><span class="text-danger">::(*)</span>
+                  <textarea id="Comment" class="form-control form-control-solid  fill" type="text" required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: auto;"></textarea>
+               
+                </div>         
+              </div>
+
+          </div>
+      </div>
+    </div>
+    <!-- Modal footer -->
+    <div class="modal-footer">
+
+      <div class="row container d-flex justify-content-center" >
+        <!--Button quay lại trang -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-2 mt-0">
+          <span style="color:white;">
+            <button class="btn btn-outline-secondary" type="button"  data-dismiss="modal"><i class="fa fa-reply f-16"></i> <a data-i18n="btn-exit">Thoát</a></button>
+          </span>   
+        </div>
+        <!--Button Phê duyệt OK  -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-2 mt-0" id="btn_appro" hidden>
+            <span>
+              <button  type="button" class="btn btn-outline-info" onclick="ApproOrCancelDocument('PublishDocument', 'APPRO')"><i class="fa fa-check f-16" aria-hidden="true"></i> <a data-i18n="btn-kynhan">Ký nhận</a></button> 
+            </span> 
+        </div>
+
+        <!--Button hủy đơn  -->
+        <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-2 mt-0" id="btn_cancel" hidden>
+          <span>
+            <button  type="button" class="btn btn-outline-danger" onclick="ApproOrCancelDocument('PublishDocument', 'CANCEL');"><i class="fa fa-check f-16" aria-hidden="true"></i> <a data-i18n="btn-huydon">Hủy đơn</a></button> 
+          </span> 
+        </div>
+
+      </div>
+     
+    </div>
+      </div>
+  </div>
+</div>
+<!-- The Modal COMMENT OK END -->
+
+
+<!-- Import JS -->
+<script src="{% static 'main/myjs/J-query/3.6.0/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'main/myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'main/myjs/xulyvanban.js' %}"></script> 
+
+
+
+<!-- Active Menu-->
+<script type="text/javascript"  src="{% static 'main/myjs/menu.active.js' %}"></script>
+<script>
+      
+    ACTIVE_MENUY('DON_SUA_CHUA') ;
+    
+    $( function() {
+      Move_modal('exampleModal');
+      Move_modal('modal_vb');
+      Move_modal('Modal_Comment');
+    } );
+    SHOW_LANG_();
+  </script>
+
+{% endblock %}
+

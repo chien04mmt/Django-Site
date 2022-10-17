@@ -1,0 +1,337 @@
+
+<link rel="stylesheet" type="text/css" href="/static/main/mycss/permission.css">
+<link rel="stylesheet" type="text/css" href="/static/main/mycss/modify.pass.css">
+
+
+<div class="main-body">            
+    <div class="page-wrapper"> 
+      <!-- Page-body start -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+
+                <!-- Tiêu đề  start-->
+                <div class="card-header">
+                  <h5><i class="fas fa-users-cog f-22"></i><a data-i18n="title-acount"> QUẢN LÝ NGƯỜI DÙNG</a></h5>              
+                </div>
+                <!-- Tiêu đề  END-->
+
+                <div class="card-block">
+
+                  <div class="row" id="search_div">
+
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-12 mt-2">
+                      <div class="form-group mb-0 mt-0">                        
+                        <label class="mb-0 mt-0" data-i18n="taikhoan"> Tài khoản</label>
+                        <input class="form-control " type="text" id="ValueFind" value="" data-i18n="input-acount" placeholder="Nhập vào tài khoản">
+                        <i class="fa fa-address-book text-c-blue f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-12 mt-2">
+                      <div class="form-group mb-0 mt-0">                       
+                        <label class="mb-0 mt-0" data-i18n="timtheo"> Tìm theo</label>
+                        <select class="form-control " id="Column">
+                          <option selected="selected" value="TenDangNhap" data-i18n="taikhoan">Tài khoản</option>
+                          <option value="HoTen" data-i18n="hoten">Họ tên</option>                         
+                          <option value="SoDienThoai" data-i18n="somayban">Số máy bàn</option>
+                          <option value="Email" data-i18n="Email">Email</option>                        
+                        </select>
+                        <i class="fa fa-filter text-c-blue f-16" aria-hidden="true"></i><span class="focus-input100"></span>
+                      </div>
+                    </div>
+
+
+                    <div class="col-lg-2 col-md-4 col-sm-4 col-12 mt-4">
+                      <div class="btn-group" role="group" aria-label="Basic example" style="display:flex !important">
+                        <!--Tìm kiếm nâng cao-->
+                        <button type="button" onclick="Search_User()" class="form-control btn-outline-info mt-1" data-toggle="tooltip" data-placement="bottom" title="Search" data-original-title="Search"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <!--Buton thêm mới-->
+                        <button type="button" onclick="SHOW_ADD_USER();" class="form-control btn-outline-info  mt-1" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add new"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                       
+                      </div>
+                    </div>
+  
+                  </div><hr>
+
+                  <!-- Bảng Hiển thị thông tin USER-->   
+                  <div class="table-responsive" style="overflow:auto;">      
+                      <table id="table_Viewuser" class="table-sm table-hover  table-bordered  nowrap no-footer mt-0" cellspacing="0" style="width:100%;">               
+                      <thead class="fw-bold fs-6 text-dark text-left bg-light font-weight-bold">
+                          <tr class="bg-light text-dark"> 
+                            <th  data-i18n="stt">STT</th>
+                            <th  data-i18n="taikhoan">Tài khoản</th>
+                            <th  data-i18n="hoten">Họ tên</th>
+                            <th  data-i18n="somayban">Số máy bàn</th>
+                            <th  data-i18n="email">Email</th>
+                            <th class="text-center" data-i18n="quyenhan">Quyền hạn</th>
+                            <th class="text-center" data-i18n="td-hanhdong" style="width:160px;" data-i18n="action">Thao tác</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tbody_Viewuser">
+
+                      </tbody>    
+                      </table>
+                    <hr>
+
+                  </div>
+                  <!-- Bảng  End-->
+                 
+                  
+                  <hr>  
+                 
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page-body END -->
+    </div>
+</div>
+
+
+
+
+
+<!--Modal up file văn bản-->
+<div class="modal right fade " id="modaledituser" >
+  <div class="modal-dialog modal-xl" id="modal_vb">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-folder-open f-20"></i><a data-i18n="thietlaptaikhoan">Thiết lập tài khoản</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      
+          <div class="row container-fluid" id="Div_userinf">  
+
+            <!--Thông tin cơ bản--> 
+            <div class="col-12 " id="Base_info">  
+              <div class="card-body" style="padding: 0px;">
+                <div class="headerx">
+                  <h5 data-i18n="thongtincb">Thông tin cơ bản</h5>
+                </div>
+                <hr/>                    
+                <div class="row">
+                  
+                  <!--txt UserID Title-->
+                  <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 mb-2 mt-0">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="userid-modal" hidden>Mã thẻ</label><span class="text-danger" hidden>:</span>
+                      <input class="form-control  " type="text" id="TenDangNhap" name="" required="Please not entry.." title="Please fill this fiel." value="" placeholder="Mã thẻ">
+                      <i class="fad fa-id-card f-16 text-success"></i>
+                      <span class="focus-input100"></span>
+                    </div>
+                  </div>
+
+            
+                  <!--txt username-->
+                  <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 mb-2 mt-0">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="username-modal" hidden>Họ tên</label><span class="text-danger" hidden>:</span>
+                      <input class="form-control  " type="text" id="HoTen" name="usernameid_modal_user" required="Please not entry.." title="Please fill this fiel." value=""  placeholder="Họ Tên">
+                      <i class="fad fa-user f-16 text-info" aria-hidden="true"></i><span class="focus-input100"></span>
+                    </div>
+                  </div>                    
+
+                  <!--txt your Mail-->
+                  <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 mb-2 mt-0">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="Mail-modal" hidden>Thư điện tử</label><span class="text-danger" hidden>:</span>
+                      <input class="form-control" type="text" id="Email" name="emailid_modal_user" required="Please not entry.." title="Please fill this fiel." value=""  placeholder="Email">
+                      <i class="fal fa-mailbox f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                    </div>
+                  </div>
+
+                  <!--txt tell-->
+                  <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 mb-2 mt-0">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="Ext-modal" hidden>Số liện hệ</label><span class="text-danger" hidden>:</span>
+                      <input class="form-control  " type="text" id="SoDienThoai" name="" required="Please not entry.." title="Please fill this fiel." value=""  placeholder="Số máy bàn">
+                      <i class="fal fa-phone f-16 text-info" aria-hidden="true"></i><span class="focus-input100"></span>
+                    </div>
+                  </div>
+
+                  <!--Nhóm quyền hạn-->
+                  <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-12 mb-2 mt-0">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="Ext-modal" hidden>Nhóm quyền</label><span class="text-danger" hidden>:</span>
+                        <select onchange="Change_select_Permiss(this)"  id="CodeRole" class="form-control" required="Please select..." title="Please fill this fiel.">
+                         
+                        </select>                                    
+                      <i class="fas fa-shield-check f-16" style=" color: darkred;"></i><span class="focus-input100"></span>
+                    </div>
+                  </div>
+                
+                  <!--DCC-->
+                  <div class="col-xl-2 col-lg-6 col-md-12 col-sm-6 col-12 mb-2 mt-2" >
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="DCC" value="DCC" onchange="Change_checkbox_DCC(this)">
+                        <label class="form-check-label" for="DCC">Is DCC</label>
+                    </div>
+                  </div>
+
+                  <!--txt your passw-->
+                  <div class="col-xl-6 col-lg-3 col-md-6 col-sm-6 col-12 mb-2 mt-0" id="Div_pass1">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="Password-modal" hidden>Mật khẩu</label><span class="text-danger" hidden>:</span>
+                      <input class="form-control fill" name="password1_modal" type="password" id="pass1id" value="" autocomplete="on"  placeholder="Mật khẩu">
+                      <span class="show-btn  mt-0"><i id="togglePassword" class="fas fa-eye" onclick="SHOW_PASSWORD();"></i></span>
+                      <i class="fad fa-lock-alt f-16 text-danger"></i><span class="focus-input100"></span>                         
+                    </div>                        
+                  </div>
+
+                  <!--txt your password2-->
+                  <div class="col-xl-6 col-lg-3 col-md-6 col-sm-6 col-12 mb-2 mt-0"  id="Div_pass2">
+                    <div class="form-group mb-0 mt-0">
+                      <label class="mb-0 mt-0" data-i18n="Confirm-modal" hidden>Nhắc lại mật khẩu</label><span class="text-danger"  hidden>:</span>
+                      <input class="form-control " type="password" id="pass2id" name="pass2id" required="Please not entry.." title="Please fill this fiel." autocomplete="on"  placeholder="Nhắc lại mật khẩu">
+                      <i class="fad fa-lock-alt f-16 text-danger"></i><span class="focus-input100"></span>       
+                    </div>
+                  </div>
+
+                  <!--lư không-->
+                  <div class="col-xl-0 col-lg-6 col-md-12 col-sm-12 mb-0 mt-0" id="Div_None">                   
+                  </div>
+                  
+                  <!--Chủ quản phòng-->
+                  <div class="col-xl-2 col-lg-3 col-md-4 col-12 mb-0 mt-3">
+                      <div class="form-group mb-0 mt-0 show">                            
+                        <label class="mb-0 mt-0" data-i18n="biensoxe-text" hidden>Chủ quản phòng</label>
+                        <input class="form-control" type="text" id="Manager_list" name="Manager_list" value="" data-toggle="dropdown" aria-expanded="true" onkeyup="filterFunction('Manager_list', 'myDropdown_Manager_list')" autocomplete="off" placeholder="Chủ quản phòng">
+                        <i class="fad fa-users f-16 text-danger"></i><span class="focus-input100"></span>       
+                        <div id="myDropdown_Manager_list" class="dropdown-menu mt-1" aria-labelledby="dropdownMenuButton" style="overflow: auto; max-height: 300px; width: 100%; position: absolute; transform: translate3d(15px, -377px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="top-start" x-out-of-boundaries="">
+                          
+                        </div>                            
+                      </div>                          
+                  </div>
+
+                  <!--Chủ quản phòng-->
+                  <div class="col-xl-8 col-lg-9 col-md-8 col-12 mb-0 mt-3">                          
+                      <ul class="select-multi" id="select_manager">
+                      
+                      </ul>
+                  </div>
+                  
+                </div>                      
+              </div>
+            </div>
+
+            <!--Thông tin chức vụ-->
+            <div class="col-12 mt-4">
+              <div class="card-body" style="padding: 0px;">  
+                  <div class="headerx">
+                    <h5 data-i18n="thongtincv">Thông tin chức vụ</h5>
+                  </div>                 
+                  <hr/>                 
+                  <div class="row" id="group_permiss">                  
+                  </div>                     
+              </div>
+            </div>
+
+            <!--Thông tin Bộ phận--> 
+            <div class="col-12 mt-2">
+              <div class="card-body" style="padding: 0px;">     
+                  <div class="headerx">
+                    <h5 data-i18n="thongtinbp">Thông tin bộ phận</h5>
+                  </div>              
+                    <hr/>
+                  <!--Thông tin Bộ phận--> 
+                  <div class="row" id="group_Dept">                  
+                  </div>                 
+                </div>
+            </div>
+
+          </div>          
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer d-flex justify-content-center"  id="Div_btn">
+        <!--Button thêm mới tài khoản-->
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 mb-0 mt-0" id="div_btnCreate">
+          <span style="color:white;">
+            <button id="btn_save" class="btn btn-success" type="button" onclick="ACTION_USER('CREATE')"><i class="fa fa-plus"></i> <a data-i18n="btn-create">Thêm mới</a></button>
+          </span>   
+        </div>
+
+        <!--Button cập nhật thông tin -->
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 mb-0 mt-0" id="div_btnUpdate">
+          <span style="color:white;">
+            <button id="btn_save" class="btn btn-info" type="button" onclick="ACTION_USER('UPDATE')"><i class="fa fa-save"></i> <a data-i18n="btn-save"> Lưu lại</a></button>
+          </span>   
+        </div>
+      
+        <!--Button Quay lại thoát  -->
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 mb-0 mt-0">
+          <span>
+            <button type="button" class="btn btn-dark float-end" data-dismiss="modal"><i class="fa fa-reply"></i> <a data-i18n="btn-exit"> Thoát</a></button>                    
+          </span> 
+        </div>  
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+          .select-multi{
+            float:left;
+            margin-right:0px;
+            margin-top:-4px;
+            padding:7px 16px;           
+          }
+          .select-choice{
+             border-radius:24px;
+            background-color:#eee;
+          }
+          .fa-del{
+            cursor:pointer;
+          }
+          .select-choice:hover{
+            background-color:#32dadf;
+          }
+            .headerx:after{
+              position: relative;
+              content: "";
+              background-color: #448aff;
+              position: absolute;
+              left: 5px;
+              top: 0;
+              width: 4px;
+              height: 20px;
+            }
+            .form-check-input{
+                  width: 19px !important;
+                  height: 19px !important;
+                  margin: 0px !important;
+                  margin-right: 5px !important;
+                  left:0;  
+                  cursor:pointer !important;                         
+            }
+            .form-check-label{
+                cursor:pointer !important;
+            }
+</style>
+
+<script type="text/javascript" src="/static/main/myjs/myjs.js"></script> 
+<script type="text/javascript" src="/static/main/myjs/quanlyquyenhan.js"></script> 
+<script type="text/javascript" src="/static/main/myjs/quanlytaikhoan.js"></script>  
+
+<script>
+  $( function() {
+    Move_modal('modaledituser'); 
+  });
+  Load_Dept();
+  Load_Permiss_Group();
+  Load_List_Manager_room();
+  Load_Roles() ;
+</script>

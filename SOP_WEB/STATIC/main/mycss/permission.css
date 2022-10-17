@@ -1,0 +1,17 @@
+/* ĐỊnh dạng khu vự điều chỉnh bảng permission */
+
+#table_permiss tbody tr td input,
+#table_permiss tbody tr td input,
+#table_permiss thead tr th input {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+#table_permiss td {
+    padding: 0.5em;
+}
+
+#table_user thead tr th,
+#table_user tbody tr {
+    text-align: left;
+}

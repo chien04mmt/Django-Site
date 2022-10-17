@@ -1,0 +1,70 @@
+{% extends "login/baselogin.html" %}
+
+{% load static %}
+
+{% block title %}
+SOP SYSTEM
+{% endblock %}
+
+{% block content %}
+
+				<span class="login100-form-title" data-i18n="SOP-login">
+					LOGIN SOP SYSTEM
+				</span>
+
+				<div class="wrap-input100 validate-input " data-toggle="dropdown" data-validate = "Password is required">
+					<input class="input100" data-toggle="dropdown" type="text" id="username" name="username" placeholder="User ID Card" required  data-i18n="input-user-login" autocomplete="off" onkeyup="filterFunction('username', 'myDropdown_USER')">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fas fa-id-card" aria-hidden="true"></i>
+					</span>
+
+						
+
+				</div>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="myDropdown_USER" >
+					
+				</div>	
+
+			
+				<div class="wrap-input100 validate-input" data-validate = "Password is required">
+					<input class="input100" id="passid" type="password" name="password" placeholder="Password" data-i18n="input-pass-login" autocomplete="current-password">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-lock" aria-hidden="true"></i>
+					</span>
+					<span class="show-btn  mt-2" style="bottom: 3px"><i id="togglePassword" class="fad fa-eye-slash" onclick=""></i></span>
+				</div>
+				
+				<div class="wrap-input100 validate-input" data-validate = "Valid Capchar ...">
+					<input data-toggle="dropdown" aria-expanded="true"  class="input100" type="text" id="input_captcha" placeholder="captcha" required="Please input Captcha" data-i18n="input-capt-login">
+					<span class="focus-input100" style="width:55%"></span>
+					<span class="symbol-input100">
+						<i class="fa fa-key " aria-hidden="true"></i>
+					</span>					
+					<span class="text-right text-success" id="span_captcha" style="position:absolute;top:5px;left:0px;background:transparent"><h3 id="kq_input_1">3JC0O</h3></span>
+				</div>
+
+				<div class="col-md-12 col-sm-12 mb-0 mt-0">
+					<div class="custom-control  d-flex">
+						<input type="checkbox" class="form-check-input  align-content-center" id="rememberpass" style="width:20px;height:26px !important">
+						<label class="form-check-label align-content-center" for="rememberpass" data-i18n="save-pass" style="margin-top: 5px;color:#0596f1">Nhớ mật khẩu ?</label>
+					</div>
+				</div>
+
+				  
+		   		<div class="container-login100-form-btn">
+					<button class="login100-form-btn" id="login-btn" type="submit" onclick="check_captcha();" data-i18n="btn-login">
+					Login
+					</button>
+		  		</div>
+
+				<div class="text-center p-t-1">
+						<a class="txt2" href="#" data-i18n="creat-login" data-toggle="modal" data-target="#modaledituser">
+							Create your Account
+						</a>
+						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+				</div>
+
+{% endblock %}
+

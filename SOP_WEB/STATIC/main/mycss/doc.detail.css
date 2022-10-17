@@ -1,0 +1,17 @@
+textarea {
+    height: auto;
+}
+
+
+/* ẩn nút thêm mới */
+
+.fixed-button {
+    display: none;
+}
+
+@media print {
+    .pagebreak {
+        clear: both;
+        page-break-after: always;
+    }
+}

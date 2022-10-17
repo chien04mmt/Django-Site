@@ -1,0 +1,221 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Hệ thống quản lý công văn
+{% endblock %}
+
+{% block mainbody %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/mycss/new.app.css' %}">
+
+<div class="main-body">
+  <!-- Page body --> 
+  <div class="page-wrapper">   
+  
+      <!-- <form class="form-control -sm  col-form-label-lg justify-content-center"> -->
+          <div class="row"> 
+
+              <!--Cột thông tin biểu mẫu Start-->
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="card">                
+                      <div class="card-header">
+                          <h5 ><i class="fad fa-pencil f-22"></i><a data-i18n="donxinhuymavb" style="color:#0072ff"> ĐƠN XIN HỦY MÃ VĂN BẢN</a></h5>
+                      </div>
+                  
+                      <div class="card-block "> 
+                          <!--form--> 
+                          
+                              <div class="col-md-12">
+
+                                  <div class=" mb-0 card-table flex-fill">                   
+                                      <div class="card-body" style="padding: 0px;">
+                                          <div class="row" id="Div_area"> 
+
+                                              <!--Đơn vị xin-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="donvixin">Đơn vị xin đơn:</label><span class="text-danger">*</span>
+                                                  <select id="Department" name="Department" class="form-control fill" title="Please fill this fiel.">
+                                                      <option value="{{sql.Department}}" data-i18n="{{sql.Department}}" >{{sql.Department}}</option> 
+                                                  </select>
+                                                  <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                              <!--Người xin đơn -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="nguoixin">Người xin đơn:</label><span class="text-danger">*</span>
+                                                  <input class="form-control " type="text" id="CreatedBy" value="{{request.user.get_full_name}}" name="txt_App_No" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                  <i class="fad fa-user f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                              <!--Nhà xưởng xin-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12  mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="nhaxuong">Nhà xưởng xin đơn:</label><span class="text-danger">*</span>
+                                                    <select  id="ApplicationSite " name="" class="form-control fill" required="Please select BU..." title="Please fill this fiel.">
+                                                        <option value="{{sql.ApplicationSite}}" data-i18n="{{sql.ApplicationSite}}" >{{sql.ApplicationSite}}</option>
+                                                    </select>
+                                                    <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+                                              
+                                              <!--Ngày xin đơn-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="ngayxin">Ngày xin đơn:</label><span class="text-danger">*</span>
+                                                  <input class="form-control " type="text" id="CreatedDate" name="CreatedDate" required="Please not entry.." title="Please fill this fiel."  readonly>
+                                                  <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                              <!--Mã đơn. -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="madon">Mã đơn:</label><span class="text-danger">*</span>
+                                                    <input class="form-control " type="text" id="CancelDocument" name="" required="Please not entry.." title="Please fill this fiel." value="SOP-G-" readonly>
+                                                    <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div> 
+                                            
+                                              <!--Mã đơn. cần hủy -->
+                                              <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="madonhuy">Mã đơn cần hủy:</label><span class="text-danger">*</span>
+                                                  <input class="form-control " type="text" id="ApplicationNo_Code" name="" value="{{sql.CodeDocument}}" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                  <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                </div>
+                                              </div>
+
+                                              <!--Mã văn bản cần hủy -->
+                                              <div class="col-lg-3 col-md-3 col-sm-12col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="madonvbhuy">Mã văn bản cần hủy:</label><span class="text-danger">*</span>
+                                                    <input class="form-control " type="text" id="DocNo_DCC" name="" value="{{sql.DocNo}}" required="Please not entry.." title="Please fill this fiel." readonly="">
+                                                    <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+                                            
+                                              <!--Ngày có hiệu lực-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="ngayhieuluc">Ngày có hiệu lực:</label><span class="text-danger">*</span>
+                                                    <input class="form-control " type="text" id="EffectiveDate" name="" value="1900-01-01" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                    <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                  </div>
+                                              </div>
+
+                                              <!--Ngày kết án dự tính-->
+                                              <div class="col-lg-3 col-md-3 col-sm-12 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">                         
+                                                      <label class="mb-0 mt-0" data-i18n="ngayketan">Ngày kết án dự tính:</label><span class="text-danger">*</span>
+                                                      <input class="form-control " type="text" id="EstimatedCloseDate" name="" value="{{sql.EstimatedCloseDate|date:'Y-m-d'}}" required="Please not entry.." title="Please fill this fiel." readonly>
+                                                      <i class="fad fa-book f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                              </div>
+
+                                              <!--Tài liệu sửa đổi ban đầu-->
+                                              <div class="col-lg-9 col-md-9 col-sm-12 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">                         
+                                                      <label class="mb-0 mt-0" data-i18n="tailieusuadoi">Tài liệu sửa đổi ban đầu:</label><span class="text-danger">*</span>
+                                                      <input class="form-control " type="text" id="DocName" name="" value="{{sql.DocName}}" required="Please not entry.." title="Please fill this fiel.">
+                                                      <i class="fad fa-font f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>
+                                                    </div>
+                                              </div>
+
+                                              <!--Lý do xin đơn-->
+                                              <div class="col-lg-12 col-md-12 col-sm-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">                                                      
+                                                      <label class="mb-0 mt-0" data-i18n="lydoxin">Lý do xin đơn:</label>
+                                                      <input id="ReasonOfApplication" class="form-control " type="text" required="Please not entry.." title="Please fill this fiel."/>
+                                                      <i class="fad fa-comment-edit f-16 text-success"></i><span class="focus-input100"></span>
+                                                    </div>
+                                              </div>
+                                              
+
+                                          </div>                                
+                                      </div>
+                                  </div>
+                               
+                                
+
+                                  <!--Nút lệnh tạo đơn yêu cầu-->
+                                  <div class=" mb-0 card-table flex-fill">                   
+                                      <div class="card-body" style="padding: 0px;">
+                                          <div class="row">                                    
+                                              <div class="col-12 mt-0">
+                                                  <div class="" name="frm-table">
+                                                      <div id="table" class="table-hover">
+                                                          <div class="card">
+                                                              <div class=" text-center">
+
+                                                                  <hr>   
+
+                                                                  <div class="row d-flex justify-content-center ">
+
+                                                                      <!--Button tạo đơn -->
+                                                                      <div class="col-xl-2 col-md-3 col-sm-6 mb-2 mt-0">
+                                                                          <span style="color:white;">
+                                                                              <button id="" type="button" class="btn btn-outline-info" onclick="TaoDonXinHuyMaVB('CREATE')"><i class="fas fa-plus fa-x"></i><a data-i18n="btn-newapp">Tạo đơn</a></button>                
+                                                                          </span>                                                                             
+                                                                      </div> 
+
+                                                                    
+                                                                       <!--Button làm lại -->
+                                                                      <div class="col-xl-2 col-md-3 col-sm-6 mb-2 mt-0">
+                                                                          <span style="color:white;">
+                                                                              <button id="" type="button" class="btn btn-outline-info" ><i class="fad fa-sync-alt f-16 fa-spin"></i> <a data-i18n="btn-reset">Làm lại</a></button>                
+                                                                          </span>                                                                             
+                                                                      </div>                               
+                                                                     
+
+                                                                  </div>
+                                                              </div>            
+                                                          </div>                  
+                                                      </div>
+                                                  </div>
+                                              </div>                                                
+                                          </div>                                
+                                      </div>
+                                  </div>
+
+                                  
+                              </div>
+                              
+                          <!--/form--> 
+                      </div>
+                  </div>
+              </div>
+              <!--End Cột thông tin biểu mẫu-->
+      
+          </div>
+      <!-- </form> -->
+   
+  </div>
+  <!-- Page body end -->    
+</div>
+
+
+
+<!-- Import JS -->
+<script src="{% static 'main/myjs/J-query/3.6.0/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'main/myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'main/myjs/myjs.js' %}"></script> 
+<script type="text/javascript" src="/static/main/myjs/xulyvanban.js"></script>  
+<!-- Uto size text areal -->
+<script src="{% static 'main/myjs/autosize.min.js' %}"></script> 
+
+<!-- Active Menu-->
+<script type="text/javascript"  src="{% static 'main/myjs/menu.active.js' %}"></script>
+<script>
+    ACTIVE_MENUY('DON_HUYMA') ;
+    autosize(document.getElementById("txt_note"));
+  $("#CreatedDate").val(GET_STRING_DATETIME1(GET_TIME_NOW()));
+  load_Department();
+  TuDong_SinhMa('CancelDocument');
+  </script>
+
+{% endblock %}
+

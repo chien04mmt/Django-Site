@@ -1,0 +1,86 @@
+{% extends "login/baselogin.html" %}
+{% load static %}
+{% block title %}
+Register ARTICLE CAR 2.0
+{% endblock %}
+
+{% block content %}
+
+				
+					<!--Show Modal Error-->	
+
+					{% if form.errors %}
+						<div class="alert alert-danger" role="alert">
+						{% for field, errors in form.errors.items %}
+							{% for error in errors %}
+								<a>{{ field }}</a>: {{ error }}							
+							{% endfor %}
+						{% endfor %}
+						</div>
+					{% endif %}
+					<span class="login100-form-title" data-i18n="title-register"> 
+						Register Acount Esign
+					</span>
+					<div class="wrap-input100 validate-input" data-validate = "Valid username is required: V0515000">
+						<input class="input100" type="text" name="username" placeholder="User ID Card" required data-i18n="input-user-login">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fas fa-id-card"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="email" name="email" placeholder="Email" data-i18n="email-forgot">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" id="password1" name="password1" placeholder="Password" data-i18n="input-pass-login">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" id="password2" name="password2" placeholder="Confirm Password" data-i18n="pass2-register">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button type="submit" class="login100-form-btn" name="btn_register" id="registerID" onclick="check_password();" data-i18n="btn-register">
+							Register
+						</button>
+					</div>
+					<!--Check same password-->
+					<script type="text/javascript">
+						function check_password() {
+							var a = $('#pass1').val();
+							var b = $('#pass2').val();		
+							if (a == b) {			
+								return true;
+							  } else {
+									event.preventDefault();
+									alert("Passwords are not the same!");			
+							  }
+					} 
+					</script>
+					<div class="text-center p-t-1">
+						<a class="txt2" href="{% url 'forgotpass' %}" data-i18n="forgot-pass-login">
+							Username / Password?
+						</a>
+						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						<a class="txt2" href="{% url 'home' %}" data-i18n="login-login">
+							Log In
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+
+
+{% endblock %}
+	
+

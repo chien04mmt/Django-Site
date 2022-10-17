@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+
+<!-- Meta -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+<meta name="author" content="Codedthemes"/>
+
+
+
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'main/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'main/FontAwesome.Pro.5.15.4.Web/css/all.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/FontAwesome.Pro.5.15.4.Web/css/all.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login_/main.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'login_/lang.css' %}">
+
+<title>{% block title %}{% endblock %}</title>
+
+
+
+</head>
+
+<body  >
+
+	<div class="limiter">
+		<div class="container-login100 my-auto">
+						
+			
+
+				<div class='ticket text-center' style="background-color:none;width:70px; height:70px; left:10px;top:10px; position:absolute;font-size:40px;cursor:pointer;"><a href="/manual/" style="font-size:40px;color: white;"><i class="far fa-question-circle"></i></a></div>
+	
+				{% comment %} <div class='ticket text-center' style="background-color:none; left:80px;top:10px; position:absolute;font-size:35px;cursor:pointer;"><a href="/manual/" style="color: white;"><img class="" src="/static/assets/images/logo.png" alt="Theme-Logo" width="150" height="40"></a></div> {% endcomment %}
+				
+				<div class='ticket text-center' style="background-color:none; left:80px;top:10px; position:absolute;font-size:40px;cursor:pointer;">
+					<a href="/manual/" style="color: yellow;font-size:30px;">SOP-HƯỚNG DẪN DỤNG(用户手册)</a>
+				</div>
+
+				<div class="wrap-login100">
+			
+					<div class="login100-pic js-tilt mx-auto my-auto" data-tilt >	
+						
+
+						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+							<ol class="carousel-indicators">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+							</ol>
+							<div class="carousel-inner" >
+								<div class="carousel-item active" >
+								<img class="d-block w-100" src="{% static 'login_/img/4.png' %}" alt="First slide">
+								</div>
+								<div class="carousel-item">
+								<img class="d-block w-100" src="{% static 'login_/img/1.jpg' %}" alt="Second slide">
+								</div>
+								<div class="carousel-item">
+								<img class="d-block w-100" src="{% static 'login_/img/3.jpg' %}" alt="Third slide">
+								</div>
+							</div>
+							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a>
+							</div>
+						{% comment %} <img src="{% static 'login_/img/E.png' %}" alt="IMG"> {% endcomment %}
+					</div>
+					
+					<form class="login100-form validate-form" method="post">
+						{% csrf_token %}
+					
+						{% block content %}
+						
+						{% endblock %}
+						
+						<div class="text-center ticket">
+							<div class="btn-group dropup">
+								<button type="button" id="btn_lang" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img id="img_lang" class="img-radius1 mx-auto my-auto" src="{% static 'main/images/vn.gif' %} " hidden> &ensp;<a id="txt_lang">English</a>
+								</button>
+								
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="#"><img class="img-radius mx-auto my-auto" src="{% static 'main/images/vn.gif' %} " hidden> &ensp;Việt Nam</a>
+									<a class="dropdown-item" href="#" hidden><img class="img-radius mx-auto my-auto" src="{% static 'main/images/en.gif' %} "> &ensp;English</a>
+									<a class="dropdown-item" href="#"><img class="img-radius mx-auto my-auto" src="{% static 'main/images/cn.gif' %} " hidden> &ensp;中文</a>
+								</div>
+							</div>
+						</div>
+						
+					</form>
+					<div class='' id="urlstatic_JS" hidden>{% static 'main/' %}</div>
+				</div>
+	
+		</div>
+
+		<div class='ticket text-center' style="background-color:#; right:20px;bottom:60px; position:relative;font-size:20px;cursor:pointer;"><a href="/manual/" style="font-size:20px;color: white;"><h3 style="float:right"><i class="far fa-address-book text-warning f-22"></i> Liên hệ hỗ trợ (聯繫幫助)<a data-i18n=""></a></a></div>
+	</div>
+
+
+
+
+
+
+
+
+<!-- Modal đăng ký thông tin -->
+<div class="modal fade" id="modaledituser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-xl" style="" >
+	  <div class="modal-content">
+		<div class="modal-header bg-" style="background-color:#f8f8f8;cursor:move">
+		  <h5 class="modal-title " id="exampleModalLabel"><i class="fas fa-address-card f-18"></i> <a data-i18n="title-">Đăng ký tài khoản(新用戶註冊)</a> </h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+
+			<div class="">	
+				<form name='Frm'  onsubmit="check_password()"  method="post" >
+					{% csrf_token %}							
+					<div class="main-body">
+					<div class="page-wrapper"> 
+						
+						<!-- Page body start -->
+						<div class=" justify-content-center">
+
+							<div class="row">  
+
+								<!--Cột thông tin biểu mẫu Start-->
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<div class="card" style="box-shadow:none">  
+
+										<div class="row col-12" style="position:relative">
+											<div class="card col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"> 
+										
+												<!--Thông tin cá nhân-->    
+												<div class="">
+													<div class=" mb-0 card-table flex-fill">
+														
+														<div class="card-body" style="padding: 0px;">
+
+															<div class="row " id="Div_userinf">  
+
+																<!--Thông tin cơ bản--> 
+																<div class="col-12  mt-4" id="Base_info">  
+																  <div class="card-body">
+																	<div class="headerx">
+																	  <h5 data-i18n="thongtincb">Thông tin cơ bản</h5>
+																	</div>
+																	<hr/> 
+
+																	<div class="row">
+																	  
+																			
+																		<!--txt UserID Title-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-0 mt-4">
+																			<div class="form-group mb-0 mt-0">																			
+																				<label class="mb-0 mt-0" data-i18n="tendangnhap">(帳號)Tên đăng nhập</label><span class="text-danger">(*):</span>
+																				<input class="form-control" type="text" id="TenDangNhap" name="TenDangNhap" required="Please not entry.." title="Please fill this fiel." value="" >
+																				<i class="fad fa-id-card f-16 text-success"></i>
+																				<span class="focus-input100"></span>		
+																			</div>
+																		</div>
+																		
+																		<!--txt username-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-0 mt-4">
+																			<div class="form-group mb-0 mt-0">																		
+																				<label class="mb-0 mt-0"  data-i18n="hoten">(名稱)Họ tên</label><span class="text-danger">(*):</span>
+																				<input class="form-control  form-control-round1" type="text" id="HoTen" name="HoTen" required="Please not entry.." title="Please fill this fiel." value="">
+																				<i class="fad fa-user f-16 text-info" aria-hidden="true"></i>
+																				<span class="focus-input100"></span>	
+																			</div>
+																		</div>
+
+																		<!--txt tell-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-0 mt-4">
+																			<div class="form-group mb-0 mt-0">																			
+																				<label class="mb-0 mt-0" data-i18n="sodienthoai">(電話)Số điện thoại</label><span class="text-danger">(*):</span>
+																				<input class="form-control  form-control-round1" type="text" id="SoDienThoai" name="SoDienThoai" required="Please not entry.." title="Please fill this fiel." value="" >
+																				<i class="fal fa-phone f-16 text-success" aria-hidden="true"></i>
+																				<span class="focus-input100"></span>
+																			</div>
+																		</div>
+
+																		<!--txt your Mail-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 mb-0 mt-4">
+																			<div class="form-group mb-0 mt-0">																			
+																				<label class="mb-0 mt-0"  data-i18n="Mail-modal">(郵箱)Email</label><span class="text-danger">(*):</span>
+																				<input class="form-control  form-control-round1" type="email" id="Email" name="Email" required="Please not entry.." title="Please fill this fiel." value="">
+																				<i class="fal fa-mailbox f-16 text-success" aria-hidden="true"></i>
+																				<span class="focus-input100"></span>
+																			</div>
+																		</div>
+
+																		<!--Nhóm quyền hạn-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 mb-0 mt-4" hidden>
+																			<div class="form-group mb-0 mt-0">
+																				<label class="mb-0 mt-0" data-i18n="Ext-modal" >Nhóm quyền</label><span class="text-danger">:</span>
+																					<select onchange="Change_select_Permiss(this)"  id="CodeRole" class="form-control" required="Please select..." title="Please fill this fiel.">
+																					
+																					</select>                                    
+																				<i class="fas fa-shield-check f-16" style=" color: darkred;"></i><span class="focus-input100"></span>
+																			</div>
+																		</div>
+
+																	
+																		<!--DCC-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12 mb-0 mt-5" hidden>
+																			<div class="form-check form-check-inline">
+																				<div class="form-group mb-0 mt-0">	
+																					<input class="form-check-input" type="checkbox" id="DCC" value="" onchange="Change_checkbox_DCC(this)">
+																					<label class="form-check-label" for="DCC">Is DCC</label>
+																				</div>
+																			</div>
+																		</div>
+
+																		<!--txt your passw-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-0 mt-4">																	
+																			<div class="form-group mb-0 mt-0">																			
+																				<label class="mb-0 mt-0" data-i18n="Password-modal">(密碼)Mật khẩu</label><span class="text-danger">(*):</span>
+																				<i id="togglePassword" class="fad fa-eye-slash togglePassword" style="cursor:pointer"  onclick="SHOW_PASSWORD(this);"></i>
+																				<input class='form-control  form-control-round1'  name="MatKhau" type="password"  id="pass1id" value="" required="Please not entry.." minlength="8">
+																				<i class="fad fa-lock-alt f-16 text-danger"></i><span class="focus-input100"></span>
+																			</div>													
+																		</div>
+
+																		<!--txt your password2-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-0 mt-4">
+																			<div class="form-group mb-0 mt-0">																			
+																				<label class="mb-0 mt-0" data-i18n="Confirm-modal">(新密碼)Nhập lại mật khẩu</label><span class="text-danger">(*):</span>
+																				<input class="form-control  form-control-round1" type="password" id="pass2id" name="MatKhau2" required="Please not entry.." title="Please fill this fiel." minlength="8">
+																				<i class="fad fa-lock-alt f-16 text-danger"></i><span class="focus-input100"></span>
+																			</div>
+																		</div>
+																		
+
+																		<!--Chủ quản phòng-->
+																		<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 mb-0 mt-3" hidden>
+																			<div class="form-group mb-0 mt-0 show">                            
+																				<label class="mb-0 mt-0" data-i18n="biensoxe-text" hidden>Chủ quản phòng</label>
+																				<input class="form-control" type="text" id="Manager_list" name="Manager_list" value="" data-toggle="dropdown" aria-expanded="true" onkeyup="filterFunction('Manager_list', 'myDropdown_Manager_list')" autocomplete="off" placeholder="Chủ quản phòng">
+																				<i class="fad fa-users f-16 text-danger"></i><span class="focus-input100"></span>       
+																				<div id="myDropdown_Manager_list" class="dropdown-menu mt-1" aria-labelledby="dropdownMenuButton" style="overflow: auto; max-height: 300px; width: 100%; position: absolute; transform: translate3d(15px, -377px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="top-start" x-out-of-boundaries="">
+																				
+																				</div>                            
+																			</div>                          
+																		</div>
+														
+																		<!--Chủ quản phòng-->
+																		<div class="col-xl-8 col-lg-9 col-md-8 col-12 mb-0 mt-3" hidden>                          
+																			<ul class="select-multi" id="select_manager">
+																			
+																			</ul>
+																		</div>
+																		
+																	</div>  
+
+																  </div>
+																</div>
+													
+																<!--Thông tin chức vụ-->
+																<div class="col-12 mt-4" hidden>
+																  <div class="card-body">  
+																	  <div class="headerx">
+																		<h5 data-i18n="thongtincv">Thông tin chức vụ</h5>
+																	  </div>                 
+																	  <hr/>                 
+																	  <div class="row" id="group_permiss">                  
+																	  </div>                     
+																  </div>
+																</div>
+													
+																<!--Thông tin Bộ phận--> 
+																<div class="col-12 mt-4">
+																  <div class="card-body">     
+																	  <div class="headerx">
+																		<h5 data-i18n="thongtinbp">Thông tin bộ phận</h5>
+																	  </div>              
+																		<hr/>
+																	  <!--Thông tin Bộ phận--> 
+																	  <div class="row" id="group_Dept">                  
+																	  </div>                 
+																	</div>
+																</div>
+													
+															  </div>  <hr/>  
+
+															<div class="row d-flex justify-content-center">
+																<!--Button Thêm Đơn -->
+																<div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 mb-2 mt-0">												
+																	<div class="container-login100-form-btn">
+																		<button type="button" class="form-control btn-success" name="btn_register"  onclick="ACTION_USER('CREATE')" data-i18n="btn-register"> ĐĂNG KÝ</button>
+																	</div>
+																</div>												
+																<!--Button Quay lại thoát  -->
+																<div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 mb-2 mt-0">												
+																	<div class="container-login100-form-btn">														
+																		<button type="button" class="form-control btn-info" name="btn_register" data-dismiss="modal" data-i18n="btn-exit"> Thoát</button>
+																	</div>
+																</div>	
+
+															</div>
+
+														</div>
+														
+													</div>
+												</div>
+												<!--/Thông tin cá nhân END--> 
+
+											</div>
+											
+										</div>
+										
+									</div>	
+								</div>
+								<!--End Cột thông tin biểu mẫu-->
+
+							</div>
+
+						</div>
+						<!-- Page body end -->
+						
+					</div>
+
+				</form>
+			</div>
+  
+		</div>
+
+
+	  </div>
+	</div>
+</div>
+<!-- Modal End-->
+  
+
+
+
+
+
+
+	<!-- Vendor CSS Files -->
+	<script src="{% static 'main/bootstrap4.6/js/jquery.slim.min.js' %}"></script>
+	<script src="{% static 'main/bootstrap4.6/js/popper.min.js' %}"></script>
+	<script src="{% static 'main/bootstrap4.6/js/bootstrap.min.js' %}"></script>
+
+<!--Javascrips--> 
+<script type="text/javascript" src="{% static 'main/myjs/J-query/3.6.0/jquery.min.js' %} "></script>
+<!--===============================================================================================-->
+	<script src="{% static 'login_/vendor/tilt/tilt.jquery.min.js' %}"></script> 
+
+	<!-- Login My js -->
+	<script src="{% static 'login_/vendor/bootstrap/js/authen.js' %}"></script> 
+	<script src="{% static 'login_/vendor/setCookie.js' %}"></script> 
+
+	<script type="text/javascript" src="/static/main/myjs/myjs.js"></script> 
+	<script type="text/javascript" src="/static/main/myjs/quanlytaikhoan.js"></script>  
+
+	<script type="text/javascript">
+
+
+		//<!-- Kiểm tra IE js -->  
+		var isIE = window.ActiveXObject || "ActiveXObject" in window;
+		//<!--Nếu  là  IE js -->
+		if (isIE) {
+			document.write('<scr' + 'ipt type="text/javascript" src="{% static 'main/myjs/IE/Alert.js' %}"></scr' + 'ipt>');
+			//<!--Nếu Không phải là  IE js -->
+		} else {
+			document.write('<scr' + 'ipt type="text/javascript" src="{% static 'main/myjs/sweetalert2@11.js' %}"></scr' + 'ipt><scr' + 'ipt type="text/javascript" src="{% static 'main/myjs/Alert.sweet2.js' %}"></scr' + 'ipt>');
+		}
+
+	  </script>
+
+
+
+	<script src="{% static 'main/lang/lang.js' %}"></script>
+
+	
+	<script>
+		SHOW_LANG_();
+		myFunction();
+		Set_cookie_CRSTOKEN() ;
+		Load_Dept();
+	</script>
+<!--===============================================================================================-->
+
+
+</body>
+
+</html>

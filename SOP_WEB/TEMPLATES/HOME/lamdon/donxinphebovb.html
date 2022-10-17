@@ -1,0 +1,298 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Hệ thống quản lý công văn
+{% endblock %}
+
+{% block mainbody %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/mycss/new.app.css' %}">
+
+<div class="main-body">
+  <!-- Page body --> 
+  <div class="page-wrapper">   
+  
+      <!-- <form class="form-control form-control-sm-sm  col-form-label-lg justify-content-center"> -->
+          <div class="row"> 
+
+              <!--Cột thông tin biểu mẫu Start-->
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="card">                
+                      <div class="card-header">
+                          <h5 ><i class="fad fa-file-plus f-22"></i><a data-i18n="donxinphebovb" style="color:#0072ff"> ĐƠN XIN PHẾ BỎ VĂN BẢN</a></h5>
+                          {% comment %} <span>Phế bỏ 1 văn bản khỏi hệ thống  quản lý văn kiện <code></code></span> {% endcomment %}
+                      </div>
+                  
+                      <div class="card-block "> 
+                          <!--form--> 
+                          
+                              <div class="col-md-12">
+
+                                  <div class=" mb-0 card-table flex-fill">                   
+                                      <div class="card-body" style="padding: 0px;">
+                                          <div class="row"> 
+
+                                              <!--Đơn vị xin-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="donvixin">Đơn vị xin đơn:</label><span class="text-danger">*</span>
+                                                  <select id="cbx_Site_Appro" name="cbx_Site_Appro" class="form-control form-control-sm  fill" title="Please fill this fiel.">
+                                                          <option value="HR">HR</option>                                    
+                                                          <option value="GZ(QC)">GZ(QC)</option>
+                                                          <option value="GW(QV)">GW(QV)</option>
+                                                          <option value="HT(DV)">HT(DV)</option>
+                                                          <option value="YZ(VT)">YZ(VT)</option>
+                                                  </select>
+                                                </div>
+                                              </div>
+
+                                              <!--Người xin đơn -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="nguoixin">Người xin đơn:</label><span class="text-danger">*</span>
+                                                  <input class="form-control form-control-sm  " type="text" id="txt_App_No" name="txt_App_No" required="Please not entry.." title="Please fill this fiel." readonly="">
+                                                  </div>
+                                              </div>
+                                              <!--Nhà xưởng xin-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12  mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="nhaxuong">Nhà xưởng xin đơn:</label><span class="text-danger">*</span>
+                                                  <select onchange="GET_FLOWTITLE_BU(this);" id="cbx_BU_Appro" name="cbx_BU_Appro" class="form-control form-control-sm  fill" required="Please select BU..." title="Please fill this fiel.">
+                                                      <option value="CNCS-IT">CNCS-IT</option>
+                                                  </select>
+                                                  </div>
+                                              </div>
+
+                                              
+                                              <!--Mã đơn. -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="madon">Mã đơn:</label><span class="text-danger">*</span>
+                                                    <input class="form-control form-control-sm  " type="text" id="txt_App_No" name="txt_App_No" required="Please not entry.." title="Please fill this fiel." readonly="">
+                                                  </div>
+                                              </div>
+                                            
+
+                                              <!--Ngày xin đơn-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="ngayxin">Ngày xin đơn:</label><span class="text-danger">*</span>
+                                                    <input class="form-control form-control-sm  " type="text" id="txt_Person" name="txt_Person" required="Please not entry.." title="Please fill this fiel." value="" readonly>
+                                                  </div>
+                                              </div>
+
+                                            
+
+
+                                              <!--Ngày có hiệu lực-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                      <label class="mb-0 mt-0" data-i18n="ngayhieuluc">Ngày có hiệu lực:</label><span class="text-danger">*</span>
+                                                      <input class="form-control form-control-sm  " type="date" id="txt_App_No" name="txt_App_No" required="Please not entry.." title="Please fill this fiel.">
+                                                  </div>
+                                              </div>
+
+                                              <!--Mã văn bản phế bỏ -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="madonvbhuy">Mã văn bản cần hủy:</label><span class="text-danger">*</span>
+                                                    <input class="form-control form-control-sm  " type="text" id="" name="" required="Please not entry.." title="Please fill this fiel." readonly="">
+                                                  </div>
+                                              </div>
+                                              <!--Phiên bản -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="phienban">Phiên bản:</label><span class="text-danger">*</span>
+                                                  <input class="form-control form-control-sm  " type="text" id="" name="" required="Please not entry.." title="Please fill this fiel." readonly="">
+                                                </div>
+                                              </div>
+                                              <!--Tên văn bản -->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">
+                                                  <label class="mb-0 mt-0" data-i18n="tenvb">Tên văn bản:</label><span class="text-danger">*</span>
+                                                  <input class="form-control form-control-sm  " type="text" id="" name="" required="Please not entry.." title="Please fill this fiel." readonly="">
+                                                </div>
+                                              </div>
+
+                                            
+                                              <!--Ngày phát hành-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">                         
+                                                      <label class="mb-0 mt-0" data-i18n="ngayphathanh">Ngày phát hành:</label><span class="text-danger">*</span>
+                                                      <input class="form-control form-control-sm  " type="date" id="" name="" required="Please not entry.." title="Please fill this fiel.">
+                                                  </div>
+                                              </div>
+                                              <!--Chủ quản bộ phận-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">                         
+                                                    <label class="mb-0 mt-0" data-i18n="chuquanbp">Chủ quản bộ phận:</label><span class="text-danger">*</span>
+                                                    <input class="form-control form-control-sm  " type="text" id="" name="" required="Please not entry.." title="Please fill this fiel.">
+                                                </div>
+                                              </div>
+                                              <!--Người phê duyệt-->
+                                              <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                <div class="form-group mb-0 mt-0">                         
+                                                    <label class="mb-0 mt-0" data-i18n="nguoipheduyet">Người phê duyệt:</label><span class="text-danger">*</span>
+                                                    <input class="form-control form-control-sm  " type="text" id="" name="" required="Please not entry.." title="Please fill this fiel.">
+                                                </div>
+                                              </div>
+
+                                              <!--Lý do xin đơn-->
+                                              <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-0 mt-4">
+                                                  <div class="form-group mb-0 mt-0">
+                                                      <a class="text-success"><i class="fas fa-comment-edit"></i></a>
+                                                      <label class="mb-0 mt-0" data-i18n="lydoxin">Lý do xin đơn:</label>
+                                                      <textarea id="txt_note" class="form-control form-control-sm  " type="text" required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 49px;"></textarea>
+                                                  </div>
+                                              </div>
+
+                  
+                                          </div>                                
+                                      </div>
+                                  </div>
+                               
+                                
+
+                                  <!--Nút lệnh tạo đơn yêu cầu-->
+                                  <div class=" mb-0 card-table flex-fill">                   
+                                      <div class="card-body" style="padding: 0px;">
+                                          <div class="row">                                    
+                                              <div class="col-12 mt-0">
+                                                  <div class="" name="frm-table">
+                                                      <div id="table" class="table-hover">
+                                                          <div class="card">
+                                                              <div class=" text-center">
+
+                                                                  <hr>   
+
+                                                                  <div class="row d-flex justify-content-center ">
+                                                                      <!--Button tạo đơn -->
+                                                                      <div class="col-md-3 col-sm-6 mb-2 mt-0">
+                                                                          <span style="color:white;">
+                                                                              <button id="" type="button" class="btn btn-outline-info" ><i class="fas fa-plus fa-x"></i><a data-i18n="btn-newapp">Tạo đơn</a></button>                
+                                                                          </span>                                                                             
+                                                                      </div>  
+                                                                       <!--Button thoát-->
+                                                                      <div class="col-md-3 col-sm-6 mb-2 mt-0">
+                                                                          <span style="color:white;">
+                                                                              <button id="" type="button" class="btn btn-outline-info" ><i class="fas fa-sign-out fa-x"></i><a data-i18n="btn-exit">Thoát</a></button>                
+                                                                          </span>                                                                             
+                                                                      </div>                               
+                                                                     
+
+                                                                  </div>
+                                                              </div>            
+                                                          </div>                  
+                                                      </div>
+                                                  </div>
+                                              </div>                                                
+                                          </div>                                
+                                      </div>
+                                  </div>
+
+                                  
+                              </div>
+                              
+                          <!--/form--> 
+                      </div>
+                  </div>
+              </div>
+              <!--End Cột thông tin biểu mẫu-->
+      
+          </div>
+      <!-- </form> -->
+   
+  </div>
+  <!-- Page body end -->    
+</div>
+
+
+
+<!-- Modal DS VĂN BẢN Start -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" style="max-height:500px;" >
+    <div class="modal-content">
+      <div class="modal-header bg-" style="background-color:#f8f8f8">
+        <h5 class="modal-title " id="exampleModalLabel"> 文件發行清單 / DANH SÁCH VĂN BẢN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-6 col-sm-12 mb-2 mt-0" style="padding-left:0px">
+          <div class=" d-flex justify-content-center" role="group" aria-label="Basic example">
+            <input name="SearchPublishDocument" type="text" id="" class="form-control " placeholder="Input publish document" style="border-radius:6px">
+            <button type="button" class="btn btn-warning   text-dark" onclick=";"><i class="fa fa-search" aria-hidden="true" data-i18n="timmavb"> Tìm mã</i></button>
+          </div>
+        </div>
+
+        <form class="form-control text-center" style="max-height:500px;overflow:auto">
+          <table class="table-sm table-hover table-bordered table-white text-left" id="table_user" style="width:100%;">
+            <thead>
+              <tr class="bg-white"> 
+                  <th class="text-bold">Mã văn bản</th>
+                  <th class="text-bold">Tên văn bản</th>
+                  <th class="text-bold" style="width:120px">Ngày hiệu lực</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td > <a href="javascript:void(0)" value="VN-CHR-20180526-009" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180526-009 </a></td>   <td>總部周邊考勤管理規定 QUY DINH QUAN LY CHAM CONG DON VI CHUC NANG TW</td>   <td>2018/07/23</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-EHS-20180608-015" onclick="AddDocument(this)" style="color:#1E88E5">VN-EHS-20180608-015 </a></td>   <td>危險能量源，危險區域上鎖掛牌作業管理規範 Quy phạm quản lý tác nghiệp khóa và treo biển nguồn năng lượng nguy hại, khu vực nguy hiểm</td>   <td>2018/06/13</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-ATTW-20181218-012" onclick="AddDocument(this)" style="color:#1E88E5">VN-ATTW-20181218-012 </a></td>   <td>受限空間事故應急預案 Chuyên án ứng phó khẩn cấp sự cố không gian kín</td>   <td>2018/12/24</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-TVTW-20180521-001" onclick="AddDocument(this)" style="color:#1E88E5">VN-TVTW-20180521-001 </a></td>   <td>宿舍管理作業辦法 BIỆN PHÁP QUẢN LÍ KTX NHÀ XƯỞNG</td>   <td>2018/06/05</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+              <tr><td > <a href="javascript:void(0)" value="VN-CHR-20180526-009" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180526-009 </a></td>   <td>總部周邊考勤管理規定 QUY DINH QUAN LY CHAM CONG DON VI CHUC NANG TW</td>   <td>2018/07/23</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-EHS-20180608-015" onclick="AddDocument(this)" style="color:#1E88E5">VN-EHS-20180608-015 </a></td>   <td>危險能量源，危險區域上鎖掛牌作業管理規範 Quy phạm quản lý tác nghiệp khóa và treo biển nguồn năng lượng nguy hại, khu vực nguy hiểm</td>   <td>2018/06/13</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-ATTW-20181218-012" onclick="AddDocument(this)" style="color:#1E88E5">VN-ATTW-20181218-012 </a></td>   <td>受限空間事故應急預案 Chuyên án ứng phó khẩn cấp sự cố không gian kín</td>   <td>2018/12/24</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-TVTW-20180521-001" onclick="AddDocument(this)" style="color:#1E88E5">VN-TVTW-20180521-001 </a></td>   <td>宿舍管理作業辦法 BIỆN PHÁP QUẢN LÍ KTX NHÀ XƯỞNG</td>   <td>2018/06/05</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+              <tr><td > <a href="javascript:void(0)" value="VN-CHR-20180526-009" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180526-009 </a></td>   <td>總部周邊考勤管理規定 QUY DINH QUAN LY CHAM CONG DON VI CHUC NANG TW</td>   <td>2018/07/23</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-EHS-20180608-015" onclick="AddDocument(this)" style="color:#1E88E5">VN-EHS-20180608-015 </a></td>   <td>危險能量源，危險區域上鎖掛牌作業管理規範 Quy phạm quản lý tác nghiệp khóa và treo biển nguồn năng lượng nguy hại, khu vực nguy hiểm</td>   <td>2018/06/13</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-ATTW-20181218-012" onclick="AddDocument(this)" style="color:#1E88E5">VN-ATTW-20181218-012 </a></td>   <td>受限空間事故應急預案 Chuyên án ứng phó khẩn cấp sự cố không gian kín</td>   <td>2018/12/24</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-TVTW-20180521-001" onclick="AddDocument(this)" style="color:#1E88E5">VN-TVTW-20180521-001 </a></td>   <td>宿舍管理作業辦法 BIỆN PHÁP QUẢN LÍ KTX NHÀ XƯỞNG</td>   <td>2018/06/05</td></tr>
+              <tr><td> <a href="javascript:void(0)" value="VN-CHR-20180613-011" onclick="AddDocument(this)" style="color:#1E88E5">VN-CHR-20180613-011 </a></td>   <td>集團越南廠區面試官管理辦法</td>   <td>2018/06/20</td></tr>
+            </tbody>
+          </table>
+        </form>
+
+
+      </div>
+      <div class="modal-footer " style="display:block">
+        <div class="row justify-content-center ">
+          <div class="col-md-3 col-sm-6 mb-2 mt-0">
+              <span style="color:white;">
+                  <button id="" type="button" class="btn btn-outline-info" data-dismiss="modal" ><i class="fas fa-sign-out fa-x"></i><a data-i18n="btn-exit"> Thoát</a></button>                
+              </span>                                                                             
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal End-->
+
+
+<!-- Import JS -->
+<script src="{% static 'main/myjs/J-query/3.6.0/jquery.min.js' %}"></script>  
+<script type="text/javascript" src="{% static 'main/myjs/ajax.jquery.min.js' %}"></script>
+<script src="{% static 'main/myjs/new.app.js' %}"></script> 
+
+
+
+<!-- Uto size text areal -->
+<script src="{% static 'main/myjs/autosize.min.js' %}"></script> 
+<script>
+  autosize(document.getElementById("txt_note"));
+</script>
+
+
+
+<!-- Active Menu-->
+<script type="text/javascript"  src="{% static 'main/myjs/menu.active.js' %}"></script>
+<script>
+    ACTIVE_MENUY('DON_BAO_PHE') ;
+  </script>
+
+{% endblock %}
+

@@ -1,0 +1,607 @@
+{% load static %}
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+      <script src="{% static 'main/myjs/IE/html5shiv.js' %}"></script>
+      <script src="{% static 'main/myjs/IE/respond.min.js' %}"></script>
+    <![endif]-->
+
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="bootstrap, bootstrap admin template, admin theme, admin dashboard, dashboard template, admin template, responsive" />
+    <meta name="author" content="Codedthemes" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="{% static 'main/images/icons/favicon.ico' %}"/>
+    <!-- Google font-->
+    <link href="{% static 'main/fonts/Open.san/Open-Sans.css' %}" rel="stylesheet">
+    <!-- waves.css -->
+    <link rel="stylesheet"  type="text/css" media="all" href="{% static 'main/assets/pages/waves/css/waves.min.css' %}">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main/assets/css/bootstrap/css/bootstrap.min.css' %}">
+    
+    <!-- waves.css -->
+    <link rel="stylesheet"  type="text/css" media="all" href="{% static 'main/assets/pages/waves/css/waves.min.css' %}">
+    <!-- themify icon -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main/assets/icon/themify-icons/themify-icons.css' %}">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main/FontAwesome.Pro.5.15.4.Web/css/all.min.css' %}">
+    <!-- scrollbar.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main/assets/css/jquery.mCustomScrollbar.css' %}">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main/assets/css/style.css' %}">
+    <!-- My Style.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'main/mycss/style.css' %}">
+    <!--DatePicker.css -->
+    <link rel="stylesheet" type="text/css" href="/static/main/datepicker/datepicker.css">
+ 
+
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+
+
+<body onload="">   
+
+    <!-- Pre-loader START  Đang bỏ -->
+    <div class="theme-loader">
+      <div class="loader-track">
+        <div class="preloader-wrapper">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pre-loader end -->
+    
+    <div id="pcoded" class="pcoded">
+      <div class="pcoded-overlay-box"></div>
+      <div class="pcoded-container navbar-wrapper">
+
+        <!--START MENU TRÊN CÙNG -->
+        <nav class="navbar header-navbar pcoded-header" >
+          <div class="navbar-wrapper">
+            <div class="navbar-logo">
+              
+              <!-- LOGO WEB -->
+              <a href="{% url 'home' %}" style="align-items:center">
+                <img class="img-fluid" src="{% static 'main/assets/images/logo.png' %}" alt="Theme-Logo" />
+              </a>
+               <!-- SHOW/HIDE MENU -->
+              <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
+                <i class="ti-menu"></i>
+              </a>
+
+              <!-- SEARCH QUICK 2 WEB -->
+              <div class="mobile-search waves-effect waves-light">
+                <div class="header-search">
+                  <div class="main-search morphsearch-search">
+                    <div class="input-group">
+                      <span class="input-group-prepend search-close"><i class="ti-close input-group-text"></i></span>
+                      <input type="text" class="form-control" placeholder="Search Document" id="search_docno_quick2" data-i18n="search-doc-home" >
+                      <span class="input-group-append search-btn"><i class="ti-search input-group-text"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- USER PROFILE MENU -->
+              <a class="mobile-options waves-effect waves-light">
+                <i class="ti-more"></i>
+              </a>
+
+            </div>
+
+            <div class="navbar-container container-fluid">
+              <ul class="nav-left">
+
+                <!--???-->
+                <li><div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div></li>
+                <!-- FULLSCREEN ICON -->
+                <li><a href="#" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light"><i class="ti-fullscreen"></i></a></li>
+              </ul>
+   
+              <ul class="nav-right">
+
+                
+                <!-- Thông báo NOTIFICATION ICON -->
+                <li class="header-notification" id="notification_info" onclick="SHOW_DOC_Notifications()">
+                  <a href="#!" class="waves-effect waves-light">
+                    <i class="ti-bell"></i>
+                    <span class="badge bg-c-yellow"></span>
+                  </a>
+                  
+                  <ul class="show-notification" id="Show_docnolist" style="pointer-events: none;"  hidden>
+                    <li> 
+                      <!-- MENU SHOW ICON -->
+                      <h6 data-i18n="notifi-home">Notifications</h6>
+                      <label class="label label-warning" data-i18n="notifi-new-home">New</label>
+                    </li>
+                    
+                    <!--START DÙNG FOR ĐỂ SHOW CÁC ĐẦU ĐƠN KÈM THEO THÔNG TIN CÁ NHÂN NGƯỜI LÀM ĐƠN -->
+                    <li class="waves-effect waves-light">
+                      <div class="media">
+                        <img class="d-flex align-self-center img-radius" src="" alt="User image">
+                        <div class="media-body">
+                          <h5 class="notification-user" >User1_ID</h5>
+                          <p class="notification-msg">Request 1.</p>
+                          <span class="notification-time">At:</span>
+                        </div>
+                        <label class="label label-danger text-white">Urgent</label>
+                      </div>
+                    </li>                   
+                    <!--END DÙNG FOR ĐỂ SHOW CÁC ĐẦU ĐƠN KÈM THEO THÔNG TIN CÁ NHÂN NGƯỜI LÀM ĐƠN -->
+                  
+                  </ul>
+      
+                </li>
+
+                <!--START Chọn ngôn ngữ-->
+                <li class="user-profile header-notification">
+
+                  <!--Cờ chọn ngôn ngữ -->
+                  <a href="#!" class="waves-effect waves-light" ><img id="img_lang" class="img-radius1 mx-auto my-auto" src="{% static 'main/images/en.png' %} ">
+                    <i class="ti-angle-down"></i>
+                  </a>
+
+                  <!--Menu language -->
+                  <ul class="show-notification profile-notification language-show" style="display: none;width: 205px" >
+
+                   
+                    <!--En language -->
+                    <li class="waves-effect waves-light" id="lang_en" hidden>
+                      <a class="dropdown-item1" href="javascript:void(0)"><img class="img-flag mx-auto my-auto" src="{% static 'main/images/en.gif' %} "> &ensp;English</a>
+                    </li>
+
+                     <!--VN language-->
+                     <li class="waves-effect waves-light" id="lang_vn">
+                      <a class="dropdown-item1" href="javascript:void(0)"><img class="img-flag mx-auto my-auto" src="{% static 'main/images/vn.gif' %} " hidden> &ensp;Tiếng Việt</a>
+                    </li>
+
+                    <!--CN language-->
+                    <li class="waves-effect waves-light" id="lang_cn">
+                      <a class="dropdown-item1" href="javascript:void(0)"><img class="img-flag mx-auto my-auto" src="{% static 'main/images/cn.gif' %} " hidden> &ensp;中文</a>
+                    </li>
+
+                  </ul>
+
+                </li>
+
+          
+                <!--START Phần thông tin cá nhân menu profile -->
+                <li class="user-profile header-notification">
+
+                  <!--Ảnh và tên của User đăng nhập -->
+                  <a href="#!" class="waves-effect waves-light" id="icon_user">
+                    <div class='' id="urlstatic_JS" hidden>{% static '' %}</div>
+                    <img id="img_profile" style="object-fit:cover" src="{% static 'main/img/user2-160x160.jpg' %}"  class="img-radius" >
+                    <span id="user_login">{{request.user.get_full_name}}</span>
+                    <i class="ti-angle-down"></i>
+                  </a>
+
+                  <!--Menu quản lý  bên phải -->
+                  <ul class="show-notification profile-notification" style="display: hide;">
+
+                    <!--Menu quản lý trạng thái cá nhân user -->
+                    <li class="waves-effect waves-light" id=""  hidden>
+                      <a href="#">
+                        <i class="ti-user"></i><span data-i18n=""></span>
+                      </a>
+                    </li>
+
+                    <!--Menu quản lý trạng thái cá nhân user -->
+                    <li class="waves-effect waves-light" id="PASS_MODIFY"  style="pointer-events: none1;"  >
+                      <a href="javascript:void(0)" onclick="Load_html('Div_mainbody', '/static/html/trungtamcanhan.xml')">
+                        <i class="ti-user"></i> <span data-i18n="trungtamcanhan">Trung tâm cá nhân</span>
+                      </a>
+                    </li>    
+
+                    <!--Menu Đăng xuất -->
+                    <li class="waves-effect waves-light" onclick="LogOut();" >
+                      <a  >                                                               
+                        <i class="ti-layout-sidebar-left"></i> <span data-i18n="dangxuat">Đăng xuất</span> 
+                      </a>
+                    </li>  
+
+                  </ul>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+        </nav>
+        <!--END MENU BAR TRÊN CÙNG -->
+
+
+        <div class="pcoded-main-container" style="background-color: beige;">
+          <div class="pcoded-wrapper">
+            <nav class="pcoded-navbar">
+              <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+              <div class="pcoded-inner-navbar main-menu">
+                
+           
+
+              <!--Menu ngang tìm kiếm nhanh-->
+              <div class="p-15 p-b-0">
+                <div class="form-material">
+                  <div class="form-group form-primary">
+                    <input type="text" id="search_docno_quick" name="search_docno_quick" class="form-control" >
+                    <span class="form-bar"></span>
+                    <label class="float-label"><i class="fa fa-search m-r-10"></i><label data-i18n="search-doc-home">Search Document</label></label>
+                  </div>
+                </div>
+              </div>
+
+
+              <ul class="pcoded-item pcoded-left-item">
+                <li class="active" id='HOME-MENU'>
+                  <a href="{% url 'home' %}" class="waves-effect waves-dark"><span class="pcoded-micon"><i class="fad fa-home  f-16"></i><b>D</b></span> <span class="pcoded-mtext" data-i18n="home-page1"> Hệ thống văn kiện Việt Nam</span> <span class="pcoded-mcaret"></span> </a>
+                </li>
+              </ul>
+
+              <!--Menu ngang Làm đơn-->
+              <ul class="pcoded-item pcoded-left-item" name="MN-00055" style="pointer-events: none;" hidden>
+                <li class="pcoded-hasmenu" id="menuy1" > <a href="javascript:void(0)" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="fad fa-plus-circle f-22"></i><b>BC</b></span> <span class="pcoded-mtext" data-i18n="menu-yeucau">Yêu cầu làm đơn<br>
+                  </span> <span class="pcoded-mcaret"></span> </a>
+                  <ul class="pcoded-submenu" id="">
+                    <!--Đơn xin cấp mã văn bản DON_CAP_MA-->
+                    <li class=" " id="DON_CAP_MA" name="MN-00001"  style="pointer-events: none;" hidden onclick="ACTIVE_MENUY(this) ;" > <a href="javascript:void(0)" class="waves-effect waves-dark" onclick="Load_html('Div_mainbody', '/static/html/donxinmavanban.xml')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-plus " style=" color: darkred;"></i> <span  data-i18n="menu-capma">Đơn xin cấp mã VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Đơn xin hủy mã văn bản DON_HUYMA-->
+                    <li class=" " id="DON_HUYMA" name="MN-00011" style="pointer-events: none;" hidden onclick="ACTIVE_MENUY(this) ;" > <a href="javascript:void(0)" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/dsmavb.xml','dsmavanban','TimMaDeHuyMaVB()');"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-plus " style=" color: darkred;"></i> <span  data-i18n="menu-huyma">Đơn hủy mã VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Đơn xin phát hành văn bản DON_PHAT_HANH-->
+                    <li class=" " id="DON_PHAT_HANH" name="MN-00002" style="pointer-events: none;" hidden onclick="ACTIVE_MENUY(this) ;" > <a href="javascript:void(0)" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/dsmavb.xml','donxinphathanhvb','TimMaDePhatHanh()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-plus " style=" color: darkred;"></i> <span  data-i18n="menu-phathanh">Đơn phát hành VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Đơn xin báo phế văn bản DON_BAO_PHE-->
+                    <li class=" " id="DON_BAO_PHE" name="MN-00016" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="javascript:void(0)" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/dsmavb.xml','donxinphebovb','TimMaDePheBo()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-plus " style=" color: darkred;"></i> <span  data-i18n="menu-baophe">Đơn xin báo phế VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Đơn xin sửa chữa văn bản DON_SUA_CHUA-->
+                    <li class=" " id="DON_SUA_CHUA" name="MN-00023" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="javascript:void(0)" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/dsmavb.xml','donxinsuavb','TimMaDePheBo()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-plus " style=" color: darkred;"></i> <span  data-i18n="menu-suachua">Đơn xin sửa chữa VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <!--Menu ngang TRA CỨU-->
+              <ul class="pcoded-item pcoded-left-item"  name="MN-00054" style="pointer-events: none;" hidden>
+                <li class="pcoded-hasmenu" id="menuy2" > <a href="javascript:void(0)" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="fad fa-search f-22"></i><b>BC</b></span> <span class="pcoded-mtext" data-i18n="tracuu-home"> Tra cứu<br>
+                  </span> <span class="pcoded-mcaret"></span> </a>
+                  <ul class="pcoded-submenu" id="">
+                    <!--Danh sách mã văn bản TRA_CUU_TRINHKY-->
+                    <li class=" " id="TRA_CUU_TRINHKY" name="MN-00030" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html('Div_mainbody', '/static/html/tracuutrinhky.xml','tracuutk','TraCuuTrinhKy()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-paper-plane f-16 " style=" color: darkred"></i> <span  data-i18n="tracuutrinhky">Tra cứu trình ký VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Danh sách mã văn bản TRA_CUU_DSMA-->
+                    <li class=" " id="TRA_CUU_DSMA" name="MN-00006" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/tracuuvanban.xml','tracuudsmavb','TraCuuDSMaVB()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="far fa-book f-16 " style=" color: #3a57ef"></i> <span  data-i18n="dsmavb">Danh sách mã VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Đơn xin cấp mã TRA_CUU_DSPHATHANH-->
+                    <li class=" " id="TRA_CUU_DSPHATHANH" name="MN-00056" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/tracuuvanban.xml','tracuudsphathanhvb','TraCuuDSPhatHanhVB()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-journal-whills f-16 " style=" color: darkred"></i> <span  data-i18n="dsphathanhvb">Danh sách phát hành VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Danh sách hủy mã văn bảnTRA_CUU_DSHUYMA-->
+                    <li class=" " id="TRA_CUU_DSHUYMA" name="MN-00012" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/tracuuvanban.xml','tracuudshuymavb','TraCuuDSHuyMaVB()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-book-dead f-16 " style=" color: darkred"></i> <span  data-i18n="dshuymavb">Danh sách hủy mã VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Danh sách phế bỏ văn bản TRA_CUU_DSPHEBO-->
+                    <li class=" " id="TRA_CUU_DSPHEBO" name="MN-00017" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/tracuuvanban.xml','tracuudsphebovb','TraCuuDSPheBoVB()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-tanakh f-16 " style=" color: darkred"></i> <span  data-i18n="dsphebovb">Danh sách phế bỏ VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Danh sách xin sửa văn kiện TRA_CUU_DSCHINHSUA-->
+                    <li class=" " id="TRA_CUU_DSCHINHSUA" name="MN-00022" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/tracuuvanban.xml','tracuudssuadoivb','TraCuuDSSuaDoiVB()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-book-medical f-16 " style=" color: darkred"></i> <span  data-i18n="dssuavb">Danh sách xin sửa VB</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Tra cứu phụ lục đính kèm TRA_CUU_PHULUC-->
+                    <li class=" " id="TRA_CUU_PHULUC" name="MN-00020" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/dsphuluc.xml','dsphuluc_','TraCuuCacPhuLuc()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-file-word f-16 " style=" color: darkred;"></i> <span  data-i18n="dsphuluc">Danh sách phụ lục</span></span> <span class="pcoded-mcaret"></span></a></li>
+
+                    <!--Tra cứu danh sách đơn của tôi làm-->
+                    <li class=" " id="DON_CUA_TOI" name="MN-00030" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/tracuudoncuatoi.xml','doncuatoi1','TraDonCuaToi()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fad fa-file-word f-16 " style=" color: darkred;"></i> <span  data-i18n="doncuatoi">Đơn của tôi</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Tra cứu đơn chờ tôi ký-->
+                    <li class=" " id="DON_CHO_KY" name="MN-00030" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this) ;"> <a href="#" class="waves-effect waves-dark" onclick="Load_html_2('Div_mainbody', '/static/html/tracuudoncuatoi.xml','donchoky1','TraDonChoKy()')"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fad fa-file-word f-16 " style=" color: darkred;"></i> <span  data-i18n="donchoky">Đơn chờ ký</span></span> <span class="pcoded-mcaret"></span></a></li>
+                  </ul>
+                </li>
+              </ul>
+                           
+              
+              <!--Menu quản lý công văn đến-->
+              <ul class="pcoded-item pcoded-left-item" name="MN-00053" style="pointer-events: none;" hidden >
+                <li class="pcoded-hasmenu" id="menuy3"> <a  href="#" onclick=""  class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="fad fa-book f-22"></i></span> <span class="pcoded-mtext" data-i18n="quanlycv-den"> Quản lý công văn đến</span> <span class="pcoded-mcaret"></span></a>
+                  <ul class="pcoded-submenu" id=""  >
+                    <!--Đơn xin cấp mã YEUCAU_CV-->
+                    <li class=" " id="YEUCAU_CV" name="MN-00033" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this)"> <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/yeucauthuchiencv.xml','TaoYeuCauCongVanDen()')" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-plus" style=" color: darkred;"></i> <span  data-i18n="taocongvan">Tạo yêu cầu công văn</span></span> <span class="pcoded-mcaret"></span> </a> </li>
+                    <!--Đơn xin cấp mã DUYET_CV-->
+                    <li class=" " id="DUYET_CV" name="MN-00034" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this)"> <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/duyetcv.xml','DuyetCongVan()')" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-pen-nib" style=" color: darkred;"></i> <span  data-i18n="duyetcongvan">Duyệt công văn</span></span> <span class="pcoded-mcaret"></span> </a> </li>
+                    <!--Đơn xin cấp mã TRACUU_CV-->
+                    <li class=" " id="TRACUU_CV" name="MN-00035" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this)"> <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/tracuucv.xml','TraCuuCongVan()')" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-search" style=" color: darkred;"></i> <span  data-i18n="tracuucongvan">Tra cứu công văn</span></span> <span class="pcoded-mcaret"></span> </a> </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <!--Menu ngang Quản lý hệ thống-->
+              <ul class="pcoded-item pcoded-left-item" name="MN-00052" style="pointer-events: none;" hidden>
+                <li class="pcoded-hasmenu" id="menuy4" > <a href="javascript:void(0)" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="fad fa-address-card f-22"></i><b>BC</b></span> <span class="pcoded-mtext" data-i18n="quanlyhethong"> Quản lý hệ thống<br>
+                  </span> <span class="pcoded-mcaret"></span> </a>
+                  <ul class="pcoded-submenu" id="" >
+                    <!--Đơn xin cấp mã QUANLY_TAIKHOAN-->
+                    <li class="" id="QUANLY_TAIKHOAN" name="MN-00004" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this)"> <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/quanlytaikhoan.xml')" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-user-secret" style=" color: darkred;"></i> <span  data-i18n="quanlytk"> Quản lý tài khoản</span></span> <span class="pcoded-mcaret"></span> </a> </li>
+                    <!--Quản lý nhóm quyền hạn NHOM_QUYENHAN-->
+                    <li class="" id="NHOM_QUYENHAN" name="MN-00003" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this)"> <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/nhomquyenhan.xml')" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-shield-check" style=" color: darkred;"></i> <span  data-i18n="nhomquyenhan"> Quản lý quyền hạn</span></span> <span class="pcoded-mcaret"></span> </a> </li>
+                    <!--Đơn xin cấp mã DANH_MUC-->
+                    <li class="" id="DANH_MUC" name="MN-00009" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this)"> <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/quanlydanhmuc.xml')" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fad fa-pencil  f-16" style=" color: darkred;"></i> <span data-i18n="quanlydanhmuc">Quản lý danh mục</span></span> <span class="pcoded-mcaret"></span></a></li>
+                    <!--Đơn xin cấp mã TRUNG_TAM_CA_NHAN-->
+                    <li class="" id="TRUNG_TAM_CA_NHAN" name="MN-00032" style="pointer-events: none;" hidden  onclick="ACTIVE_MENUY(this)"> <a href="#" onclick="Load_html_1('Div_mainbody', '/static/html/trungtamcanhan.xml')" class="waves-effect waves-dark"> <span class="pcoded-micon"><i class="ti-angle-right"></i></span> <span class="pcoded-mtext"><i class="fas fa-key" style=" color: #ffc107;"></i> <span data-i18n="trungtamcanhan">Trung tâm cá nhân</span></span> <span class="pcoded-mcaret"></span></a></li>
+                  </ul>
+                </li>
+              </ul>
+
+              
+              <footer  class="text-center ">
+                <!-- Copyright -->
+                <div class="text-center mx-auto my-auto waves-effect waves-dark" style="position:tickett;">                 
+                  <span class="text-reset fw-bold" href="#" data-i18n="copyright-home"><a> © 2022 Copyright: CNCS VN </a></span>                
+                </div>
+                <!-- Copyright -->
+            </footer>  
+         
+            </div>
+
+
+        
+
+          </nav>
+          <!-- Menu end -->
+
+          <div class="pcoded-content">
+            <!-- Page-header start -->
+            <!-- Page-header end -->
+            <div class="pcoded-inner-content" id="Div_mainbody">
+              <!-- Main-body start -->
+              {% block mainbody %}
+
+              {% endblock  %}
+              <!-- Main-body End -->
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 10]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+    <!-- Warning Section Ends -->
+
+
+
+  <!-- Required Jquery -->
+  {% comment %} <script type="text/javascript" src="{% static 'main/assets/js/jquery/jquery.min.js' %}"></script> {% endcomment %}
+  {% comment %} <script type="text/javascript" src="{% static 'main/myjs/J-query/3.6.0/jquery.min.js' %} "></script> {% endcomment %}
+  <script type="text/javascript" src="{% static 'main/assets/js/jquery-ui/jquery-ui.min.js' %} "></script>
+  <script type="text/javascript" src="{% static 'main/assets/js/popper.js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main/assets/js/bootstrap/js/bootstrap.min.js' %} "></script>
+  <!-- waves js -->
+  <script src="{% static 'main/assets/pages/waves/js/waves.min.js' %}"></script>
+  <!-- jquery slimscroll js -->
+  <script type="text/javascript" src="{% static 'main/assets/js/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+  <!-- slimscroll js -->
+  <script type="text/javascript" src="{% static 'main/assets/js/jquery.mCustomScrollbar.concat.min.js' %} "></script>
+
+  <!-- menu js -->
+  <script  type="text/javascript" src="{% static 'main/assets/js/pcoded.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'main/assets/js/vertical/vertical-layout.min.js' %} "></script>
+  <script type="text/javascript"  src="{% static 'main/assets/js/script.js' %} "></script>
+  <!-- Datatable js --> 
+  <script type="text/javascript" src="{% static 'main/data_table/jquery.dataTables.min.js' %}"></script>  
+  <!-- DatePicker js --> 
+  <script type="text/javascript" src="{% static 'main/datepicker/datetimepicker.js' %}"></script>  
+  <!-- my js --> 
+  <script type="text/javascript" src="{% static 'main/myjs/myjs.js' %}"></script>  
+  <!--JS language -->
+  <script src="{% static 'main/lang/lang.js' %}"></script> 
+  <!--JS Menu Active -->
+  <script src="{% static 'main/myjs/menu.active.js' %}"></script> 
+
+
+<script type="text/javascript">
+    GET_LANG();
+    SHOW_LANG_();
+    show_icon_user();
+    PERMISSION_USER();
+    $("#mCSB_1_container").prop('style','width:0');
+</script>
+  
+
+<!--Nút nổi thêm -->
+<div class="fixed-button active" id="NEW_APP_CREAT1"  style="pointer-events: none;" hidden><a  href="/newapp/"  target="" class="btn-sm btn-primary"><i class="" aria-hidden="true"></i><i class="fas fa-plus-circle"></i></a> </div>
+
+<script type="text/javascript">
+  //<!-- Kiểm tra IE js -->  
+  var isIE = window.ActiveXObject || "ActiveXObject" in window;
+  //<!--Nếu  là  IE js -->
+  if (isIE) {
+    
+    document.write('<link rel="stylesheet" href="/static/main/myjs/IE/Alertifyjs/alertify.min.css" /><link rel="stylesheet" href="/static/main/myjs/IE/Alertifyjs/default.min.css"/>');
+    document.write('<scr' + 'ipt type="text/javascript" src="/static/main/myjs/IE/Alert.js"></scr' + 'ipt><scr' + 'ipt type="text/javascript" src="/static/main/myjs/IE/Alertifyjs/alertify.min.js"></scr' + 'ipt>');
+        //<!--Nếu Không phải là  IE js -->
+    } else {
+        document.write('<scr' + 'ipt type="text/javascript" src="/static/main//myjs/sweetalert2@11.js"></scr' + 'ipt><scr' + 'ipt type="text/javascript" src="/static/main/myjs/Alert.sweet2.js"></scr' + 'ipt>');
+    }
+
+  $(".pcoded-inner-navbar")
+  .removeClass("main-menu") 
+  .addClass('text-dark bg-white');
+</script>
+ 
+
+<!--Modal up file văn bản-->
+<div class="modal right fade " id="modal_upfilevb" >
+  <div class="modal-dialog modal-lg" id="modal_vb">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-folder-open f-20"></i><a data-i18n="themmoivb-modal"> THÊM MỚI VĂN BẢN</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">   
+
+          <div class="row ">  
+
+            <!--Tên văn bản kèm theo-->
+            <div class="form-group col-12 mt-0 mb-4">
+                <i class="fad fa-font f-16 text-success" aria-hidden="true"></i>
+                <label data-error="wrong" data-success="right" for="" data-i18n="tenvb-modal">Tên văn bản</label><span class="text-danger">:*</span>
+                <input type="text" class="form-control form-control-sm " id="DocName" style="width:100%;" onkeyup="UPERCASE_INPUT(this)">
+            </div>
+
+            <!--Thêm mới văn bản-->
+            <div class="form-group col-md-12 col-12 mt-0 mb-4">
+                <i class="far fa-file-word f-18 text-info" aria-hidden="true"></i>
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="addvb-modal">Thêm mới văn bản</label><span class="text-danger">:*</span>
+                <input id="File_DocRef" class="form-control form-control-sm form-control form-control-sm-sm btn-outline-warning waves-effect waves-light" type="file" name="File_Upload_1" value="" accept="file_extension(,.pdf,.doc,.xlsx,xls)">
+            </div>
+
+            <!--Thêm mới văn bản-->
+            <div class="form-group col-lg-4 col-md-4 col-sm-6 col-12 mt-0 mb-0">
+                <i class="far fa-calendar f-18 text-danger" aria-hidden="true"></i>
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="ngayketan-modal">Ngày kết án</label><span class="text-danger">:*</span>
+                <input type="date" id="CloseDate" class="form-control form-control-sm " style="width:100%;">
+            </div>        
+
+          </div><hr> 
+
+          <!--button -->
+          <div class="row d-flex justify-content-center">  
+          
+            <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-2 mt-0">
+                <span style="color:white;">
+                    <button id="btn_1" class="btn form-control form-control-sm btn-outline-info waves-effect waves-light" type="button" name="" onclick="Up_DonLen_Server()"><i class="fa fa-upload" data-i18n="btn-save"> Lưu</i></button>
+                </span> 
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-2 mt-0">
+                <span style="color:white;">
+                    <button id="btn_2" class="btn form-control form-control-sm btn-outline-info waves-effect waves-light" type="button"  data-dismiss="modal" ><i class="fa fa-sign-out" data-i18n="btn-exit"> Thoát</i></button>
+                </span> 
+            </div>
+
+          </div>
+
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Loading...-->
+<div class="modal fade modal-intro  " tabindex="-6" role="dialog" id="modal-loading" >         
+  <div class="modal-dialog-centered modal-dialog" role="document">                                        
+    <div class="modal-body"> 
+      <div class="text-center">
+        <div class="spinner-border text-warning" role="status">
+          <span class="fa fa-spinner fa-spin fa-5x"></span>
+        </div>
+    </div> 
+  </div>            
+</div>
+
+
+
+<div id="frm_csftk" hidden>
+  <form id="frm_formfile" name="frm_formfile">
+    {% csrf_token %}                      
+  </form>
+</div>
+
+<div style="position:fixed" id="Acount_Name">{{userlogin}}</div>
+
+</body>
+
+<div id="text_alertIE" class="text-info">
+
+</div>
+
+</html>

@@ -1,0 +1,301 @@
+
+
+<div class="main-body">
+    <!-- Page body --> 
+    <div class="page-wrapper">   
+    
+        <!-- <form class="form-control -sm  col-form-label-lg justify-content-center"> -->
+            <div class="row"> 
+
+                <!--Cột thông tin biểu mẫu Start-->
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">                
+                        <div class="card-header">
+                            <h5 ><i class="fad fa-file-plus f-22"></i> <a style="color:#0072ff"  data-i18-n="title-donxinma"> ĐƠN XIN MÃ VĂN BẢN</a></h5>
+                            <!--<span>Add class of <code>.form-control  </code> with <code>&lt;input&gt;</code> tag</span>--> 
+                        </div>
+
+                        <div class="card-block "> 
+                            <!--form-->
+                                <div class="col-md-12">
+
+                                    <!--Thông tin cơ bản-->
+                                    <div class=" mb-0 card-table flex-fill">                   
+                                        <div class="card-body" style="padding: 0px;">
+                                            <div class="row" id="Div_area">  
+
+                                                <!--Đơn vị xin-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <i class="fad fa-briefcase text-success" aria-hidden="true"></i>   
+                                                        <label class="mb-0 mt-0" data-i18n="donvixindon">Đơn vị xin đơn</label><span class="text-danger">:*</span>
+                                                        <select id="Department" name="" class="form-control fill" title="Please fill this fiel.">
+                                                                
+                                                        </select>                                                  
+                                                    </div>
+                                                </div>
+                                                 <!--Người xin đơn -->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                    <i class="fad fa-user f-16 text-success" aria-hidden="true"></i>
+                                                    <label class="mb-0 mt-0" data-i18n="nguoixin">Người xin đơn</label><span class="text-danger">:*</span>
+                                                    <input class="form-control " type="text" id="CreatedBy" name="txt_App_No" required="Please not entry.." title="Please fill this fiel."  disabled="disabled">
+                                                    </div>
+                                                </div>
+                                                 <!--Nhà xưởng xin-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12  mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="nhaxuongxindon">Nhà xưởng xin đơn</label><span class="text-danger">:*</span>
+                                                    <select onchange="" id="ApplicationSite" name="" class="form-control fill" required="Please select BU..." title="Please fill this fiel.">
+                                                        <option value="C-00005">VN</option>
+                                                    </select>
+                                                    </div>
+                                                </div>
+
+                                                 <!--Nhà xưởng sử dụng-->
+                                                <div class="col-lg-3 col-md-3 col-sm-12 mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="nhaxuongsudung">Nhà xưởng sử dụng</label><span class="text-danger">:*</span>
+                                                    <select onchange="" id="ApplicableSite" name="" class="form-control fill" title="Please fill this fiel.">
+                                                        <option value="VN">VN</option>                                                                                                   
+                                                    </select>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!--Mã đơn. -->
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="madon">Mã đơn</label><span class="text-danger">:*</span>
+                                                    <input class="form-control " type="text" id="ApplicationNO" name="" value="SOP-A-" required="Please not entry.." title="Please fill this fiel."  disabled="disabled">
+                                                    </div>
+                                                </div>
+                                               
+
+                                                <!--Ngày xin đơn-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                    <label class="mb-0 mt-0" data-i18n="ngayxindon">Ngày xin đơn</label><span class="text-danger">:*</span>
+                                                    <input class="form-control " type="text" id="ApplicationDate" name="" required="Please not entry.." title="Please fill this fiel." value=""  disabled="disabled">
+                                                    </div>
+                                                </div>
+
+                                                <!--Ngày có hiệu lực-->
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-12 mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <label class="mb-0 mt-0" data-i18n="ngayhieuluc">Ngày có hiệu lực</label><span class="text-danger">:*</span>
+                                                        <input class="form-control " type="date" id="EffectiveDate" name="" required="Please not entry.." title="Please fill this fiel.">
+                                                    </div>
+                                                </div>
+                                              
+
+                                                <!--Lý do xin đơn-->
+                                                <div class="col-lg-12 col-md-12 col-sm-12 mb-0 mt-4">
+                                                    <div class="form-group mb-0 mt-0">
+                                                        <a class="text-success"><i class="fas fa-comment-edit"></i></a>
+                                                        <label class="mb-0 mt-0" data-i18n="lydoxin">Lý do xin đơn</label><span class="text-danger">:*</span>
+                                                        <textarea id="ReasonApplication" class="form-control " type="text" required="Please not entry.." title="Please fill this fiel." style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 49px;"></textarea>
+                                                    </div>
+                                                </div>                               
+                                                
+                    
+                                            </div>                                
+                                        </div>
+                                    </div>
+
+                                    <!--Bảng phụ lục kèm theo-->   
+                                    <div class=" table-responsive text-center mt-4" style="width:100%;overflow:auto">
+                                        <table id="table_vanban" class="table-sm table-hover table-bordered " style="width:100%; font-size:12px;overflow:auto">
+                                            <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                                                <th class="text-left text-bold bg-violet" colspan="6"><i class="fad fa-folder-open f-18"></i> <a data-i18-n="phuluckemtheo">Phụ lục đính kèm</a></th> 
+                                            </thead>
+                                            <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">                                                            
+                                                <th class="text-bold text-bold " data-toggle="tooltip" data-placement="top" title="STT" data-original-title="STT" style="width:30px"  data-i18-n="stt">STT</th>
+                                                <th class="text-left text-bold "  data-i18-n="tenvb">Tên văn bản </th>
+                                                <th class="text-left text-bold "  data-i18-n="tenvbkemtheo">Tên văn bản đi kèm</th>
+                                                <th class="text-left text-bold "  data-i18-n="ngayketandutinh">Ngày kết án dự tính</th> 
+                                                <th class="text-left text-bold "  style="max-width:80px"  data-i18-n="xoabo">Xóa bỏ</th> 
+                                                <th class="text-left text-bold "  ></th> 
+                                            </thead>
+                                            <tbody id="tbody_phuluckemtheo">   
+
+                                            </tbody>   
+                                            <tr>
+                                                <td colspan="6">
+                                                    <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 col-12 mb-0 mt-2">
+                                                        <button class="form-control  btn-outline-primary"  data-toggle="modal" data-target="#modal_upfilevb"><i class="fa fa-plus f-18"></i> <span  data-i18-n="btn-themmoi">Thêm mới</span></button>    
+                                                    </div>                                                       
+                                                </td>
+                                            </tr> 
+                                        </table>
+                                    </div>  
+
+
+                                    <!--Bảng lưu trình ký-->      
+                                    <div class=" table-responsive text-center mt-4" style="width:100%;overflow:hidden">
+                                        <table id="table_vanban" class="table-sm table-hover table-bordered " style="width: 100%; font-size: 12px;overflow:hidden">
+                                            <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">
+                                                <th class="text-left text-bold bg-violet" colspan="8"><i class="fad fad fa-file-signature f-18"></i> <span  data-i18-n="luutrinhky"> Lưu trình ký</span></th> 
+                                            </thead>
+                                            <thead  class="fw-bold fs-6 text-dark text-center bg-light font-weight-bold">                                                            
+                                                <th class="text-bold text-bold " data-toggle="tooltip" data-placement="top" title="Vị trí" data-original-title="Vị trí" style="width:100px" data-i18-n="vitri">Vị trí</td>
+                                                <th class="text-center text-bold " data-i18n="bophan">Bộ phận </th>
+                                                <th class="text-center text-bold " data-i18n="hoten">Họ tên</th>
+                                                <th class="text-center text-bold " data-i18n="dienthoaiban">Số điện thoại</th>   
+                                                <th class="text-center text-bold " data-i18n="ngaygio">Ngày giờ</th>       
+                                                <th class="text-center text-bold " data-i18n="trangthai">Tình trạng ký</th>      
+                                                <th class="text-center text-bold " data-i18n="thoigian">Thời gian</th>      
+                                                <th class="text-center text-bold " data-i18n="ghichu">Ghi chú</th>    
+                                            </thead>
+                                            <tbody id="tbody_phuluckemtheo">   
+                                               
+                                            </tbody>   
+                                          
+                                        </table>
+                                    </div>  
+
+
+                                    <!--Buuton tạo đơn-->
+                                    <div class="card">
+                                        <div class=" text-center">
+
+                                            <hr>   
+
+                                            <div class="row d-flex justify-content-center ">
+                                                <!--Button tạo đơn -->
+                                                <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0">
+                                                    <span style="color:white;">
+                                                        <button id="" type="button" class="btn btn-outline-info" onclick="Create_RegisterCode('CREATE')"><i class="fas fa-plus fa-x"></i> <a data-i18n="btn-newapp">Tạo đơn</a></button>                
+                                                    </span>                                                                             
+                                                </div>  
+                                                <!--Button Cập nhật đơn -->
+                                                <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0">
+                                                    <span style="color:white;">
+                                                        <button id="" type="button" class="btn btn-outline-info" onclick="Create_RegisterCode('UPDATE')"><i class="fas fa-save fa-x"></i> <a data-i18n="btn-update">Cập nhật</a></button>                
+                                                    </span>                                                                             
+                                                </div> 
+                                                <!--Button Xác nhận đẩy lưu trình ký-->
+                                                <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0">
+                                                    <span style="color:white;">
+                                                        <button id="" type="button" class="btn btn-outline-info" onclick="Appro_RegisterCode()"><i class="fad fa-pen-nib text-danger fa-x"></i> <a data-i18n="btn-appro">Xác nhận</a></button>                
+                                                    </span>                                                                             
+                                                </div> 
+                                                <!--Button Xác nhận hủy bỏ đơn-->
+                                                <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0">
+                                                    <span style="color:white;">
+                                                        <button id="" type="button" class="btn btn-outline-info" onclick="Del_RegisterCode()"><i class="fad fa-backspace text-danger fa-x"></i> <a data-i18n="btn-cancel">Hủy bỏ</a></button>                
+                                                    </span>                                                                             
+                                                </div> 
+
+                                                <!--Button thoát-->
+                                                <div class="col-lx-1 col-lg-2 col-md-3 col-sm-6 mb-2 mt-0">
+                                                    <span style="color:white;">
+                                                        <button id="" type="button" class="btn btn-outline-info"><i class="fas fa-sign-out fa-x"></i><a data-i18n="btn-exit"> Thoát</a></button>                
+                                                    </span>                                                                             
+                                                </div> 
+
+                                            </div>
+                                        </div>            
+                                    </div>
+
+                                </div>
+                                
+                            <!--/form--> 
+                        </div>
+                    </div>
+                </div>
+                <!--End Cột thông tin biểu mẫu-->
+        
+            </div>
+        <!-- </form> -->
+     
+    </div>
+    <!-- Page body end -->    
+</div>
+
+
+
+
+<!--Modal up file văn bản-->
+<div class="modal right fade " id="modal_upfilevb" >
+  <div class="modal-dialog modal-lg" id="modal_vb">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header" style="cursor:move">
+        <h5 class="modal-title"><i class="fad fa-folder-open f-20"></i><a data-i18n="themmoivb-modal"> THÊM MỚI VĂN BẢN</a></h5>
+        <button type="button" class="close" data-dismiss="modal"><i class="fas fa-times "></i></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">   
+
+          <div class="row ">  
+
+            <!--Tên văn bản kèm theo-->
+            <div class="form-group col-12 mt-0 mb-4">
+                <i class="fad fa-font f-16 text-success" aria-hidden="true"></i>
+                <label data-error="wrong" data-success="right" for="" data-i18n="tenvb-modal">Tên văn bản</label><span class="text-danger">:*</span>
+                <input type="text" class="form-control  " id="DocName" style="width:100%;" onkeyup="UPERCASE_INPUT(this)">
+            </div>
+
+            <!--Thêm mới văn bản-->
+            <div class="form-group col-md-12 col-12 mt-0 mb-4">
+                <i class="far fa-file-word f-18 text-info" aria-hidden="true"></i>
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="addvb-modal">Thêm mới văn bản</label><span class="text-danger">:*</span>
+                <input id="File_DocRef" class="form-control  form-control -sm btn-outline-warning waves-effect waves-light" type="file" name="File_Upload_1" value="" accept="file_extension(,.pdf,.doc,.xlsx,xls)">
+            </div>
+
+            <!--Thêm mới văn bản-->
+            <div class="form-group col-lg-4 col-md-4 col-sm-6 col-12 mt-0 mb-0">
+                <i class="far fa-calendar f-18 text-danger" aria-hidden="true"></i>
+                <label data-error="wrong" data-success="right" for="modalLRInput13" data-i18n="ngayketan-modal">Ngày kết án</label><span class="text-danger">:*</span>
+                <input type="date" id="CloseDate" class="form-control  " style="width:100%;">
+            </div>        
+
+          </div><hr> 
+
+          <!--button -->
+          <div class="row d-flex justify-content-center">  
+          
+            <div class="col-lg-2 col-md-4 col-sm-6 col-12 mb-2 mt-0">
+                <span style="color:white;">
+                    <button id="btn_1" class="btn form-control  btn-outline-info waves-effect waves-light" type="button" name="" onclick="Up_DonLen_Server()"><i class="fa fa-upload" data-i18n="btn-save"> Lưu</i></button>
+                </span> 
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-2 mt-0">
+                <span style="color:white;">
+                    <button id="btn_2" class="btn form-control  btn-outline-info waves-effect waves-light" type="button"  data-dismiss="modal" ><i class="fa fa-sign-out" data-i18n="btn-exit"> Thoát</i></button>
+                </span> 
+            </div>
+
+          </div>
+
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript" src="/static/main/myjs/xulyvanban.js"></script>
+
+<script>
+  $( function() {
+    Move_modal('modal_vb');
+  } );
+  $("#ApplicationDate").val(GET_STRING_DATETIME1(GET_TIME_NOW()));
+  load_Department();
+  $("#CreatedBy").val($("#Acount_Name").text().toUpperCase());
+  TuDong_SinhMa('ApplicationNO');
+  Reload_Tooltip('table_vanban');
+</script>
+
+
+
+
+

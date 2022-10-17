@@ -1,0 +1,316 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}
+Hệ thống quản lý công văn
+{% endblock %}
+
+
+{% block mainbody %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/mycss/permission.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'main/mycss/modify.pass.css' %}">
+
+<div class="main-body">
+  <div class="page-wrapper"> 
+    
+    <!-- Page body start -->
+     <!-- Page body start -->
+    <form class=" justify-content-center">
+
+      <div class="row">        
+        <!--Cột thông tin biểu mẫu Start-->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="card">  
+            <div class="card-header">
+              <h5><i class="fas fa-address-card f-22"></i><a data-i18n="title-MODIFY">MODIFY USER PASSWORD</a></h5>
+              <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>--> 
+            </div>   
+
+            <div class="row col-12">
+
+              <div class="card col-xl-5 col-lg-5 col-md-4 col-sm-12  my-auto" id='bg_user' style="box-shadow:none;padding-bottom:16px"> 
+                <img id="img_avatar" class=""  src="{% static 'main/media/' %}{{sql.img}}" style=" object-fit: contain;width:100%">
+              </div>
+
+              <div class="card col-xl-7 col-lg-7 col-md-8 col-sm-12"> 
+        
+                <!--Thông tin cá nhân-->    
+                <div class="" id="div_userinf">
+                  <div class=" mb-0 card-table flex-fill">
+                    
+                    <div class="card-body" style="padding: 0px;">
+                      <div class="row" id="div_profile">
+                      
+                        <!--txt UserID Title-->
+                        <div class="col-md-6 col-sm-12 mb-0 mt-1">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0" data-i18n="userid-modal">用戶名(User ID):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="userid" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.UserID}}" >
+                            <i class="fad fa-id-card f-16 text-success"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--cbx Site-->
+                        <div class="col-md-3 col-sm-6 mb-0 mt-1">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0" data-i18n="site-modal">廠區(Site):</label><span class="text-danger">*</span>
+                            <select id="siteid" name="siteid" class="form-control form-control-round1" title="Please fill this fiel.">
+                              <option >{{sql.DFSite}}</option>
+                               {% if sql2 %}
+                                  {% for item in sql2 %}
+                                    <option value="{{item.Site}}">{{item.Site}}</option>
+                                  {% endfor %}
+                                {% endif %} 
+                            </select>
+                            <i class="fad fa-globe-asia f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--cbx BU-->
+                        <div class="col-md-3 col-sm-6 mb-0 mt-1">
+                          <div class="form-group mb-0 mt-0">                           
+                            <label class="mb-0 mt-0" data-i18n="bu-modal">事業處(BU):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="buid" name="buid" required="Please not entry.." title="Please fill this fiel." value="{{sql.division}}">
+                            {% comment %} <select id="buid" name="buid" class="form-control form-control-round1" required="Please select BU..." title="Please fill this fiel.">
+                                <option>{{sql.division}}</option>                              
+                                {% if sql1 %}
+                                  {% for item in sql1 %}
+                                    <option value="{{item.Dept_Name}}">{{item.Dept_Name}}</option>
+                                  {% endfor %}
+                                {% endif %}     
+                            </select> {% endcomment %}
+                            <i class="fad fa-briefcase text-success" aria-hidden="true"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--txt username-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0"  data-i18n="username-modal">姓名(User Name):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="usernameid" name="usernameid" required="Please not entry.." title="Please fill this fiel." value="{{sql.UserName}}">
+                            <i class="fad fa-user f-16 text-info" aria-hidden="true"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--txt empno-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0" data-i18n="emp-modal">工號(Emp.No):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="empnoid" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.Emp_NO}}">
+                            <i class="far fa-id-card-alt f-16 text-info"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--txt dept-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0" data-i18n="Dept-modal">部門(Dept):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="deptid" name="deptid" required="Please not entry.." title="Please fill this fiel." value="{{sql.Dept}}">
+                            <i class="fad fa-users-crown f-16 text-info"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--txt costno-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0" data-i18n="CostNO-modal">費用代碼(CostNO):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="costnoid" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.CostNo}}">
+                            <i class="far fa-dollar-sign f-16 text-info" aria-hidden="true"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--txt tell-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0" data-i18n="Ext-modal">分機(Ext):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="extid" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.Telephone}}" >
+                            <i class="fal fa-phone f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                        <!--txt your Mail-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0"  data-i18n="Mail-modal">電子郵件(Mail):</label><span class="text-danger">*</span>
+                            <input class="form-control" type="text" id="emailid" name="" required="Please not entry.." title="Please fill this fiel." value="{{sql.mailbox}}">
+                            <i class="fal fa-mailbox f-16 text-success" aria-hidden="true"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+                        
+                        <!--txt your passw-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                            
+                            <label class="mb-0 mt-0" data-i18n="Password-modal">新密碼(Password):<span class="text-danger">*</span></label>
+                            <input class='form-control'  name="password1_modal" type="password"  id="pass1id" value="{{pass}}">
+                            <span class="show-btn  mt-2"><i id="togglePassword" class="fas fa-eye" onclick="SHOW_PASSWORD();"></i></span>
+                            <i class="fad fa-lock-alt f-16 text-danger"></i><span class="focus-input100"></span>	
+                          </div>
+                          
+                        </div>
+
+                        <!--txt your password2-->
+                        <div class="col-md-6 col-sm-6 mb-0 mt-4">
+                          <div class="form-group mb-0 mt-0">                           
+                            <label class="mb-0 mt-0" data-i18n="Confirm-modal">新密碼(Confirm Password):<span class="text-danger">*</span></label>
+                            <input class="form-control" type="password" id="pass2id" name="pass2id" required="Please not entry.." title="Please fill this fiel." >
+                            <i class="fad fa-lock-alt f-16 text-danger"></i><span class="focus-input100"></span>	
+                          </div>
+                        </div>
+
+                      </div>
+                      <hr>
+
+                      <div class="row d-flex justify-content-center">
+                        <!--Button change Image  -->
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 mb-2 mt-0" id="frm_csftk">
+                          <form id="frm_formfile" method='post'>
+                            {% csrf_token %}
+                            <input type="file" id="file_user" style="display:none;"  accept="image/*" onchange="CHANGE_AVATAR(this,'img_profile')">
+                            <button id="btn_upimg"  type="button" class="form-control btn btn-danger float-end" data-dismiss="modal" onclick="document.getElementById('file_user').click();"><i class="fas fa-broom"></i><a id="text_img" data-i18n="Avatar-modal">Change Avatar</a></button>                    
+                        </form>
+                        </div>
+                        
+                        <!--Button Thêm Đơn -->
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 mb-2 mt-0">                         
+                            <button id="btn_save" class="form-control btn btn-info" type="button"  onclick="Save_profiles_form();"><i class="fa fa-plus"></i><a data-i18n="btn-save"> Save</a></button>
+                        </div>
+                        <!--Button Pemrmission  -->
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 mb-2 mt-0" hidden>                      
+                            <button  type="button" class="form-control btn btn-danger float-end" data-dismiss="modal" onclick="LOAD_PERMISSION_USER();"><i class="fas fa-book-dead"></i><a data-i18n="Permission"> Permission</a></button>                    
+                        </div>
+                        <!--Button Quay lại thoát  -->
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-4 mb-2 mt-0">
+                              <button  type="button" class="form-control btn btn-dark float-end" data-dismiss="modal" onclick="BACK_HOME();"><i class="fa fa-reply"></i><a data-i18n="btn-exit"> Exit</a></button>                    
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+                <!--/Thông tin cá nhân END--> 
+
+              </div>
+          </div>
+            
+          </div>
+        </div>
+        <!--End Cột thông tin biểu mẫu-->
+
+      </div>
+
+    </form>
+      <!-- Page body end -->
+    
+  </div>
+
+
+<!-- The Modal Self permission start -->
+<div class="modal fade" id="modalpermission_self" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-user-alt f-20"></i><a data-i18n="title-modal-acount"> Acount Permission</a></h5>
+        <button type="button" class="close" data-dismiss="modal">Close &times;</button>
+      </div>
+      <!-- Modal body -->             
+      <div class="modal-body" >            
+        <form class="form-control text-center" style="overflow:auto;">
+          <table class="table table-hover text-left" id="table_permiss" style="width:100%;">
+            <thead>
+              <tr class="bg-dark text-white">
+                <th data-i18n="allow">Allow</th>
+                <th data-i18n="funid-acount" >Function ID</th>
+                <th data-i18n="funme-acount">Function Menu Name</th>
+                <th data-i18n="funtyp-acount">Function Type</th>           
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center"><input name="chk_APPROVAL" type="checkbox" id="chk_APPROVAL" onclick=""></td>
+                <td data-i18n="approval-acount">APPROVAL</td>
+                <td data-i18n="allow-approval">Allowed To Approval DOC</td>
+                <td data-i18n="funtree-acount">Tree_menu</td>
+              </tr>
+              <tr>
+                <td class="text-center"><input name="chk_NEW_APP_CREAT" type="checkbox" id="chk_NEW_APP_CREAT" onclick=""></td>
+                <td data-i18n="newapp-acount">NEW_APP_CREAT</td>
+                <td data-i18n="allow-newapp">Allowed To Create New DOC</td>
+                <td data-i18n="funtree-acount">Tree_menu</td>
+              </tr> 
+              <tr>
+                <td class="text-center"><input name="chk_QUERY_DOC" type="checkbox" id="chk_QUERY_DOC" onclick=""></td>
+                <td data-i18n="Search-acount">QUERY_DOC</td>
+                <td data-i18n="allow-Search">Allow To Search DOC</td>
+                <td data-i18n="funtree-acount">Tree_menu</td>
+              </tr> 
+              <tr>
+                <td class="text-center"><input name="chk_CREATE_user" type="checkbox" id="chk_CREATE_user" onclick=""></td>
+                <td data-i18n="create-user">API_CREATE_USER</td>
+                <td data-i18n="allow-create-user">Allow to create User</td>
+                <td data-i18n="funtree-acount">Tree_menu</td>
+              </tr> 
+              <tr>
+                <td class="text-center"><input name="chk_FLOW_SET" type="checkbox" id="chk_FLOW_SET" onclick=""></td>
+                <td data-i18n="Flow-acount">FLOW_SET</td>
+                <td data-i18n="allow-Flow">Allow Flow Title settings</td>
+                <td data-i18n="funmain-acount">Main_menu</td>
+              </tr> 
+              <tr>
+                <td class="text-center"><input name="chk_FORM_SET" type="checkbox" id="chk_FORM_SET" onclick=""></td>
+                <td data-i18n="Form-acount">FORM_SET</td>
+                <td data-i18n="allow-Form">Allow Form Name Setting</td>
+                <td data-i18n="funmain-acount">Main_menu</td>
+              </tr> 
+              <tr>
+                <td class="text-center"><input name="chk_APPROVER_SET" type="checkbox" id="chk_APPROVER_SET" onclick=""></td>
+                <td data-i18n="Approver-acount">APPROVER_SET</td>
+                <td data-i18n="allow-Approver">Allowed To Edit Approver</td>
+                <td data-i18n="funmain-acount">Main_menu</td>
+              </tr> 
+              <tr>
+                <td class="text-center"><input name="chk_USER_MANAGE" type="checkbox" id="chk_USER_MANAGE" onclick=""></td>
+                <td data-i18n="User-acount">USER_MANAGE</td>
+                <td data-i18n="allow-User">Allow To All User settings</td>
+                <td data-i18n="funmain-acount">Main_menu</td>
+              </tr> 
+              <tr>
+                <td class="text-center"><input name="chk_PASS_MODIFY" type="checkbox" id="chk_PASS_MODIFY" onclick=""></td>
+                <td data-i18n="Self-acount">PASS_MODIFY</td>
+                <td data-i18n="allow-Self">Allow View-Edit Self Profile</td>
+                <td data-i18n="funtree-acount">Tree_menu</td>
+              </tr>               
+            </tbody>
+          </table>
+            <!-- Modal footer -->
+        <div class="modal-footer  text-center">
+          <div class="row container">
+            <div class='col-md-6 col-sm-6'>
+              <span><button type="button" class="btn btn-info" data-dismiss="modal"><i class="fa fa-plus"></i>Save</button></span>
+            </div>
+            <div class='col-md-6 col-sm-6'>
+              <span><button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button></span>
+            </div>
+          </div>
+      
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- Modal Self permission End-->
+
+
+  <script src="{% static 'main/myjs/J-query/3.6.0/jquery.min.js' %}"></script>  
+  <script src="{% static 'main/myjs/modify.password.js' %}"></script> 
+  <script src="{% static 'main/myjs/myjs.js' %}"></script>
+  <script type="text/javascript"  src="{% static 'main/myjs/menu.active.js' %}"></script>
+<script>
+    ACTIVE_MENUY('PASS_MODIFY1') ;
+    CHECK_FILL_DATA_INPUT('div_userinf')
+</script>
+
+  {% endblock %}
+

@@ -17,9 +17,9 @@ import chardet
 import pymssql
 
 #Server
-server = '10.224.69.52:3000' 
-username = 'sa'
-password = 'cnsbgesigndb52@'
+server = '' 
+username = ''
+password = ''
 #Table list
 
 

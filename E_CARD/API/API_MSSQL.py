@@ -10,10 +10,10 @@
 
 import pymssql
 
-server = '10.224.54.26:4433' 
-database = 'VN_Door_162'
-username = 'sa'
-password = 'Foxconn()'
+server = '' 
+database = ''
+username = ''
+password = ''
 
 
 table_Users="Users_New"
